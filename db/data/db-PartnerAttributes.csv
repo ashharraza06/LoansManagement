@@ -1,0 +1,4 @@
+ID,roleType,customer,bankDetailsID,dunningLetter,dunnChargesPyr,paymentMethod,partner_companyCode,partner_productType,partner_businessPartner
+pat-001,BORROWER,CUST1001,BANK1001,true,false,NEFT,1000,HL,BP00010001,L,0000001001
+pat-002,BORROWER,CUST2002,BANK2002,false,false,IMPS,2000,PL,BP00020002,P,0000002002
+pat-003,BORROWER,CUST3003,BANK3003,true,true,RTGS,3000,HL,BP00030003,L,0000003003

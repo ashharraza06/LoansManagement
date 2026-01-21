@@ -1,0 +1,4 @@
+ID,title,nameAddress,startRel,endRel,addressType,partner,bpRole,loan_companyCode,loan_productType,loan_businessPartner
+prt-001,Mr,Rahul Sharma - Delhi,2025-01-10,,HOME,BP00010001,BORROWER,1000,HL,BP00010001,L,0000001001
+prt-002,Ms,Anita Verma - Pune,2025-02-05,,HOME,BP00020002,BORROWER,2000,PL,BP00020002,P,0000002002
+prt-003,Mr,Suresh Iyer - Chennai,2025-03-01,,HOME,BP00030003,BORROWER,3000,HL,BP00030003,L,0000003003

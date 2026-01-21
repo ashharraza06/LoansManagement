@@ -1,0 +1,9 @@
+ID,commitCapital,repaymentType,termStart,fixedFrom,fixedUntil,termEnd,intCalMethod,EffectInt,contract,contracton,Amtzdate,maturitydate,loan_companyCode,loan_productType,loan_businessPartner
+
+cndh-001,2500000.00,EMI,2025-02-01,2025-02-01,2030-01-31,2045-01-31,Reducing Balance,8.25%,CTR-1001,2025-01-25,2025-02-01,2045-01-31,1000,HL,BP00010001,L,0000001001
+
+cndh-002,500000.00,EMI,2025-03-01,2025-03-01,2028-02-28,2035-02-28,Flat Rate,11.50%,CTR-2002,2025-02-15,2025-03-01,2035-02-28,2000,PL,BP00020002,P,0000002002
+
+cndh-003,3500000.00,EMI,2025-04-01,2025-04-01,2032-03-31,2047-03-31,Reducing Balance,7.90%,CTR-3003,2025-03-15,2025-04-01,2047-03-31,3000,HL,BP00030003,L,0000003003
+
+ 
