@@ -1,0 +1,277 @@
+{
+  "_version": "1.81.0",
+  "sap.app": {
+    "id": "loanoffercreation",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.20.1",
+      "toolsId": "0a27975c-226c-4337-a10b-265f46fc6178"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/my/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "loanofferapplication-Display": {
+          "semanticObject": "loanofferapplication",
+          "action": "Display",
+          "title": "{{loanofferapplication-Display.flpTitle}}",
+          "subTitle": "{{loanofferapplication-Display.flpSubtitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.143.2",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "loanoffercreation.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "ContractList",
+          "target": "ContractList"
+        },
+        {
+          "pattern": "Contract({key}):?query:",
+          "name": "ContractObjectPage",
+          "target": "ContractObjectPage"
+        },
+        {
+          "pattern": "Contract({key})/contractToPartner({key2}):?query:",
+          "name": "PartnersObjectPage",
+          "target": "PartnersObjectPage"
+        }
+      ],
+      "targets": {
+        "ContractList": {
+          "type": "Component",
+          "id": "ContractList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/Contract",
+              "variantManagement": "Page",
+              "navigation": {
+                "Contract": {
+                  "detail": {
+                    "route": "ContractObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "GridTable"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ContractObjectPage": {
+          "type": "Component",
+          "id": "ContractObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/Contract",
+              "navigation": {
+                "contractToPartner": {
+                  "detail": {
+                    "route": "PartnersObjectPage"
+                  }
+                }
+              },
+              "sectionLayout": "Tabs",
+              "content": {
+                "body": {
+                  "sections": {
+                    "Attachments": {
+                      "template": "loanoffercreation.ext.fragment.Attachments",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "Partners"
+                      },
+                      "title": "Attachments"
+                    },
+                    "Comments": {
+                      "template": "loanoffercreation.ext.fragment.Comments",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "Attachments"
+                      },
+                      "title": "Comments"
+                    },
+                    "Workflowhistory": {
+                      "template": "loanoffercreation.ext.fragment.Workflowhistory",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "Comments"
+                      },
+                      "title": "Workflow History"
+                    },
+                    "Changelogs": {
+                      "template": "loanoffercreation.ext.fragment.Changelogs",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "Workflowhistory"
+                      },
+                      "title": "Change Logs"
+                    }
+                  }
+                },
+                "header": {
+                  "facets": {
+                    "Header": {
+                      "template": "loanoffercreation.ext.fragment.Header",
+                      "title": "Header Details",
+                      "stashed": false,
+                      "requestGroupId": "Heroes",
+                      "flexSettings": {
+                        "designtime": "Default"
+                      }
+                    }
+                  },
+                  "actions": {
+                    "cashflow": {
+                      "press": "loanoffercreation.ext.controller.CalculateCashflow.CalculateCashflow",
+                      "visible": true,
+                      "enabled": true,
+                      "text": "Calculate Cash Flow",
+                      "position": {
+                        "placement": "Before",
+                        "anchor": "EditAction"
+                      }
+                    }
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "contractToCondition/@com.sap.vocabularies.UI.v1.LineItem#ConditionItems": {
+                  "actions": {
+                    "rate": {
+                      "press": "loanoffercreation.ext.controller.Rate.Rate",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Rate"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "PartnersObjectPage": {
+          "type": "Component",
+          "id": "PartnersObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/Contract/contractToPartner"
+            }
+          }
+        }
+      }
+    },
+    "extends": {
+      "extensions": {
+        "sap.ui.controllerExtensions": {
+          "sap.fe.templates.ListReport.ListReportController": {
+            "controllerName": "loanoffercreation.ext.controller.Listcontr"
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.fe": {
+    "app": {
+      "enableLazyLoading": true
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "management"
+  }
+}

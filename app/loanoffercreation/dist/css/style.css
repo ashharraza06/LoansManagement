@@ -1,0 +1,18 @@
+#CreateDialog\:\:Contract-title-inner {
+    visibility: hidden;
+}
+
+#CreateDialog\:\:Contract-title-inner::after {
+    content: "Loan Creation";
+    visibility: visible;
+}
+
+.sapUxAPObjectPageSubSectionHeader {
+    margin: 0.5rem 0.25rem;
+}
+
+
+
+#__title7 {
+    display: none;
+}

@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/mvc/ControllerExtension"],function(e){"use strict";return e.extend("loanoffercreation.ext.controller.Listcontr",{override:{onInit:function(){var e=this.base.getExtensionAPI().getModel();debugger;sap.ui.core.Element.getElementById("loanoffercreation::ContractList--fe::table::Contract::LineItem::StandardAction::Delete").setVisible(false)}}})});
+//# sourceMappingURL=Listcontr.controller.js.map

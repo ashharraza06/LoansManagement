@@ -9,130 +9,132 @@ using {
 /* =========================
    ROOT LOAN ENTITY
 ========================= */
-entity Loans :managed {
-    /* ---------- Step 1 : Initial Screen ---------- */
-   key companyCode         : String(4) @Common.Label: 'Company Code';
-   key productType         : String(3)@Common.Label: 'Product Type';// HL / PL
-   key businessPartner     : String(20)@Common.Label: 'BPartner';
+entity Contract : managed {
+        /* ---------- Step 1 : Initial Screen ---------- */
+    key ID                  : UUID;
+        companyCode         : String  @Common.Label: 'Company Code';
+    key loanNumber          : String  @mandatory  @Common.Label: 'Loan Number';
+    key productType         : String  @mandatory  @Common.Label: 'Product Type';
+    key loanType            : String  @mandatory  @Common.Label: 'Loan Type';
+    key loanPartner         : String  @mandatory  @Common.Label: 'Loan Partner';
 
-    /* ---------- Number Composition ---------- */
-    loanIndicator       : String(1) ;
-    numberRange         : String(10) ; 
-    divider             : String(1) ;
-    loanTypeNC          : String(3); // TL / OD
+        status              : String;
+        disbursementStatus  : String;
 
-    /* ---------- Basic Data ---------- */
-    //classification
-    loanTypeBD          : String(3);
-    // Application/approval
-    applicationDate     : Date;
-    applicationCapital  : Decimal(15, 2);
-    approvalDate        : Date;
-    commitmentDate      : Date;
-
-    /* ---------- Analysis Data ---------- */
-    // Information
-    loanPurpose         : String(4);
-    arBillingJob        : String(10);
-
-    /* ---------- Organization ---------- */
-    // agentdata
-    country             : String(3);
-    orgDistrict         : String(10);
-    agentDistrict       : String(10);
-
-    /* ---------- Reference Data ---------- */
-    // groupkey
-    primaryIndustryCode : String(10);
-    // other references
-    legacyNumber        : String(20);
-    projectNumber       : String(20);
-
-    /* ---------- Associations ---------- */
-    conditionHeader     : Association to one ConditionHeaders
-                              on conditionHeader.loan = $self;
-
-    conditionLineItems  : Association to many ConditionLineItems
-                              on conditionLineItems.loan = $self;
-
-    partners            : Association to many Partners
-                              on partners.loan = $self;
-    partnerattr         : Association to many PartnerAttributes on partnerattr.partner = $self                          
-}
-
-entity ConditionHeaders : cuid, managed {
+        /* ---------- Number Composition ---------- */
+        // loanIndicator       : String(1);
+        // numberRange         : String(10);
+        // divider             : String(1);
 
 
-    commitCapital : Decimal(15, 2);
-    repaymentType : String(20);
-    //term/fixed period
-    termStart     : Date;
-    fixedFrom     : Date;
-    fixedUntil    : Date;
-    termEnd       : Date;
-    //intrest calculation
-    intCalMethod  : String(30);
-    EffectInt : String(20);
-    // contract/Eff.Int
-    contract : String;
-    contracton : Date;
-    Amtzdate : Date;
-    // ------------
-    maturitydate : Date;
-    loan          : Association to Loans;
-}
-entity ConditionLineItems : cuid, managed {
-    
+        /* ---------- Basic Data ---------- */
+        // //classification
+        // loanTypeBD          : String(3);
+        // Application/approval
+        applicationDate     : Date;
+        applicationCapital  : Decimal(15, 2);
+        approvalDate        : Date;
+        commitmentDate      : Date;
 
-    condTypeText       : String(50);
-    effFrom            : Date;
+        /* ---------- Analysis Data ---------- */
+        // Information
+        loanPurpose         : String;
+        arBillingJob        : String;
 
-    percent            : Decimal(9,6);
-    conditionAmount    : Decimal(15,2);
+        /* ---------- Organization ---------- */
+        // agentdata
+        country             : String;
+        orgDistrict         : String;
+        agentDistrict       : String;
 
-    currency           : String(3);
+        /* ---------- Reference Data ---------- */
+        // groupkey
+        primaryIndustryCode : String;
+        // other references
+        legacyNumber        : String;
+        projectNumber       : String;
 
-    lvl                : String(1);
-    Is                 : Boolean;
 
-    pf                 : Integer;
-    pe                 : String(2);
+        //conditions
+        commitCapital       : String  @mandatory;
+        repaymentType       : String;
 
-    frequency          : Integer;
-    dueOn              : Date;
+        //term/fixed Period
+        fixedFrom           : Date    @mandatory;
+        fixedUntil          : Date    @mandatory;
+        include             : Boolean;
 
-    ed                 : Boolean;
-    calcDate           : Date;
-    mc                 : Boolean;
+        //Interest Calculation
+        intCalMt            : String  @mandatory;
+        postAdjustmentFlag  : Boolean;
+        /* ---------- Associations ---------- */
 
-    formula            : String(10);
-    loan               : Association to Loans;
-}
-entity Partners : cuid, managed {
-
-    title           : String(20);
-    nameAddress     : String(255);
-
-    startRel        : Date;
-    endRel          : Date;
-
-    addressType     : String(10);
-    partner         : String(20);
-    bpRole          : String(20);
-    loan            : Association to Loans;
-}
-entity PartnerAttributes : cuid, managed {
-    
-
-    roleType         : String(20);
-    customer         : String(20);
-    bankDetailsID    : String(20);
-
-    dunningLetter    : String;
-    dunnChargesPyr   : Boolean;
-    paymentMethod    : Integer;
-    partner          : Association to Loans;
+        contractToCondition : Composition of many ConditionItemsNew
+                                  on contractToCondition.contractId = ID;
+        contractToPartner   : Composition of many Partners
+                                  on contractToPartner.id = ID;
+        contracttoAttachments : Composition of many Attachments on contracttoAttachments.contraid = ID;                          
 }
 
 
+//condition items according to cash flow
+entity ConditionItemsNew : managed {
+    key conditionId         : UUID;
+        contractId          : UUID;
+        conditionTypeText   : String(20);
+        effectiveFrom       : Date;
+        percentage          : String(4);
+        conditionAmt        : String(15);
+        paymentFromExactDay : String(20);
+        frequencyInMonths   : String(4);
+        dueDate             : Date;
+        calculationDate     : Date;
+        sequence            : Integer;
+        conditionToContract : Association to Contract;
 
+
+}
+
+entity ConditionTypeTextSearchHelpNew {
+    key ID    : UUID;
+        value : String;
+
+}
+
+entity Partners : managed {
+    key partnerId         : UUID;
+        id                : UUID;
+        title             : String;
+        nameAddress       : String;
+
+        startRel          : Date;
+        endRel            : Date;
+
+        addressType       : String;
+        partner           : String;
+        bpRole            : String;
+
+        roleType          : String;
+        customer          : String;
+        bankDetailsID     : String;
+
+        dunningLetter     : String;
+        dunnChargesPyr    : Boolean;
+        paymentMethod     : Integer;
+        partnerToContract : Association to Contract;
+}
+
+entity Attachments : cuid, managed {
+    contraid              : UUID;
+
+    @Core.MediaType  : MediaType
+    Content               : LargeBinary;
+
+    @Core.IsMediaType: true
+    MediaType             : String;
+    FileName              : String;
+    Size                  : Integer;
+    Url                   : String;
+
+    AttachmentsToContract : Association to Contract;
+}

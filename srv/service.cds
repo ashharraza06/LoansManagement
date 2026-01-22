@@ -2,11 +2,10 @@ using {db} from '../db/schema';
 
 service MyService {
     @odata.draft.enabled
-    entity Loans as projection on db.Loans;
-    entity conditionHeader as projection on db.ConditionHeaders;
-    entity conditionLineItems as projection on db.ConditionLineItems;
-    @odata.draft.enabled
-    entity partners as projection on db.Partners;
-    entity PartnerAttributes as projection on db.PartnerAttributes;
+    entity Contract                       as projection on db.Contract;
+    entity ConditionItemsNew              as projection on db.ConditionItemsNew;
+    entity Partners                       as projection on db.Partners;
+    entity ConditionTypeTextSearchHelpNew as projection on db.ConditionTypeTextSearchHelpNew;
+    entity Attachments as projection on db.Attachments;
 
 }

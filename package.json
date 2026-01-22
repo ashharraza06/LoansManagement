@@ -22,19 +22,18 @@
     "undeploy": "cf undeploy LoansManagement --delete-services --delete-service-keys --delete-service-brokers",
     "build": "rimraf resources mta_archives && mbt build --mtar archive",
     "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
-    "watch-createloanoffer": "cds watch --open createloanoffer/index.html?sap-ui-xx-viewCache=false --livereload false"
+    "watch-loanoffercreation": "cds watch --open loanoffercreation/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "private": true,
   "workspaces": [
     "app/*"
   ],
   "sapux": [
-    "app/createloanoffer"
+    "app/loanoffercreation"
   ],
   "cds": {
     "requires": {
-      "db": "hana",
-      "auth": "dummy"
+      
     }
   }
 }
