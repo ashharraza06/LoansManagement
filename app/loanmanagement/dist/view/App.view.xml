@@ -1,0 +1,27 @@
+<!-- <mvc:View controllerName="loanmanagement.controller.App"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <App id="app">
+    </App>
+</mvc:View> -->
+
+<mvc:View xmlns:filterbar="sap.ui.comp.filterbar" controllerName="loanmanagement.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:u ="sap.uxap"
+xmlns:core="sap.ui.core" xmlns:upload="sap.m.upload">
+<NavContainer id="wizardNavContainer" height="100vh">
+ <pages>
+ <Page id="wizardContentPage" showHeader="false">
+            <content>
+           <Wizard id="LoanManagement" class="height1" renderMode="Page" navigationChange= "change">
+						<WizardStep id="LoanCreation" nextStep="Disbursement" validated="true" title="Loan Offer Creation" activate="StepTwo" class="wizstep">
+							<core:ComponentContainer id="screen1" propagateModel="true" height="600px" objectBindings="b" />
+						</WizardStep>
+                        <WizardStep id="Disbursement" validated="true" title="Disbursement" activate="StepThree" class="wizstep">
+							
+						</WizardStep>
+                        </Wizard>
+            </content>
+ </Page>
+        </pages>
+    </NavContainer>
+</mvc:View>

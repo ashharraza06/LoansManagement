@@ -11,15 +11,15 @@ using {
 ========================= */
 entity Contract : managed {
         /* ---------- Step 1 : Initial Screen ---------- */
-    key ID                  : UUID;
-        companyCode         : String  @Common.Label: 'Company Code';
-    key loanNumber          : String  @mandatory  @Common.Label: 'Loan Number';
-    key productType         : String  @mandatory  @Common.Label: 'Product Type';
-    key loanType            : String  @mandatory  @Common.Label: 'Loan Type';
-    key loanPartner         : String  @mandatory  @Common.Label: 'Loan Partner';
+    key ID                    : UUID;
+        companyCode           : String  @Common.Label: 'Company Code';
+    key loanNumber            : String  @mandatory  @Common.Label: 'Loan Number';
+    key productType           : String  @mandatory  @Common.Label: 'Product Type';
+    key loanType              : String  @mandatory  @Common.Label: 'Loan Type';
+    key loanPartner           : String  @mandatory  @Common.Label: 'Loan Partner';
 
-        status              : String;
-        disbursementStatus  : String;
+        status                : String;
+        disbursementStatus    : String;
 
         /* ---------- Number Composition ---------- */
         // loanIndicator       : String(1);
@@ -31,49 +31,88 @@ entity Contract : managed {
         // //classification
         // loanTypeBD          : String(3);
         // Application/approval
-        applicationDate     : Date;
-        applicationCapital  : Decimal(15, 2);
-        approvalDate        : Date;
-        commitmentDate      : Date;
+        applicationDate       : Date;
+        applicationCapital    : Decimal(15, 2);
+        approvalDate          : Date;
+        commitmentDate        : Date;
 
         /* ---------- Analysis Data ---------- */
         // Information
-        loanPurpose         : String;
-        arBillingJob        : String;
+        loanPurpose           : String;
+        arBillingJob          : String;
 
         /* ---------- Organization ---------- */
         // agentdata
-        country             : String;
-        orgDistrict         : String;
-        agentDistrict       : String;
+        country               : String;
+        orgDistrict           : String;
+        agentDistrict         : String;
 
         /* ---------- Reference Data ---------- */
         // groupkey
-        primaryIndustryCode : String;
+        primaryIndustryCode   : String;
         // other references
-        legacyNumber        : String;
-        projectNumber       : String;
+        legacyNumber          : String;
+        projectNumber         : String;
 
 
         //conditions
-        commitCapital       : String  @mandatory;
-        repaymentType       : String;
+        commitCapital         : String  @mandatory;
+        repaymentType         : String;
 
         //term/fixed Period
-        fixedFrom           : Date    @mandatory;
-        fixedUntil          : Date    @mandatory;
-        include             : Boolean;
+        fixedFrom             : Date    @mandatory;
+        fixedUntil            : Date    @mandatory;
+        include               : Boolean;
+
+        //PENNVEST
+        designation           : String;
+        pledgedStatus         : String;
+        datePaidOff           : Date;
+
+        //Comments Tab From Data
+
+        //Offer
+        offerOn               : Date;
+        offerUntil            : Date;
+        reservedOn            : Date;
+        reservedUntil         : Date;
+
+        //Acceptance
+        acceptance            : Integer;
+        acceptedOn            : Date;
+        acceptancedType       : Integer;
+        reservation           : Integer;
+
+        //Contract/Eff.int
+
+        contract              : String;
+        contractOn            : Date;
+        amtzDate              : Date;
+        maturityDate          : Date;
+
 
         //Interest Calculation
-        intCalMt            : String  @mandatory;
-        postAdjustmentFlag  : Boolean;
+        intCalMt              : String  @mandatory;
+        postAdjustmentFlag    : Boolean;
+
+        //notice
+
+        intresetRateResetType : Integer;
+        intresetRateResetDate : Date;
+        //capital amount
+        contractCapital       : Decimal;
+        disbursementOblig     : Decimal;
+        valueDatedCapital     : Decimal;
+        effectCapital         : Decimal;
+
         /* ---------- Associations ---------- */
 
-        contractToCondition : Composition of many ConditionItemsNew
-                                  on contractToCondition.contractId = ID;
-        contractToPartner   : Composition of many Partners
-                                  on contractToPartner.id = ID;
-        contracttoAttachments : Composition of many Attachments on contracttoAttachments.contraid = ID;                          
+        contractToCondition   : Composition of many ConditionItemsNew
+                                    on contractToCondition.contractId = ID;
+        contractToPartner     : Composition of many Partners
+                                    on contractToPartner.id = ID;
+        contracttoAttachments : Composition of many Attachments
+                                    on contracttoAttachments.contraid = ID;
 }
 
 
@@ -104,15 +143,15 @@ entity ConditionTypeTextSearchHelpNew {
 entity Partners : managed {
     key partnerId         : UUID;
         id                : UUID;
-        title             : String;
-        nameAddress       : String;
+        title             : String(15);
+        nameAddress       : String(30);
 
         startRel          : Date;
         endRel            : Date;
 
-        addressType       : String;
-        partner           : String;
-        bpRole            : String;
+        addressType       : String(15);
+        partner           : String(10);
+        bpRole            : String(10);
 
         roleType          : String;
         customer          : String;
@@ -120,7 +159,9 @@ entity Partners : managed {
 
         dunningLetter     : String;
         dunnChargesPyr    : Boolean;
-        paymentMethod     : Integer;
+        paymentMethod     : String;
+        payoffLock        : Boolean;
+        arBillingJob          : String;
         partnerToContract : Association to Contract;
 }
 
@@ -137,4 +178,33 @@ entity Attachments : cuid, managed {
     Url                   : String;
 
     AttachmentsToContract : Association to Contract;
+}
+
+entity EntityAuditLogs {
+    key id            : UUID;
+        DateTime      : String;
+        User          : String;
+        OperationType : String;
+        Entity        : String;
+        Changes       : String;
+        toChanges     : Composition of many Changes on toChanges.toEntityAuditLogs = $self;
+
+}
+
+entity Changes {
+    key Field             : String;
+    key id                : UUID;
+        OldValue          : String;
+        NewValue          : String;
+        toEntityAuditLogs : Association to one EntityAuditLogs
+                                on toEntityAuditLogs.id = id;
+}
+entity PaymentMethodSearchHelp {
+    key id : UUID;
+    value : String;
+    
+}
+entity ARBillingJobSearchHelp {
+    key id : UUID;
+    value : String;
 }

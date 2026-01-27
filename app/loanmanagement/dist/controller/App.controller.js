@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/mvc/Controller"],e=>{"use strict";return e.extend("loanmanagement.controller.App",{onInit(){var e=this.getOwnerComponent().createComponent({usage:"screen1",async:true,manifest:true});e.then(function(e){debugger;this.byId("screen1").setComponent(e);this._loanCreationContainer=e}.bind(this))}})});
+//# sourceMappingURL=App.controller.js.map

@@ -1,47 +1,39 @@
-<!-- <core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:macros="sap.fe.macros">
-	<VBox core:require="{ handler: 'loanoffercreation/ext/fragment/Comments'}">
-		<Button text="Comments" press="handler.onPress" />
-	</VBox>
-</core:FragmentDefinition> -->
-
 <core:FragmentDefinition
     xmlns:core="sap.ui.core"
     xmlns="sap.m">
- 
+
     <VBox
         id="commentsFragmentVBox"
         width="100%"
-        class="sapUiSmallMargin"
+        class="sapUiContentPadding"
         core:require="{ handler: 'loanoffercreation/ext/fragment/Comments' }">
- 
- 
+
+        <!-- View all comments aligned right -->
         <HBox
-            id="commentsFragment-ViewAllHBox"
             width="100%"
             justifyContent="End">
             <Button
-                id="commentsFragment-ViewAllButton"
                 text="View All Comments"
                 type="Transparent"
-                press="handler.onLoadComments"
-                icon="sap-icon://comment"/>
+                icon="sap-icon://comment"
+                press="handler.onLoadComments"/>
         </HBox>
- 
+
+        <!-- FULL-WIDTH TextArea with proper spacing -->
         <TextArea
-            id="commentsFragment-CommentTextArea"
+
             rows="5"
             width="100%"
+            class="sapUiSmallMarginTop"
             placeholder="Enter your comment..."
             enabled="{= !${IsActiveEntity}}" />
- 
+
+        <!-- Footer actions -->
         <HBox
-            id="commentsFragment-ButtonHBox"
+            width="100%"
             justifyContent="End"
             class="sapUiSmallMarginTop">
- 
-           
- 
         </HBox>
- 
+
     </VBox>
 </core:FragmentDefinition>

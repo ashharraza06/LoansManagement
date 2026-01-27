@@ -44,6 +44,30 @@
  
                     <f:FormElement>
                         <f:label>
+                            <Label text="Loan Partner" design="Bold"/>
+                        </f:label>
+                        <f:fields>
+                            <Text text="{loanPartner}⠀⠀⠀⠀">
+                                <layoutData>
+                                    <f:ColumnElementData cellsLarge="1"/>
+                                </layoutData>
+                            </Text>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement>
+                        <f:label>
+                            <Label text="Loan Type" design="Bold"/>
+                        </f:label>
+                        <f:fields>
+                            <Text text="{loanType}⠀⠀⠀⠀">
+                                <layoutData>
+                                    <f:ColumnElementData cellsLarge="1"/>
+                                </layoutData>
+                            </Text>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement>
+                        <f:label>
                             <Label text="Status" design="Bold"/>
                         </f:label>
                         <f:fields>
@@ -67,25 +91,12 @@
                             </Text>
                         </f:fields>
                     </f:FormElement>
- 
-                    <f:FormElement>
+                    <!-- <f:FormElement>
                         <f:label>
-                            <Label text="Loan Partner" design="Bold"/>
+                            <Label text="Pledged Status" design="Bold"/>
                         </f:label>
                         <f:fields>
-                            <Text text="{loanPartner}⠀⠀⠀⠀">
-                                <layoutData>
-                                    <f:ColumnElementData cellsLarge="1"/>
-                                </layoutData>
-                            </Text>
-                        </f:fields>
-                    </f:FormElement>
-                    <f:FormElement>
-                        <f:label>
-                            <Label text="Loan Type" design="Bold"/>
-                        </f:label>
-                        <f:fields>
-                            <Text text="{loanType}⠀⠀⠀⠀">
+                            <Text text="{pledgedStatus}⠀⠀⠀⠀">
                                 <layoutData>
                                     <f:ColumnElementData cellsLarge="1"/>
                                 </layoutData>
@@ -93,6 +104,19 @@
                         </f:fields>
                     </f:FormElement>
  
+                    <f:FormElement>
+                        <f:label>
+                            <Label text="Designation" design="Bold"/>
+                        </f:label>
+                        <f:fields>
+                            <Text text="{designation}⠀⠀⠀⠀">
+                                <layoutData>
+                                    <f:ColumnElementData cellsLarge="1"/>
+                                </layoutData>
+                            </Text>
+                        </f:fields>
+                    </f:FormElement>
+  -->
                 </f:formElements>
             </f:FormContainer>
         </f:formContainers>
