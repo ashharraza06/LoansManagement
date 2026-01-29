@@ -34,8 +34,8 @@
   ],
   "cds": {
     "requires": {
-     
-    
+    "db" : "hana",
+    "auth": "dummy"
     }
   }
 }

@@ -284,6 +284,15 @@
 										},
 										"DataField::bpRole": {
 											"width": "14%"
+										},
+										"Selection": {
+											"header": "Expand",
+											"width": "16%",
+											"position": {
+												"anchor": "DataField::endRel",
+												"placement": "After"
+											},
+											"template": "loanoffercreation.ext.fragment.Selection"
 										}
 									}
 								}

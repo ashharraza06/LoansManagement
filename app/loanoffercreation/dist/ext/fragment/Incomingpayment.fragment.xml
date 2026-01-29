@@ -12,7 +12,7 @@
 
         layout="ResponsiveGridLayout"
 
-        editable="false"
+        editable="true"
 
         columnsXL="3"
 
@@ -29,23 +29,25 @@
         adjustLabelSpan="false">
  
         <!-- Row 1 -->
+        <Label text="BP role"/>
+<Input value="{bpRole}" editable="true"/>
  
         <Label text="Incoming Payment Method"/>
-<Select selectedKey="{incomingPay>/paymentMethod}" editable="true"/>
+<Input value="{paymentMethod}" editable="true"/>
  
         <Label text="AR Billing Job"/>
-<Select selectedKey="{incomingPay>/arBillingJob}" editable="true"/>
+<Select selectedKey="{arBillingJob}" editable="true"/>
  
         <Label text="Payoff Lock"/>
-<CheckBox selected="{incomingPay>/payoffLock}" editable="true"/>
+<CheckBox selected="{payoffLock}" editable="true"/>
  
         <!-- Row 2 -->
  
         <Label text="1908 Relevant Indicator"/>
-<CheckBox selected="{incomingPay>/relevantIndicator}" editable="true"/>
+<CheckBox selected="{relevantIndicator}" editable="true"/>
  
         <Label text="Exclude from Dunning Indicator"/>
-<CheckBox selected="{incomingPay>/dunningIndicator}" editable="true"/>
+<CheckBox selected="{dunningIndicator}" editable="true"/>
  
     </f:SimpleForm>
  
