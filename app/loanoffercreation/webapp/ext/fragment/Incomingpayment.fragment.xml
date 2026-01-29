@@ -1,56 +1,53 @@
-<core:FragmentDefinition
-
-    xmlns:core="sap.ui.core"
-
+<core:FragmentDefinition xmlns:core="sap.ui.core"
     xmlns="sap.m"
-
     xmlns:f="sap.ui.layout.form">
- 
-    <f:SimpleForm
+    <f:SimpleForm id="IncomingPaymentForm" layout="ResponsiveGridLayout" editable="false" columnsXL="3" columnsL="3" columnsM="3" labelSpanXL="4" labelSpanL="4" labelSpanM="4" adjustLabelSpan="false">
 
-        id="IncomingPaymentForm"
+        <Label text="Customer No."/>
+        <Input value="{customer}"/>
 
-        layout="ResponsiveGridLayout"
+        <Label text="Dunning Letter"/>
+        <Input value="{dunningLetter}"/>
 
-        editable="true"
+        <Label text="Bank Details ID"/>
+        <Input value="{bankDetailsID}"/>
 
-        columnsXL="3"
-
-        columnsL="3"
-
-        columnsM="3"
-
-        labelSpanXL="4"
-
-        labelSpanL="4"
-
-        labelSpanM="4"
-
-        adjustLabelSpan="false">
- 
-        <!-- Row 1 -->
         <Label text="BP role"/>
-<Input value="{bpRole}" editable="true"/>
- 
+        <Input value="{bpRole}"/>
+
         <Label text="Incoming Payment Method"/>
-<Input value="{paymentMethod}" editable="true"/>
- 
+        <ComboBox width="100%" selectedKey="{paymentMethod}">
+            <core:Item key="R" text="R - ACH-Loan Repmt Trustee PIDA"/>
+            <core:Item key="S" text="S - ACH-Loan Repmt Trustee PV 2010"/>
+            <core:Item key="U" text="U - ACH-Loan Repmt Trustee CFA"/>
+            <core:Item key="V" text="V - ACH-Loan Repmt Trustee PV 2017"/>
+            <core:Item key="Z" text="Z - ACH-Loan Repayment Treasury"/>
+        </ComboBox>
+
         <Label text="AR Billing Job"/>
-<Select selectedKey="{arBillingJob}" editable="true"/>
- 
+        <ComboBox width="100%" selectedKey="{arBillingJob}">
+            <core:Item key="0000" text="0000 - "/>
+            <core:Item key="0400" text="0400 - 400-PENNVEST-LOAN-ACCOUNTING"/>
+            <core:Item key="0401" text="0401 - 401-DCED-GENERAL-LOAN TYPE 401/402"/>
+            <core:Item key="0478" text="0478 - 478-PDOT-LOAN ACCOUNTING"/>
+            <core:Item key="0479" text="0479 - 470-PEMA-LOAN ACCOUNTING"/>
+        </ComboBox>
+
+        <Label text="Address"/>
+        <TextArea value="{addressType}" rows="3" growing="true" growingMaxLines="6" maxLength="500" width="100%" />
+
         <Label text="Payoff Lock"/>
-<CheckBox selected="{payoffLock}" editable="true"/>
- 
-        <!-- Row 2 -->
- 
-        <Label text="1908 Relevant Indicator"/>
-<CheckBox selected="{relevantIndicator}" editable="true"/>
- 
+        <CheckBox selected="{payoffLock}"/>
+
+        <Label text="Relevant Indicator"/>
+        <CheckBox selected="{relevantIndicator}"/>
+
         <Label text="Exclude from Dunning Indicator"/>
-<CheckBox selected="{dunningIndicator}" editable="true"/>
- 
+        <CheckBox selected="{dunningIndicator}"/>
+
     </f:SimpleForm>
- 
+
+
 </core:FragmentDefinition>
 
  

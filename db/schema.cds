@@ -17,6 +17,9 @@ entity Contract : managed {
     key productType            : String  @mandatory  @Common.Label: 'Agency';
     key loanType               : String  @mandatory  @Common.Label: 'Loan Type';
     key loanPartner            : String  @mandatory  @Common.Label: 'Loan Partner';
+    key loanPartnerName        : String  @mandatory  @Common.Label: 'Loan Partner Name';
+    key bpNumber               : String  @mandatory  @Common.Label: 'BP Number';
+
 
         status                 : String;
         disbursementStatus     : String;
@@ -209,26 +212,27 @@ entity Changes {
 }
 
 entity PaymentMethodSearchHelp {
-    key id    : UUID;
-        value : String;
+    key code : String;
+        name : String;
 
 }
 
 entity ARBillingJobSearchHelp {
-    key id    : UUID;
-        value : String;
+    key jobCode  : String;
+        longName : String;
 }
 
 entity AmortizationStatusSearchHelp {
-    key id    : UUID;
-        value : String;
+    key amzt      : String;
+        shortName : String;
 }
+
 entity Earmark {
     key earmarkId         : UUID;
         id                : UUID;
         documentNumber    : Integer @Common.Label: 'Document Number';
         loanCategory      : String  @Common.Label: 'Loan Category';
-        orginalAount      : String  @Common.Label: 'Origial Amount';
+        orginalAount      : String  @Common.Label: 'Original Amount';
         text              : String  @Common.Label: 'Text';
         fund              : String  @Common.Label: 'Fund';
         budgetPd          : String  @Common.Label: 'Budget Pd';
@@ -243,18 +247,19 @@ entity Earmark {
         isCompleted       : Boolean @Common.Label: 'Completion Indicator';
         earmarkToContract : Association to Contract;
 }
- 
+
 entity Disbursement {
     key disbursementId : Integer64;
         id             : UUID;
         text           : String @Common.Label: 'Line Item';
         disberseAmount : String @Common.Label: 'New Disberse Amount';
+        flowType       : String @Common.Label: 'Flow Type';
+        grossAmount    : String @Common.Label: 'Gross Amount';
         paymentDate    : Date   @Common.Label: 'Payment Date';
         effectiveDate  : Date   @Common.Label: 'Effective Date';
         bp             : String @Common.Label: 'BP';
         paymentMethod  : String @Common.Label: 'Payment Method';
         bankDetails    : String @Common.Label: 'Bank Details';
         houseBank      : String @Common.Label: 'House Bank';
- 
+
 }
- 

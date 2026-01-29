@@ -10,6 +10,14 @@ sap.ui.define([
          * @param oEvent the event object provided by the event provider.
          */
         onPress: async function (oEvent) {
+            debugger
+            try {
+                var oForm = this.byId("IncomingPaymentForm");
+                oForm.setEditable(true);
+            } catch (error) {
+
+            }
+
             var oSection = sap.ui.core.Element.getElementById('loanoffercreation::ContractObjectPage--fe::CustomSubSection::Incomingpayment');
             // Incomingpayment.setVisible(true);
             debugger;
@@ -27,8 +35,13 @@ sap.ui.define([
                     "partnerId=" + partnerId
                 );
                 console.log('LOGGED', sPath);
-                var oNewContext = oSection.getModel().createBindingContext(sPath);
-                oSection.setBindingContext(oNewContext);
+                // var oNewContext = oSection.getModel().createBindingContext(sPath);
+                // oSection.setBindingContext(oNewContext);
+                var oBinding = oSection.getModel().bindContext(sPath);
+
+                await oBinding.requestObject();   // ✅ force latest
+                oSection.setBindingContext(oBinding.getBoundContext());
+
             } else {
                 var contractID = oSectionContext.getProperty("ID");
                 var newpath = path +
@@ -42,7 +55,7 @@ sap.ui.define([
             }
 
             var path1 = sap.ui.core.Element.getElementById('loanoffercreation::ContractObjectPage--fe::CustomSubSection::Incomingpayment').getBindingContext().sPath;
-            console.log("changedpath",path1);
+            console.log("changedpath", path1);
         }
     };
 });

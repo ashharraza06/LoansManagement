@@ -118,11 +118,6 @@
           "pattern": "Contract({key}):?query:",
           "name": "ContractObjectPage",
           "target": "ContractObjectPage"
-        },
-        {
-          "pattern": "Contract({key})/contractToPartner({key2}):?query:",
-          "name": "PartnersObjectPage",
-          "target": "PartnersObjectPage"
         }
       ],
       "targets": {
@@ -159,13 +154,7 @@
             "settings": {
               "editableHeaderContent": false,
               "contextPath": "/Contract",
-              "navigation": {
-                "contractToPartner": {
-                  "detail": {
-                    "route": "PartnersObjectPage"
-                  }
-                }
-              },
+              "navigation": {},
               "sectionLayout": "Tabs",
               "content": {
                 "body": {
@@ -174,7 +163,7 @@
                       "template": "loanoffercreation.ext.fragment.Attachments",
                       "position": {
                         "placement": "After",
-                        "anchor": "Partners"
+                        "anchor": "Disbursement"
                       },
                       "title": "Attachments"
                     },
@@ -273,7 +262,7 @@
                       "width": "14%"
                     },
                     "Selection": {
-                      "header": "Expand",
+                      "header": "Action",
                       "width": "16%",
                       "position": {
                         "anchor": "DataField::endRel",
@@ -284,17 +273,6 @@
                   }
                 }
               }
-            }
-          }
-        },
-        "PartnersObjectPage": {
-          "type": "Component",
-          "id": "PartnersObjectPage",
-          "name": "sap.fe.templates.ObjectPage",
-          "options": {
-            "settings": {
-              "editableHeaderContent": false,
-              "contextPath": "/Contract/contractToPartner"
             }
           }
         }

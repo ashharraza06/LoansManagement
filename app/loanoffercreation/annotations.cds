@@ -281,6 +281,45 @@ annotate service.Contract with @(
                 },
             ],
         },
+        {
+            $Type : 'UI.CollectionFacet',
+            Label : 'Disbursement',
+            ID : 'Disbursement',
+            Facets : [
+                {
+                    $Type : 'UI.CollectionFacet',
+                    Label : 'Earmark Fund Document',
+                    ID : 'EarmarkFundDocument',
+                    Facets : [
+                        {
+                            $Type : 'UI.ReferenceFacet',
+                            Label : '        ',
+                            ID : '_3',
+                            Target : 'contractToEarmark/@UI.LineItem#_',
+                        },
+                    ],
+                },
+                {
+                    $Type : 'UI.CollectionFacet',
+                    Label : 'Capital',
+                    ID : 'Capital',
+                    Facets : [
+                        {
+                            $Type : 'UI.ReferenceFacet',
+                            Label : '        ',
+                            ID : '_2',
+                            Target : '@UI.FieldGroup#_2',
+                        },
+                    ],
+                },
+                {
+                    $Type : 'UI.ReferenceFacet',
+                    Label : 'Disbursements',
+                    ID : 'Disbursements',
+                    Target : 'contractToDisbursement/@UI.LineItem#Disbursements',
+                },
+            ],
+        },
     ],
     UI.LineItem : [
         {
@@ -572,6 +611,16 @@ annotate service.Contract with @(
             },
         ],
     },
+    UI.FieldGroup #_2 : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : disbursementOblig,
+                Label : 'Disbursement Oblig.',
+            },
+        ],
+    },
 );
 
 annotate service.ConditionItemsNew with @(
@@ -650,31 +699,6 @@ annotate service.Partners with @(
             $Type : 'UI.DataField',
             Value : endRel,
             Label : 'End Rel.',
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : arBillingJob,
-            @UI.Hidden,
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : paymentMethod,
-            @UI.Hidden,
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : dunningIndicator,
-            @UI.Hidden,
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : relevantIndicator,
-            @UI.Hidden,
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : payoffLock,
-            @UI.Hidden,
         },
     ],
     UI.HeaderInfo : {
@@ -853,11 +877,94 @@ annotate service.Contract with {
                 {
                     $Type : 'Common.ValueListParameterInOut',
                     LocalDataProperty : amortizationStatus,
-                    ValueListProperty : 'value',
+                    ValueListProperty : 'amzt',
                 },
             ],
-            Label : 'amtzstatus',
+            Label : 'amztvaluehelp',
         },
         Common.ValueListWithFixedValues : true,
 )};
+
+annotate service.AmortizationStatusSearchHelp with {
+    amzt @Common.Text : shortName
+};
+
+annotate service.Disbursement with @(
+    UI.LineItem #Disbursements : [
+        {
+            $Type : 'UI.DataField',
+            Value : disbursementId,
+            Label : 'Disbursement Id',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : text,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : paymentDate,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : disberseAmount,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : effectiveDate,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : bp,
+        },
+    ]
+);
+
+annotate service.Earmark with @(
+    UI.LineItem #_ : [
+        {
+            $Type : 'UI.DataField',
+            Value : documentNumber,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : loanCategory,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : orginalAount,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : text,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : fund,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : budgetPd,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : glAccount,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : costCenter,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : order,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : wbsElement,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : isCompleted,
+        },
+    ]
+);
 
