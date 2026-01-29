@@ -249,7 +249,7 @@ entity Earmark {
 }
 
 entity Disbursement {
-    key disbursementId : Integer64;
+    key disbursementId : UUID;
         id             : UUID;
         text           : String @Common.Label: 'Line Item';
         disberseAmount : String @Common.Label: 'New Disberse Amount';
@@ -261,5 +261,5 @@ entity Disbursement {
         paymentMethod  : String @Common.Label: 'Payment Method';
         bankDetails    : String @Common.Label: 'Bank Details';
         houseBank      : String @Common.Label: 'House Bank';
-
+        disbursementToContract : Association to Contract;
 }

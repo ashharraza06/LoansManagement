@@ -1,66 +1,44 @@
-<core:FragmentDefinition
+ <core:FragmentDefinition
     xmlns:core="sap.ui.core"
-    xmlns="sap.m"
-    xmlns:l="sap.ui.layout">
+    xmlns="sap.m">
  
-    <VBox width="100%">
+    <HBox
+    width="100%"
+    wrap="NoWrap"
+    alignItems="Start"
+    class="headerHBox">
  
-        <l:Grid width="100%" hSpacing="2" vSpacing="1">
- 
-            <!-- Row 1 (4 equal columns) -->
-            <VBox class="gridCell">
-                <Label text="Loan" design="Bold"/>
-                <Text text="{loanNumber}" wrapping="false"/>
-                <layoutData>
-                    <l:GridData span="XL3 L3 M6 S12"/>
-                </layoutData>
-            </VBox>
- 
-            <VBox class="gridCell">
-                <Label text="Loan Partner" design="Bold"/>
-                <Text text="{loanPartner}" wrapping="false"/>
-                <layoutData>
-                    <l:GridData span="XL3 L3 M6 S12"/>
-                </layoutData>
-            </VBox>
- 
-            <VBox class="gridCell">
-                <Label text="Partner Name" design="Bold"/>
-                <Text text="{loanPartnerName}" wrapping="false"/>
-                <layoutData>
-                    <l:GridData span="XL3 L3 M6 S12"/>
-                </layoutData>
-            </VBox>
- 
-            <VBox class="gridCell">
-                <Label text="BP Number" design="Bold"/>
-                <Text text="{bpNumber}" wrapping="false"/>
-                <layoutData>
-                    <l:GridData span="XL3 L3 M6 S12"/>
-                </layoutData>
-            </VBox>
- 
-            <!-- Row 2 -->
-            <VBox class="gridCell">
-                <Label text="Status" design="Bold"/>
-                <Text text="{status}"/>
-                <layoutData>
-                    <l:GridData span="XL6 L6 M12 S12"/>
-                </layoutData>
-            </VBox>
- 
-            <VBox class="gridCell">
-                <Label text="Disb. Status" design="Bold"/>
-                <Text text="{disbursementStatus}"/>
-                <layoutData>
-                    <l:GridData span="XL6 L6 M12 S12"/>
-                </layoutData>
-            </VBox>
- 
-        </l:Grid>
- 
+    <VBox class="headerItem">
+        <Label text="Loan" design="Bold"/>
+        <Text text="{loanNumber}"/>
     </VBox>
  
+    <VBox class="headerItem">
+        <Label text="Loan Partner" design="Bold"/>
+        <Text text="{loanPartner}"/>
+    </VBox>
+ 
+    <VBox class="headerItem">
+        <Label text="Partner Name" design="Bold"/>
+        <Text text="{loanPartnerName}"/>
+    </VBox>
+ 
+    <VBox class="headerItem">
+        <Label text="BP Number" design="Bold"/>
+        <Text text="{bpNumber}"/>
+    </VBox>
+ 
+    <VBox class="headerItem">
+        <Label text="Status" design="Bold"/>
+        <Text text="{status}"/>
+    </VBox>
+ 
+    <VBox class="headerItem">
+        <Label text="Disb. Status" design="Bold"/>
+        <Text text="{disbursementStatus}"/>
+    </VBox>
+ 
+</HBox>
+ 
+ 
 </core:FragmentDefinition>
- 
- 

@@ -118,6 +118,16 @@
           "pattern": "Contract({key}):?query:",
           "name": "ContractObjectPage",
           "target": "ContractObjectPage"
+        },
+        {
+          "name": "Contract_contractToEarmarkObjectPage",
+          "pattern": "Contract({key})/contractToEarmark({contractToEarmarkKey}):?query:",
+          "target": "Contract_contractToEarmarkObjectPage"
+        },
+        {
+          "name": "Contract_contractToDisbursementObjectPage",
+          "pattern": "Contract({key})/contractToDisbursement({contractToDisbursementKey}):?query:",
+          "target": "Contract_contractToDisbursementObjectPage"
         }
       ],
       "targets": {
@@ -154,7 +164,18 @@
             "settings": {
               "editableHeaderContent": false,
               "contextPath": "/Contract",
-              "navigation": {},
+              "navigation": {
+                "contractToEarmark": {
+                  "detail": {
+                    "route": "Contract_contractToEarmarkObjectPage"
+                  }
+                },
+                "contractToDisbursement": {
+                  "detail": {
+                    "route": "Contract_contractToDisbursementObjectPage"
+                  }
+                }
+              },
               "sectionLayout": "Tabs",
               "content": {
                 "body": {
@@ -271,8 +292,86 @@
                       "template": "loanoffercreation.ext.fragment.Selection"
                     }
                   }
+                },
+                "contractToEarmark/@com.sap.vocabularies.UI.v1.LineItem#_": {
+                  "columns": {
+                    "DataField::documentNumber": {
+                      "width": "12%"
+                    },
+                    "DataField::loanCategory": {
+                      "width": "9%"
+                    },
+                    "DataField::isCompleted": {
+                      "width": "12%"
+                    },
+                    "DataField::orginalAount": {
+                      "width": "12%"
+                    },
+                    "DataField::text": {
+                      "width": "12%"
+                    },
+                    "DataField::fund": {
+                      "width": "12%"
+                    },
+                    "DataField::budgetPd": {
+                      "width": "12%"
+                    },
+                    "DataField::glAccount": {
+                      "width": "12%"
+                    },
+                    "DataField::costCenter": {
+                      "width": "9%"
+                    },
+                    "DataField::order": {
+                      "width": "9%"
+                    },
+                    "DataField::wbsElement": {
+                      "width": "9%"
+                    }
+                  }
+                },
+                "contractToDisbursement/@com.sap.vocabularies.UI.v1.LineItem#Disbursements": {
+                  "columns": {
+                    "DataField::bp": {
+                      "width": "20%"
+                    },
+                    "DataField::text": {
+                      "width": "20%"
+                    },
+                    "DataField::paymentDate": {
+                      "width": "20%"
+                    },
+                    "DataField::disberseAmount": {
+                      "width": "20%"
+                    },
+                    "DataField::effectiveDate": {
+                      "width": "20%"
+                    }
+                  }
                 }
               }
+            }
+          }
+        },
+        "Contract_contractToEarmarkObjectPage": {
+          "type": "Component",
+          "id": "Contract_contractToEarmarkObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/Contract/contractToEarmark"
+            }
+          }
+        },
+        "Contract_contractToDisbursementObjectPage": {
+          "type": "Component",
+          "id": "Contract_contractToDisbursementObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/Contract/contractToDisbursement"
             }
           }
         }
@@ -283,9 +382,6 @@
         "sap.ui.controllerExtensions": {
           "sap.fe.templates.ListReport.ListReportController": {
             "controllerName": "loanoffercreation.ext.controller.Listcontr"
-          },
-          "sap.fe.templates.ListReport.ListReportController#loanoffercreation::ContractList": {
-            "controllerName": "loanoffercreation.ext.controller.Contractobjpage"
           },
           "sap.fe.templates.ObjectPage.ObjectPageController": {
             "controllerName": "loanoffercreation.ext.controller.Contractobj"

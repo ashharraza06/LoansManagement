@@ -1,3 +1,4 @@
+
 sap.ui.define(['sap/ui/core/mvc/ControllerExtension'], function (ControllerExtension) {
 	'use strict';
 
@@ -13,64 +14,21 @@ sap.ui.define(['sap/ui/core/mvc/ControllerExtension'], function (ControllerExten
 				// you can access the Fiori elements extensionAPI via this.base.getExtensionAPI
 				var oModel = this.base.getExtensionAPI().getModel();
 				debugger;
-				
+
 			},
 			routing: {
 				onAfterBinding: async function () {
 
 					debugger;
+					// sap.ui.core.Element.getElementById("__button8-__clone81").firePress();
 
-					// var Incomingpayment = sap.ui.core.Element.getElementById('loanoffercreation::ContractObjectPage--fe::CustomSubSection::Incomingpayment');
-					// Incomingpayment.setVisible(false);
+				},
+				onAfterRendering : function(){
+					debugger;
+					var oTable= sap.ui.core.Element.getElementById("loanoffercreation::ContractObjectPage--fe::table::contractToPartner::LineItem::Partners");
+					if (oTable.getItems().Length>0){
 
-					// var oSelectedObject = sap.ui.core.Element.getElementById("loanoffercreation::ContractObjectPage--fe::table::contractToPartner::LineItem::Partners-innerTable").getBindingContext().getObject();
-
-					// var odata = new sap.ui.model.json.JSONModel({
-					// 	paymentMethod: oSelectedObject.paymentMethod,
-					// 	arBillingJob: oSelectedObject.arBillingJob,
-					// 	payoffLock: oSelectedObject.payoffLock,
-					// 	relevantIndicator: oSelectedObject.relevantIndicator,
-					// 	dunningIndicator: oSelectedObject.dunningIndicator
-					// }
-					// );
-
-					// var oSection = sap.ui.core.Element.getElementById('loanoffercreation::ContractObjectPage--fe::CustomSubSection::Incomingpayment');
-					// oSection.setModel(odata, 'incomingPay');
-					sap.ui.getCore().byId("loanoffercreation::ContractObjectPage--fe::ObjectPage-anchBar-loanoffercreation::ContractObjectPage--fe::FacetSection::Partners-anchor").attachEvent("press", function (oEvent) {
-						debugger
-						var oSelectedObject = sap.ui.core.Element.getElementById("loanoffercreation::ContractObjectPage--fe::table::contractToPartner::LineItem::Partners-innerTable").getBindingContext().getObject();
-
-					var odata = new sap.ui.model.json.JSONModel({
-						paymentMethod: oSelectedObject.paymentMethod,
-						arBillingJob: oSelectedObject.arBillingJob,
-						payoffLock: oSelectedObject.payoffLock,
-						relevantIndicator: oSelectedObject.relevantIndicator,
-						dunningIndicator: oSelectedObject.dunningIndicator
 					}
-					);
-
-					var oSection = sap.ui.core.Element.getElementById('loanoffercreation::ContractObjectPage--fe::CustomSubSection::Incomingpayment');
-					oSection.setModel(odata, 'incomingPay');
-					}
-				)
-					sap.ui.getCore().byId("loanoffercreation::ContractObjectPage--fe::ObjectPage-anchBar-loanoffercreation::ContractObjectPage--fe::FacetSection::Partners-anchor").attachEvent("click", function (oEvent) {
-						debugger
-						var oSelectedObject = sap.ui.core.Element.getElementById("loanoffercreation::ContractObjectPage--fe::table::contractToPartner::LineItem::Partners-innerTable").getBindingContext().getObject();
-
-					var odata = new sap.ui.model.json.JSONModel({
-						paymentMethod: oSelectedObject.paymentMethod,
-						arBillingJob: oSelectedObject.arBillingJob,
-						payoffLock: oSelectedObject.payoffLock,
-						relevantIndicator: oSelectedObject.relevantIndicator,
-						dunningIndicator: oSelectedObject.dunningIndicator
-					}
-					);
-
-					var oSection = sap.ui.core.Element.getElementById('loanoffercreation::ContractObjectPage--fe::CustomSubSection::Incomingpayment');
-					oSection.setModel(odata, 'incomingPay');
-					}
-				)
-
 				}
 			}
 		}

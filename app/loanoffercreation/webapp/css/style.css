@@ -12,15 +12,38 @@
 }
 
 
+.headerHBox {
+    gap: 2rem;          /* space between columns */
+}
+ 
+.headerItem {
+    min-width: 10rem;  /* consistent column width */
+} 
 
-#__title2,
+#__title1,
+#__title8,
 #__title9,
-#__title10{
+#__title8{
     display: none;
 }
 
 #loanoffercreation\:\:ContractObjectPage--fe\:\:CustomSubSection\:\:CalculateCashflow-_headerToolbar {
     display: none;
+}
+
+
+#loanoffercreation\:\:Contract_contractToDisbursementObjectPage--fe\:\:EditableHeaderSection{
+display: none;
+}
+#loanoffercreation\:\:Contract_contractToDisbursementObjectPage--fe\:\:ObjectPage-anchBar-loanoffercreation\:\:Contract_contractToDisbursementObjectPage--fe\:\:EditableHeaderSection-anchor-text{
+display: none;}
+
+#loanoffercreation\:\:Contract_contractToEarmarkObjectPage--fe\:\:EditableHeaderSubSection{
+display: none;}
+
+#loanoffercreation\:\:Contract_contractToEarmarkObjectPage--fe\:\:ObjectPage-anchBar-loanoffercreation\:\:Contract_contractToEarmarkObjectPage--fe\:\:EditableHeaderSection-anchor
+{
+display: none;
 }
 .loanGrid {
     width: 100%;

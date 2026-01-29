@@ -287,28 +287,21 @@ annotate service.Contract with @(
             ID : 'Disbursement',
             Facets : [
                 {
+                    $Type : 'UI.ReferenceFacet',
+                    Label : 'Capital',
+                    ID : '_2',
+                    Target : '@UI.FieldGroup#_2',
+                },
+                {
                     $Type : 'UI.CollectionFacet',
                     Label : 'Earmark Fund Document',
                     ID : 'EarmarkFundDocument',
                     Facets : [
                         {
                             $Type : 'UI.ReferenceFacet',
-                            Label : '        ',
+                            Label : 'Earmark Fund Document',
                             ID : '_3',
                             Target : 'contractToEarmark/@UI.LineItem#_',
-                        },
-                    ],
-                },
-                {
-                    $Type : 'UI.CollectionFacet',
-                    Label : 'Capital',
-                    ID : 'Capital',
-                    Facets : [
-                        {
-                            $Type : 'UI.ReferenceFacet',
-                            Label : '        ',
-                            ID : '_2',
-                            Target : '@UI.FieldGroup#_2',
                         },
                     ],
                 },
@@ -893,11 +886,6 @@ annotate service.Disbursement with @(
     UI.LineItem #Disbursements : [
         {
             $Type : 'UI.DataField',
-            Value : disbursementId,
-            Label : 'Disbursement Id',
-        },
-        {
-            $Type : 'UI.DataField',
             Value : text,
         },
         {
@@ -916,7 +904,57 @@ annotate service.Disbursement with @(
             $Type : 'UI.DataField',
             Value : bp,
         },
-    ]
+    ],
+    UI.Facets : [
+        {
+            $Type : 'UI.ReferenceFacet',
+            Label : 'Disbursement',
+            ID : 'Disbursement',
+            Target : '@UI.FieldGroup#Disbursement',
+        },
+    ],
+    UI.FieldGroup #Disbursement : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : disberseAmount,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : effectiveDate,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : bankDetails,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : grossAmount,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : paymentDate,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : bp,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : disbursementToContract.disbursementOblig,
+                Label : 'Disbursement Oblig',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : paymentMethod,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : houseBank,
+            },
+        ],
+    },
 );
 
 annotate service.Earmark with @(
@@ -952,19 +990,91 @@ annotate service.Earmark with @(
         {
             $Type : 'UI.DataField',
             Value : costCenter,
+            @UI.Hidden,
         },
         {
             $Type : 'UI.DataField',
             Value : order,
+            @UI.Hidden,
         },
         {
             $Type : 'UI.DataField',
             Value : wbsElement,
+            @UI.Hidden,
         },
         {
             $Type : 'UI.DataField',
             Value : isCompleted,
         },
-    ]
+    ],
+    UI.Facets : [
+        {
+            $Type : 'UI.ReferenceFacet',
+            Label : 'Earmark',
+            ID : 'Earmark',
+            Target : '@UI.FieldGroup#Earmark',
+        },
+    ],
+    UI.FieldGroup #Earmark : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : documentNumber,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : loanCategory,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : orginalAount,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : text,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : fund,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : budgetPd,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : glAccount,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : commitmetItem,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : fundCenter,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : functionalArea,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : bussinessArea,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : costCenter,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : order,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : wbsElement,
+            },
+        ],
+    },
 );
 
