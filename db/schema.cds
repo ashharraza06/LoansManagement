@@ -14,7 +14,7 @@ entity Contract : managed {
     key ID                    : UUID;
         companyCode           : String  @Common.Label: 'Company Code';
     key loanNumber            : String  @mandatory  @Common.Label: 'Loan Number';
-    key productType           : String  @mandatory  @Common.Label: 'Product Type';
+    key productType           : String  @mandatory  @Common.Label: 'Agency';
     key loanType              : String  @mandatory  @Common.Label: 'Loan Type';
     key loanPartner           : String  @mandatory  @Common.Label: 'Loan Partner';
 
@@ -40,6 +40,7 @@ entity Contract : managed {
         // Information
         loanPurpose           : String;
         arBillingJob          : String;
+        amortizationStatus    : String  @Common.Label: 'Amortization Status';
 
         /* ---------- Organization ---------- */
         // agentdata
@@ -78,7 +79,7 @@ entity Contract : managed {
         reservedUntil         : Date;
 
         //Acceptance
-        acceptance            : Integer;
+        acceptance            : Boolean;
         acceptedOn            : Date;
         acceptancedType       : Integer;
         reservation           : Integer;
@@ -143,25 +144,27 @@ entity ConditionTypeTextSearchHelpNew {
 entity Partners : managed {
     key partnerId         : UUID;
         id                : UUID;
-        title             : String(15);
-        nameAddress       : String(30);
+        title             : String;
+        nameAddress       : String;
 
         startRel          : Date;
         endRel            : Date;
 
-        addressType       : String(15);
-        partner           : String(10);
-        bpRole            : String(10);
+        addressType       : String;
+        partner           : String @Common.Label:'Partner No.';
+        bpRole            : String;
 
         roleType          : String;
-        customer          : String;
+        customer          : String @Common.Label:'Customer No.';
         bankDetailsID     : String;
 
         dunningLetter     : String;
         dunnChargesPyr    : Boolean;
-        paymentMethod     : String;
-        payoffLock        : Boolean;
-        arBillingJob          : String;
+        paymentMethod     : String @Common.Label:'Incoming Payment Method';
+        payoffLock        : Boolean @Common.Label:'Payoff Lock';
+        arBillingJob      : String @Common.Label:'AR Billing Job';
+        dunningIndicator  : Boolean @Common.Label:'Exclude from Dunning Indicator';
+        relevantIndicator : Boolean @Common.Label:'1908 Relevant Indicator';
         partnerToContract : Association to Contract;
 }
 
@@ -187,7 +190,8 @@ entity EntityAuditLogs {
         OperationType : String;
         Entity        : String;
         Changes       : String;
-        toChanges     : Composition of many Changes on toChanges.toEntityAuditLogs = $self;
+        toChanges     : Composition of many Changes
+                            on toChanges.toEntityAuditLogs = $self;
 
 }
 
@@ -200,11 +204,16 @@ entity Changes {
                                 on toEntityAuditLogs.id = id;
 }
 entity PaymentMethodSearchHelp {
-    key id : UUID;
-    value : String;
-    
+    key id    : UUID;
+        value : String;
+
 }
 entity ARBillingJobSearchHelp {
-    key id : UUID;
-    value : String;
+    key id    : UUID;
+        value : String;
+}
+
+entity AmortizationStatusSearchHelp {
+    key id    : UUID;
+        value : String;
 }

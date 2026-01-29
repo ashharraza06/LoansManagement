@@ -11,6 +11,8 @@ service MyService {
     entity Changes                        as projection on db.Changes;
     entity PaymentMethodSearchHelp as projection on db.PaymentMethodSearchHelp;
     entity ARBillingJobSearchHelp as projection on db.ARBillingJobSearchHelp;
+    entity AmortizationStatusSearchHelp as projection on db.AmortizationStatusSearchHelp;
+    
 
 
 }

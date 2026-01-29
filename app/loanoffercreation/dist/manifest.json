@@ -62,6 +62,11 @@
 		}
 	},
 	"sap.ui5": {
+		"config": {
+			"dateFormatSettings": {
+				"pattern": "MM/dd/yyyy"
+			}
+		},
 		"cacheBuster": {
 			"enabled": true
 		},
@@ -209,6 +214,18 @@
 												"anchor": "Attachments"
 											},
 											"title": "Comments"
+										},
+										"Partners": {
+											"subSections": {
+												"Incomingpayment": {
+													"template": "loanoffercreation.ext.fragment.Incomingpayment",
+													"position": {
+														"placement": "After",
+														"anchor": "Partners1"
+													},
+													"title": "Incoming Payment"
+												}
+											}
 										}
 									}
 								},
@@ -223,18 +240,6 @@
 												"designtime": "Default"
 											}
 										}
-									},
-									"actions": {
-										"cashflow": {
-											"press": "loanoffercreation.ext.controller.CalculateCashflow.CalculateCashflow",
-											"visible": true,
-											"enabled": true,
-											"text": "Calculate Cash Flow",
-											"position": {
-												"placement": "Before",
-												"anchor": "EditAction"
-											}
-										}
 									}
 								}
 							},
@@ -247,6 +252,38 @@
 											"enabled": true,
 											"requiresSelection": false,
 											"text": "Rate"
+										}
+									}
+								},
+								"@com.sap.vocabularies.UI.v1.FieldGroup#_": {
+									"actions": {
+										"calculatecashflow": {
+											"press": "loanoffercreation.ext.controller.CalculateCashflow.CalculateCashflow",
+											"visible": true,
+											"enabled": true,
+											"text": "Calculate CashFlow"
+										}
+									}
+								},
+								"contractToPartner/@com.sap.vocabularies.UI.v1.LineItem#Partners": {
+									"columns": {
+										"DataField::title": {
+											"width": "14%"
+										},
+										"DataField::nameAddress": {
+											"width": "14%"
+										},
+										"DataField::startRel": {
+											"width": "14%"
+										},
+										"DataField::endRel": {
+											"width": "14%"
+										},
+										"DataField::partner": {
+											"width": "14%"
+										},
+										"DataField::bpRole": {
+											"width": "14%"
 										}
 									}
 								}
@@ -272,6 +309,12 @@
 				"sap.ui.controllerExtensions": {
 					"sap.fe.templates.ListReport.ListReportController": {
 						"controllerName": "loanoffercreation.ext.controller.Listcontr"
+					},
+					"sap.fe.templates.ListReport.ListReportController#loanoffercreation::ContractList": {
+						"controllerName": "loanoffercreation.ext.controller.Contractobjpage"
+					},
+					"sap.fe.templates.ObjectPage.ObjectPageController": {
+						"controllerName": "loanoffercreation.ext.controller.Contractobj"
 					}
 				}
 			}

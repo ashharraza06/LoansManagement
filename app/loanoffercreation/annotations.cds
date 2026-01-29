@@ -172,6 +172,12 @@ annotate service.Contract with @(
             ID : 'Basicdata',
             Facets : [
                 {
+                    $Type : 'UI.ReferenceFacet',
+                    Label : 'Basic Data',
+                    ID : '_1',
+                    Target : '@UI.FieldGroup#_1',
+                },
+                {
                     $Type : 'UI.CollectionFacet',
                     Label : 'Analysis Data',
                     ID : 'AnalyssData',
@@ -341,6 +347,11 @@ annotate service.Contract with @(
                 Value : pledgedStatus,
                 Label : 'Pledged Status',
             },
+            {
+                $Type : 'UI.DataField',
+                Value : amortizationStatus,
+                Label : 'Amortization Status',
+            },
         ],
     },
     UI.FieldGroup #AgentData : {
@@ -441,16 +452,6 @@ annotate service.Contract with @(
                 Value : offerUntil,
                 Label : 'Offer Until',
             },
-            {
-                $Type : 'UI.DataField',
-                Value : reservedOn,
-                Label : 'Reserved On',
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : reservedUntil,
-                Label : 'Reserved Until',
-            },
         ],
     },
     UI.FieldGroup #Acceptance : {
@@ -466,26 +467,11 @@ annotate service.Contract with @(
                 Value : acceptedOn,
                 Label : 'Accepted On',
             },
-            {
-                $Type : 'UI.DataField',
-                Value : acceptancedType,
-                Label : 'Acceptance Type',
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : reservation,
-                Label : 'Reservation',
-            },
         ],
     },
     UI.FieldGroup #Contract : {
         $Type : 'UI.FieldGroupType',
         Data : [
-            {
-                $Type : 'UI.DataField',
-                Value : contract,
-                Label : 'Contract',
-            },
             {
                 $Type : 'UI.DataField',
                 Value : contractOn,
@@ -494,7 +480,7 @@ annotate service.Contract with @(
             {
                 $Type : 'UI.DataField',
                 Value : amtzDate,
-                Label : 'Amtz Date',
+                Label : 'Amortization Date',
             },
             {
                 $Type : 'UI.DataField',
@@ -540,6 +526,49 @@ annotate service.Contract with @(
                 $Type : 'UI.DataField',
                 Value : intresetRateResetDate,
                 Label : 'Interest Rate Reset Date',
+            },
+        ],
+    },
+    UI.FieldGroup #_1 : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : loanType,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : productType,
+                Label : 'Agency',
+            },
+        ],
+    },
+    UI.FieldGroup #IncomingPayment : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : contractToPartner.paymentMethod,
+                Label : 'paymentMethod',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : arBillingJob,
+                Label : 'arBillingJob',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : contractToPartner.payoffLock,
+                Label : 'payoffLock',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : contractToPartner.dunningIndicator,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : contractToPartner.relevantIndicator,
+                Label : '1908 Relevant Indicator',
             },
         ],
     },
@@ -594,8 +623,18 @@ annotate service.Partners with @(
     UI.LineItem #Partners : [
         {
             $Type : 'UI.DataField',
+            Value : bpRole,
+            Label : 'BP Role No.',
+        },
+        {
+            $Type : 'UI.DataField',
             Value : title,
             Label : 'Role Name',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : partner,
+            Label : 'Partner No.',
         },
         {
             $Type : 'UI.DataField',
@@ -614,13 +653,28 @@ annotate service.Partners with @(
         },
         {
             $Type : 'UI.DataField',
-            Value : partner,
-            Label : 'Partner',
+            Value : arBillingJob,
+            @UI.Hidden,
         },
         {
             $Type : 'UI.DataField',
-            Value : bpRole,
-            Label : 'BP Role',
+            Value : paymentMethod,
+            @UI.Hidden,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : dunningIndicator,
+            @UI.Hidden,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : relevantIndicator,
+            @UI.Hidden,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : payoffLock,
+            @UI.Hidden,
         },
     ],
     UI.HeaderInfo : {
@@ -643,22 +697,26 @@ annotate service.Partners with @(
             ],
         },
         {
-            $Type : 'UI.CollectionFacet',
-            Label : 'Incoming Payments',
-            ID : 'section2',
-            Facets : [
-                {
-                    $Type : 'UI.ReferenceFacet',
-                    Label : 'form2',
-                    ID : 'form2',
-                    Target : '@UI.FieldGroup#form2',
-                },
-            ],
+            $Type : 'UI.ReferenceFacet',
+            Label : 'Incoming Payment',
+            ID : 'IncomingPayment',
+            Target : '@UI.FieldGroup#IncomingPayment',
+            @UI.Hidden,
         },
     ],
     UI.FieldGroup #AttributesforSelectedPartner : {
         $Type : 'UI.FieldGroupType',
         Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : bpRole,
+                Label : 'BP Role No.',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : addressType,
+                Label : 'Address',
+            },
             {
                 $Type : 'UI.DataField',
                 Value : title,
@@ -672,7 +730,7 @@ annotate service.Partners with @(
             {
                 $Type : 'UI.DataField',
                 Value : partner,
-                Label : 'Partner',
+                Label : 'Partner No.',
             },
             {
                 $Type : 'UI.DataField',
@@ -681,8 +739,13 @@ annotate service.Partners with @(
             },
             {
                 $Type : 'UI.DataField',
-                Value : addressType,
-                Label : 'Address',
+                Value : customer,
+                Label : 'Customer No.',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : dunningLetter,
+                Label : 'Dunning Letter',
             },
             {
                 $Type : 'UI.DataField',
@@ -691,23 +754,8 @@ annotate service.Partners with @(
             },
             {
                 $Type : 'UI.DataField',
-                Value : bpRole,
-                Label : 'BP Role',
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : customer,
-                Label : 'Customer',
-            },
-            {
-                $Type : 'UI.DataField',
                 Value : bankDetailsID,
                 Label : 'Bank Details ID',
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : dunningLetter,
-                Label : 'Dunning Letter',
             },
         ],
     },
@@ -728,6 +776,31 @@ annotate service.Partners with @(
                 $Type : 'UI.DataField',
                 Value : payoffLock,
                 Label : 'Payoff Lock',
+            },
+        ],
+    },
+    UI.FieldGroup #IncomingPayment : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : paymentMethod,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : arBillingJob,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : dunningIndicator,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : relevantIndicator,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : payoffLock,
             },
         ],
     },
@@ -767,6 +840,23 @@ annotate service.Partners with {
                 },
             ],
             Label : 'Search Help',
+        },
+        Common.ValueListWithFixedValues : true,
+)};
+
+annotate service.Contract with {
+    amortizationStatus @(
+        Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'AmortizationStatusSearchHelp',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : amortizationStatus,
+                    ValueListProperty : 'value',
+                },
+            ],
+            Label : 'amtzstatus',
         },
         Common.ValueListWithFixedValues : true,
 )};

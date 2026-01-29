@@ -1,9 +1,0 @@
-companyCode,productType,businessPartner,loanIndicator,numberRange,divider,loanTypeNC,loanTypeBD,applicationDate,applicationCapital,approvalDate,commitmentDate,loanPurpose,arBillingJob,country,orgDistrict,agentDistrict,primaryIndustryCode,legacyNumber,projectNumber
-
-1000,HL,BP00010001,L,0000001001,-,TL,HOU,2025-01-10,2500000.00,2025-01-20,2025-01-25,Home Loan Purchase,AR_JOB_01,IND,OD01,AG01,REAL_EST,LGC10001,PRJ10001
-
-2000,PL,BP00020002,P,0000002002,-,OD,PER,2025-02-05,500000.00,2025-02-12,2025-02-15,Personal Loan,AR_JOB_02,IND,OD02,AG02,SERVICE,LGC20002,PRJ20002
-
-3000,HL,BP00030003,L,0000003003,-,TL,HOU,2025-03-01,3500000.00,2025-03-10,2025-03-15,House Construction,AR_JOB_03,IND,OD03,AG03,CONST,LGC30003,PRJ30003
-
- 

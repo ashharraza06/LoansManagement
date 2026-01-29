@@ -7,6 +7,14 @@ sap.ui.define(
             metadata: {
                 manifest: "json"
             }
+            // init: function () {
+            //     // 🔑 Force date format to MM/DD/YYYY
+            //     sap.ui.getCore().getConfiguration().setFormatLocale("en-US");
+
+
+            //     // Always call parent init
+            //     Component.prototype.init.apply(this, arguments);
+            // }
         });
     }
 );
