@@ -16,8 +16,8 @@ entity Contract : managed {
     key loanNumber             : String  @mandatory  @Common.Label: 'Loan Number';
     key productType            : String  @mandatory  @Common.Label: 'Agency';
     key loanType               : String  @mandatory  @Common.Label: 'Loan Type';
-    key loanPartner            : String  @mandatory  @Common.Label: 'Loan Partner';
-    key loanPartnerName        : String  @mandatory  @Common.Label: 'Loan Partner Name';
+    key bpNumber            : String  @mandatory  @Common.Label: 'BP Number';
+    // key loanPartnerName        : String  @mandatory  @Common.Label: 'Loan Partner Name';
 
 
         status                 : String;
@@ -165,11 +165,11 @@ entity Partners : managed {
 
         addressType       : String;
         partner           : String @Common.Label: 'Partner No.';
-        bpRole            : String;
+        bpRole            : String(6);
 
         roleType          : String;
         customer          : String @Common.Label: 'Customer No.';
-        bankDetailsID     : String;
+        bankDetailsID     : String(4);
 
         dunningLetter     : String;
         dunnChargesPyr    : Boolean;
@@ -234,7 +234,7 @@ entity Earmark {
         id                : UUID;
         documentNumber    : Integer @Common.Label: 'Document Line Number';
         loanCategory      : String  @Common.Label: 'Loan Category';
-        flowType               : String @Common.Label: 'Flow Type';
+        flowType          : String  @Common.Label: 'Flow Type';
         orginalAount      : String  @Common.Label: 'Original Amount';
         text              : String  @Common.Label: 'Text';
         fund              : String  @Common.Label: 'Fund';
@@ -254,15 +254,23 @@ entity Earmark {
 entity Disbursement {
     key disbursementId         : UUID;
         id                     : UUID;
-        text                   : String @Common.Label: 'Line Item';
-        disberseAmount         : String @Common.Label: 'New Disberse Amount';
-        flowType               : String @Common.Label: 'Flow Type';
-        grossAmount            : String @Common.Label: 'Gross Amount';
-        paymentDate            : Date   @Common.Label: 'Payment Date';
-        effectiveDate          : Date   @Common.Label: 'Effective Date';
-        bp                     : String @Common.Label: 'BP';
-        paymentMethod          : String @Common.Label: 'Payment Method';
-        bankDetails            : String @Common.Label: 'Bank Details';
-        houseBank              : String @Common.Label: 'House Bank';
+        text                   : String   @Common.Label: 'Line Item';
+        disburseAmount         : String   @Common.Label: 'New Disburse Amount';
+        flowType               : String   @Common.Label: 'Flow Type';
+        grossAmount            : String   @Common.Label: 'Gross Amount'     default '0000'    @readonly;
+        disbursementOblig      : String  @Common.Label: 'Disbursement Oblig.' default '  '  @readonly;
+        paymentDate            : Date     @Common.Label: 'Payment Date';
+        effectiveDate          : Date     @Common.Label: 'Effective Date';
+        bp                     : String   @Common.Label: 'BP';
+        paymentMethod          : String   @Common.Label: 'Payment Method';
+        bankDetails            : String   @Common.Label: 'Bank Details';
+        houseBank              : String   @Common.Label: 'House Bank';
         disbursementToContract : Association to Contract;
+}
+
+entity loanCategorySearchHelp {
+
+    key category : String;
+        flowtype : String;
+
 }

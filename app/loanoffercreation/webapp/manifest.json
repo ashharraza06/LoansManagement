@@ -281,22 +281,19 @@
                       "width": "14%"
                     },
                     "DataField::bankDetailsID": {
-                      "width": "15%"
+                      "width": "10%"
                     }
                   }
                 },
                 "contractToEarmark/@com.sap.vocabularies.UI.v1.LineItem#_": {
                   "columns": {
                     "DataField::loanCategory": {
-                      "width": "9%"
+                      "width": "26%"
                     },
                     "DataField::isCompleted": {
                       "width": "12%"
                     },
                     "DataField::orginalAount": {
-                      "width": "12%"
-                    },
-                    "DataField::text": {
                       "width": "12%"
                     },
                     "DataField::fund": {
@@ -316,6 +313,9 @@
                     },
                     "DataField::wbsElement": {
                       "width": "9%"
+                    },
+                    "DataField::flowType": {
+                      "width": "14%"
                     }
                   },
                   "actions": {
@@ -345,9 +345,6 @@
                       "width": "10%"
                     },
                     "DataField::paymentDate": {
-                      "width": "15%"
-                    },
-                    "DataField::disberseAmount": {
                       "width": "15%"
                     },
                     "DataField::effectiveDate": {

@@ -1,0 +1,1 @@
+{"version":3,"file":"Release.js","names":["sap","ui","define","MessageToast","Release","oContext","aSelectedContexts","show"],"sources":["Release-dbg.js"],"mappings":"AAAAA,IAAIC,GAAGC,OAAO,CACV,sBACD,SAASC,GACR,aAEA,MAAO,CAOHC,QAAS,SAASC,EAAUC,GACxBH,EAAaI,KAAK,WACtB,EAER","ignoreList":[]}

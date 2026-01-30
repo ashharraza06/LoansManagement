@@ -1,224 +1,219 @@
 using MyService as service from '../../srv/service';
+
 annotate service.Contract with @(
-    UI.FieldGroup #GeneratedGroup : {
-        $Type : 'UI.FieldGroupType',
+    UI.FieldGroup #GeneratedGroup     : {
+        $Type: 'UI.FieldGroupType',
         Data : [
             {
-                $Type : 'UI.DataField',
-                Value : companyCode,
+                $Type: 'UI.DataField',
+                Value: companyCode,
             },
             {
-                $Type : 'UI.DataField',
-                Value : loanNumber,
+                $Type: 'UI.DataField',
+                Value: loanNumber,
             },
             {
-                $Type : 'UI.DataField',
-                Value : productType,
+                $Type: 'UI.DataField',
+                Value: productType,
             },
             {
-                $Type : 'UI.DataField',
-                Value : loanType,
+                $Type: 'UI.DataField',
+                Value: loanType,
             },
             {
-                $Type : 'UI.DataField',
-                Value : loanPartner,
+                $Type: 'UI.DataField',
+                Value: loanPartner,
             },
             {
-                $Type : 'UI.DataField',
-                Label : 'applicationDate',
-                Value : applicationDate,
+                $Type: 'UI.DataField',
+                Label: 'applicationDate',
+                Value: applicationDate,
             },
             {
-                $Type : 'UI.DataField',
-                Label : 'applicationCapital',
-                Value : applicationCapital,
+                $Type: 'UI.DataField',
+                Label: 'applicationCapital',
+                Value: applicationCapital,
             },
             {
-                $Type : 'UI.DataField',
-                Label : 'approvalDate',
-                Value : approvalDate,
+                $Type: 'UI.DataField',
+                Label: 'approvalDate',
+                Value: approvalDate,
             },
             {
-                $Type : 'UI.DataField',
-                Label : 'commitmentDate',
-                Value : commitmentDate,
+                $Type: 'UI.DataField',
+                Label: 'commitmentDate',
+                Value: commitmentDate,
             },
             {
-                $Type : 'UI.DataField',
-                Label : 'loanPurpose',
-                Value : loanPurpose,
+                $Type: 'UI.DataField',
+                Label: 'loanPurpose',
+                Value: loanPurpose,
             },
             {
-                $Type : 'UI.DataField',
-                Label : 'arBillingJob',
-                Value : arBillingJob,
+                $Type: 'UI.DataField',
+                Label: 'arBillingJob',
+                Value: arBillingJob,
             },
             {
-                $Type : 'UI.DataField',
-                Label : 'country',
-                Value : country,
+                $Type: 'UI.DataField',
+                Label: 'country',
+                Value: country,
             },
             {
-                $Type : 'UI.DataField',
-                Label : 'orgDistrict',
-                Value : orgDistrict,
+                $Type: 'UI.DataField',
+                Label: 'orgDistrict',
+                Value: orgDistrict,
             },
             {
-                $Type : 'UI.DataField',
-                Label : 'agentDistrict',
-                Value : agentDistrict,
+                $Type: 'UI.DataField',
+                Label: 'agentDistrict',
+                Value: agentDistrict,
             },
             {
-                $Type : 'UI.DataField',
-                Label : 'primaryIndustryCode',
-                Value : primaryIndustryCode,
+                $Type: 'UI.DataField',
+                Label: 'primaryIndustryCode',
+                Value: primaryIndustryCode,
             },
             {
-                $Type : 'UI.DataField',
-                Label : 'legacyNumber',
-                Value : legacyNumber,
+                $Type: 'UI.DataField',
+                Label: 'legacyNumber',
+                Value: legacyNumber,
             },
             {
-                $Type : 'UI.DataField',
-                Label : 'projectNumber',
-                Value : projectNumber,
+                $Type: 'UI.DataField',
+                Label: 'projectNumber',
+                Value: projectNumber,
             },
             {
-                $Type : 'UI.DataField',
-                Label : 'commitCapital',
-                Value : commitCapital,
+                $Type: 'UI.DataField',
+                Label: 'commitCapital',
+                Value: commitCapital,
             },
             {
-                $Type : 'UI.DataField',
-                Label : 'repaymentType',
-                Value : repaymentType,
+                $Type: 'UI.DataField',
+                Label: 'repaymentType',
+                Value: repaymentType,
             },
             {
-                $Type : 'UI.DataField',
-                Label : 'fixedFrom',
-                Value : fixedFrom,
+                $Type: 'UI.DataField',
+                Label: 'fixedFrom',
+                Value: fixedFrom,
             },
             {
-                $Type : 'UI.DataField',
-                Label : 'fixedUntil',
-                Value : fixedUntil,
+                $Type: 'UI.DataField',
+                Label: 'fixedUntil',
+                Value: fixedUntil,
             },
             {
-                $Type : 'UI.DataField',
-                Label : 'include',
-                Value : include,
+                $Type: 'UI.DataField',
+                Label: 'include',
+                Value: include,
             },
             {
-                $Type : 'UI.DataField',
-                Label : 'intCalMt',
-                Value : intCalMt,
+                $Type: 'UI.DataField',
+                Label: 'intCalMt',
+                Value: intCalMt,
             },
             {
-                $Type : 'UI.DataField',
-                Label : 'postAdjustmentFlag',
-                Value : postAdjustmentFlag,
+                $Type: 'UI.DataField',
+                Label: 'postAdjustmentFlag',
+                Value: postAdjustmentFlag,
             },
         ],
     },
-    UI.Facets : [
+    UI.Facets                         : [
         {
             $Type : 'UI.CollectionFacet',
             Label : 'Tracking',
-            ID : 'Tracking',
-            Facets : [
+            ID    : 'Tracking',
+            Facets: [
                 {
                     $Type : 'UI.CollectionFacet',
                     Label : 'Application/Approval',
-                    ID : 'BasicData',
-                    Facets : [
-                        {
-                            $Type : 'UI.ReferenceFacet',
-                            Label : 'Application/Approval',
-                            ID : 'ApplicationApproval',
-                            Target : '@UI.FieldGroup#ApplicationApproval',
-                        },
-                    ],
+                    ID    : 'BasicData',
+                    Facets: [{
+                        $Type : 'UI.ReferenceFacet',
+                        Label : 'Application/Approval',
+                        ID    : 'ApplicationApproval',
+                        Target: '@UI.FieldGroup#ApplicationApproval',
+                    }, ],
                 },
                 {
                     $Type : 'UI.CollectionFacet',
                     Label : 'Offer/Accept',
-                    ID : 'OfferAccept',
-                    Facets : [
+                    ID    : 'OfferAccept',
+                    Facets: [
                         {
                             $Type : 'UI.ReferenceFacet',
                             Label : 'Offer',
-                            ID : 'Offer',
-                            Target : '@UI.FieldGroup#Offer',
+                            ID    : 'Offer',
+                            Target: '@UI.FieldGroup#Offer',
                         },
                         {
                             $Type : 'UI.ReferenceFacet',
                             Label : 'Acceptance',
-                            ID : 'Acceptance',
-                            Target : '@UI.FieldGroup#Acceptance',
+                            ID    : 'Acceptance',
+                            Target: '@UI.FieldGroup#Acceptance',
                         },
                     ],
                 },
                 {
                     $Type : 'UI.ReferenceFacet',
                     Label : 'Contract',
-                    ID : 'Contract',
-                    Target : '@UI.FieldGroup#Contract',
+                    ID    : 'Contract',
+                    Target: '@UI.FieldGroup#Contract',
                 },
             ],
         },
         {
             $Type : 'UI.CollectionFacet',
             Label : 'Basic data',
-            ID : 'Basicdata',
-            Facets : [
+            ID    : 'Basicdata',
+            Facets: [
                 {
                     $Type : 'UI.ReferenceFacet',
                     Label : 'Basic Data',
-                    ID : '_1',
-                    Target : '@UI.FieldGroup#_1',
+                    ID    : '_1',
+                    Target: '@UI.FieldGroup#_1',
                 },
                 {
                     $Type : 'UI.CollectionFacet',
                     Label : 'Analysis Data',
-                    ID : 'AnalyssData',
-                    Facets : [
-                        {
-                            $Type : 'UI.ReferenceFacet',
-                            Label : 'Information',
-                            ID : 'Information',
-                            Target : '@UI.FieldGroup#Information',
-                        },
-                    ],
+                    ID    : 'AnalyssData',
+                    Facets: [{
+                        $Type : 'UI.ReferenceFacet',
+                        Label : 'Information',
+                        ID    : 'Information',
+                        Target: '@UI.FieldGroup#Information',
+                    }, ],
                 },
                 {
                     $Type : 'UI.CollectionFacet',
                     Label : 'Organization',
-                    ID : 'Organization',
-                    Facets : [
-                        {
-                            $Type : 'UI.ReferenceFacet',
-                            Label : 'Agent Data',
-                            ID : 'AgentData',
-                            Target : '@UI.FieldGroup#AgentData',
-                        },
-                    ],
+                    ID    : 'Organization',
+                    Facets: [{
+                        $Type : 'UI.ReferenceFacet',
+                        Label : 'Agent Data',
+                        ID    : 'AgentData',
+                        Target: '@UI.FieldGroup#AgentData',
+                    }, ],
                 },
                 {
                     $Type : 'UI.CollectionFacet',
                     Label : 'Reference Data',
-                    ID : 'ReferenceData',
-                    Facets : [
+                    ID    : 'ReferenceData',
+                    Facets: [
                         {
                             $Type : 'UI.ReferenceFacet',
                             Label : 'Other References',
-                            ID : 'OtherReferences',
-                            Target : '@UI.FieldGroup#OtherReferences',
+                            ID    : 'OtherReferences',
+                            Target: '@UI.FieldGroup#OtherReferences',
                         },
                         {
                             $Type : 'UI.ReferenceFacet',
                             Label : 'Group Key',
-                            ID : 'Group',
-                            Target : '@UI.FieldGroup#Group',
+                            ID    : 'Group',
+                            Target: '@UI.FieldGroup#Group',
                         },
                     ],
                 },
@@ -227,944 +222,947 @@ annotate service.Contract with @(
         {
             $Type : 'UI.CollectionFacet',
             Label : 'Conditons',
-            ID : 'Conditons',
-            Facets : [
+            ID    : 'Conditons',
+            Facets: [
                 {
                     $Type : 'UI.CollectionFacet',
                     Label : 'Conditions',
-                    ID : 'Conditions',
-                    Facets : [
-                        {
-                            $Type : 'UI.ReferenceFacet',
-                            Label : '      ',
-                            ID : '_',
-                            Target : '@UI.FieldGroup#_',
-                        },
-                    ],
+                    ID    : 'Conditions',
+                    Facets: [{
+                        $Type : 'UI.ReferenceFacet',
+                        Label : '      ',
+                        ID    : '_',
+                        Target: '@UI.FieldGroup#_',
+                    }, ],
                 },
                 {
                     $Type : 'UI.ReferenceFacet',
                     Label : 'Term/Fixed Period',
-                    ID : 'TermFixedPeriod',
-                    Target : '@UI.FieldGroup#TermFixedPeriod',
+                    ID    : 'TermFixedPeriod',
+                    Target: '@UI.FieldGroup#TermFixedPeriod',
                 },
                 {
                     $Type : 'UI.ReferenceFacet',
                     Label : 'Interest Calculation',
-                    ID : 'InterestCalculation',
-                    Target : '@UI.FieldGroup#InterestCalculation',
+                    ID    : 'InterestCalculation',
+                    Target: '@UI.FieldGroup#InterestCalculation',
                 },
                 {
                     $Type : 'UI.ReferenceFacet',
                     Label : 'Notice',
-                    ID : 'Notice',
-                    Target : '@UI.FieldGroup#Notice',
+                    ID    : 'Notice',
+                    Target: '@UI.FieldGroup#Notice',
                 },
                 {
                     $Type : 'UI.ReferenceFacet',
                     Label : 'Condition Items',
-                    ID : 'ConditionItems',
-                    Target : 'contractToCondition/@UI.LineItem#ConditionItems',
+                    ID    : 'ConditionItems',
+                    Target: 'contractToCondition/@UI.LineItem#ConditionItems',
                 },
             ],
         },
         {
             $Type : 'UI.CollectionFacet',
             Label : 'Partner',
-            ID : 'Partners',
-            Facets : [
+            ID    : 'Partners',
+            Facets: [
                 {
                     $Type : 'UI.CollectionFacet',
                     Label : 'Partners',
-                    ID : 'Partners2',
-                    Facets : [
-                        {
-                            $Type : 'UI.ReferenceFacet',
-                            Label : 'Partners',
-                            ID : 'Partners1',
-                            Target : 'contractToPartner/@UI.LineItem#Partners',
-                        },
-                    ],
+                    ID    : 'Partners2',
+                    Facets: [{
+                        $Type : 'UI.ReferenceFacet',
+                        Label : 'Partners',
+                        ID    : 'Partners1',
+                        Target: 'contractToPartner/@UI.LineItem#Partners',
+                    }, ],
                 },
                 {
                     $Type : 'UI.ReferenceFacet',
                     Label : 'Incoming Payment',
-                    ID : 'IncomingPayment',
-                    Target : '@UI.FieldGroup#IncomingPayment1',
+                    ID    : 'IncomingPayment',
+                    Target: '@UI.FieldGroup#IncomingPayment1',
                 },
             ],
         },
         {
             $Type : 'UI.CollectionFacet',
             Label : 'Disbursement',
-            ID : 'Disbursement',
-            Facets : [
+            ID    : 'Disbursement',
+            Facets: [
                 {
                     $Type : 'UI.ReferenceFacet',
                     Label : 'Capital',
-                    ID : '_2',
-                    Target : '@UI.FieldGroup#_2',
+                    ID    : '_2',
+                    Target: '@UI.FieldGroup#_2',
                 },
                 {
                     $Type : 'UI.CollectionFacet',
                     Label : 'Earmark Fund Document',
-                    ID : 'EarmarkFundDocument',
-                    Facets : [
-                        {
-                            $Type : 'UI.ReferenceFacet',
-                            Label : 'Earmark Fund Document',
-                            ID : '_3',
-                            Target : 'contractToEarmark/@UI.LineItem#_',
-                        },
-                    ],
+                    ID    : 'EarmarkFundDocument',
+                    Facets: [{
+                        $Type : 'UI.ReferenceFacet',
+                        Label : 'Earmark Fund Document',
+                        ID    : '_3',
+                        Target: 'contractToEarmark/@UI.LineItem#_',
+                    }, ],
                 },
                 {
                     $Type : 'UI.ReferenceFacet',
                     Label : 'Disbursements',
-                    ID : 'Disbursements',
-                    Target : 'contractToDisbursement/@UI.LineItem#Disbursements',
+                    ID    : 'Disbursements',
+                    Target: 'contractToDisbursement/@UI.LineItem#Disbursements',
                 },
             ],
         },
     ],
-    UI.LineItem : [
+    UI.LineItem                       : [
         {
-            $Type : 'UI.DataField',
-            Value : loanNumber,
+            $Type: 'UI.DataField',
+            Value: loanNumber,
+        },
+        {
+            $Type: 'UI.DataField',
+            Value: productType,
+        },
+        {
+            $Type: 'UI.DataField',
+            Value: loanType,
         },
         {
             $Type : 'UI.DataField',
-            Value : productType,
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : loanType,
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : loanPartner,
+            Value : bpNumber,
         },
     ],
-    UI.HeaderInfo : {
-        TypeName : '',
-        TypeNamePlural : '',
+    UI.HeaderInfo                     : {
+        TypeName      : '',
+        TypeNamePlural: '',
     },
-    UI.FieldGroup #ApplicationApproval : {
-        $Type : 'UI.FieldGroupType',
+    UI.FieldGroup #ApplicationApproval: {
+        $Type: 'UI.FieldGroupType',
         Data : [
             {
-                $Type : 'UI.DataField',
-                Value : applicationDate,
-                Label : 'Application Date',
+                $Type: 'UI.DataField',
+                Value: applicationDate,
+                Label: 'Application Date',
             },
             {
-                $Type : 'UI.DataField',
-                Value : approvalDate,
-                Label : 'Approval Date',
+                $Type: 'UI.DataField',
+                Value: approvalDate,
+                Label: 'Approval Date',
             },
             {
-                $Type : 'UI.DataField',
-                Value : applicationCapital,
-                Label : 'Application Capital',
+                $Type: 'UI.DataField',
+                Value: applicationCapital,
+                Label: 'Application Capital',
             },
             {
-                $Type : 'UI.DataField',
-                Value : commitmentDate,
-                Label : 'Commitment Date',
+                $Type: 'UI.DataField',
+                Value: commitmentDate,
+                Label: 'Commitment Date',
             },
         ],
     },
-    UI.FieldGroup #Information : {
-        $Type : 'UI.FieldGroupType',
+    UI.FieldGroup #Information        : {
+        $Type: 'UI.FieldGroupType',
         Data : [
             {
-                $Type : 'UI.DataField',
-                Value : loanPurpose,
-                Label : 'Purpose of Loan',
+                $Type: 'UI.DataField',
+                Value: loanPurpose,
+                Label: 'Purpose of Loan',
             },
             {
-                $Type : 'UI.DataField',
-                Value : designation,
-                Label : 'Designation',
+                $Type: 'UI.DataField',
+                Value: designation,
+                Label: 'Designation',
             },
             {
-                $Type : 'UI.DataField',
-                Value : pledgedStatus,
-                Label : 'Pledged Status',
+                $Type: 'UI.DataField',
+                Value: pledgedStatus,
+                Label: 'Pledged Status',
             },
             {
-                $Type : 'UI.DataField',
-                Value : amortizationStatus,
-                Label : 'Amortization Status',
+                $Type: 'UI.DataField',
+                Value: amortizationStatus,
+                Label: 'Amortization Status',
             },
         ],
     },
-    UI.FieldGroup #AgentData : {
-        $Type : 'UI.FieldGroupType',
+    UI.FieldGroup #AgentData          : {
+        $Type: 'UI.FieldGroupType',
         Data : [
             {
-                $Type : 'UI.DataField',
-                Value : country,
-                Label : 'County',
+                $Type: 'UI.DataField',
+                Value: country,
+                Label: 'County',
             },
             {
-                $Type : 'UI.DataField',
-                Value : orgDistrict,
-                Label : 'Organiz.District',
+                $Type: 'UI.DataField',
+                Value: orgDistrict,
+                Label: 'Organiz.District',
             },
             {
-                $Type : 'UI.DataField',
-                Value : agentDistrict,
-                Label : 'Agent District',
+                $Type: 'UI.DataField',
+                Value: agentDistrict,
+                Label: 'Agent District',
             },
         ],
     },
-    UI.FieldGroup #Group : {
-        $Type : 'UI.FieldGroupType',
+    UI.FieldGroup #Group              : {
+        $Type: 'UI.FieldGroupType',
+        Data : [{
+            $Type: 'UI.DataField',
+            Value: primaryIndustryCode,
+            Label: 'Primary Industry ',
+        }, ],
+    },
+    UI.FieldGroup #OtherReferences    : {
+        $Type: 'UI.FieldGroupType',
         Data : [
             {
-                $Type : 'UI.DataField',
-                Value : primaryIndustryCode,
-                Label : 'Primary Industry ',
+                $Type: 'UI.DataField',
+                Value: legacyNumber,
+                Label: 'Legacy Number',
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: projectNumber,
+                Label: 'Project Number',
             },
         ],
     },
-    UI.FieldGroup #OtherReferences : {
-        $Type : 'UI.FieldGroupType',
+    UI.FieldGroup #_                  : {
+        $Type: 'UI.FieldGroupType',
+        Data : [{
+            $Type: 'UI.DataField',
+            Value: commitCapital,
+            Label: 'Commit Capital',
+        }, ],
+    },
+    UI.FieldGroup #TermFixedPeriod    : {
+        $Type: 'UI.FieldGroupType',
         Data : [
             {
-                $Type : 'UI.DataField',
-                Value : legacyNumber,
-                Label : 'Legacy Number',
+                $Type: 'UI.DataField',
+                Value: fixedFrom,
+                Label: 'Fixed From',
             },
             {
-                $Type : 'UI.DataField',
-                Value : projectNumber,
-                Label : 'Project Number',
+                $Type: 'UI.DataField',
+                Value: fixedUntil,
+                Label: 'Fixed Until',
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: include,
+                Label: 'Inclusive Indicator',
             },
         ],
     },
-    UI.FieldGroup #_ : {
-        $Type : 'UI.FieldGroupType',
+    UI.FieldGroup #InterestCalculation: {
+        $Type: 'UI.FieldGroupType',
+        Data : [{
+            $Type: 'UI.DataField',
+            Value: intCalMt,
+            Label: 'Int.Cal.Mt',
+        }, ],
+    },
+    UI.FieldGroup #Offer              : {
+        $Type: 'UI.FieldGroupType',
         Data : [
             {
-                $Type : 'UI.DataField',
-                Value : commitCapital,
-                Label : 'Commit Capital',
+                $Type: 'UI.DataField',
+                Value: offerOn,
+                Label: 'Offer On',
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: offerUntil,
+                Label: 'Offer Until',
             },
         ],
     },
-    UI.FieldGroup #TermFixedPeriod : {
-        $Type : 'UI.FieldGroupType',
+    UI.FieldGroup #Acceptance         : {
+        $Type: 'UI.FieldGroupType',
         Data : [
             {
-                $Type : 'UI.DataField',
-                Value : fixedFrom,
-                Label : 'Fixed From',
+                $Type: 'UI.DataField',
+                Value: acceptance,
+                Label: 'Acceptance',
             },
             {
-                $Type : 'UI.DataField',
-                Value : fixedUntil,
-                Label : 'Fixed Until',
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : include,
-                Label : 'Inclusive Indicator',
+                $Type: 'UI.DataField',
+                Value: acceptedOn,
+                Label: 'Accepted On',
             },
         ],
     },
-    UI.FieldGroup #InterestCalculation : {
-        $Type : 'UI.FieldGroupType',
+    UI.FieldGroup #Contract           : {
+        $Type: 'UI.FieldGroupType',
         Data : [
             {
-                $Type : 'UI.DataField',
-                Value : intCalMt,
-                Label : 'Int.Cal.Mt',
+                $Type: 'UI.DataField',
+                Value: contractOn,
+                Label: 'Contract On',
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: amtzDate,
+                Label: 'Amortization Date',
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: maturityDate,
+                Label: 'Maturity Date',
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: datePaidOff,
+                Label: 'Date Paid Off',
             },
         ],
     },
-    UI.FieldGroup #Offer : {
-        $Type : 'UI.FieldGroupType',
+    UI.FieldGroup #Status             : {
+        $Type: 'UI.FieldGroupType',
         Data : [
             {
-                $Type : 'UI.DataField',
-                Value : offerOn,
-                Label : 'Offer On',
+                $Type: 'UI.DataField',
+                Value: designation,
+                Label: 'Designation',
             },
             {
-                $Type : 'UI.DataField',
-                Value : offerUntil,
-                Label : 'Offer Until',
+                $Type: 'UI.DataField',
+                Value: pledgedStatus,
+                Label: 'Pledged Status',
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: datePaidOff,
+                Label: 'Date Paid Off',
             },
         ],
     },
-    UI.FieldGroup #Acceptance : {
-        $Type : 'UI.FieldGroupType',
+    UI.FieldGroup #Notice             : {
+        $Type: 'UI.FieldGroupType',
         Data : [
             {
-                $Type : 'UI.DataField',
-                Value : acceptance,
-                Label : 'Acceptance',
+                $Type: 'UI.DataField',
+                Value: intresetRateResetType,
+                Label: 'Interest Rate Reset Type',
             },
             {
-                $Type : 'UI.DataField',
-                Value : acceptedOn,
-                Label : 'Accepted On',
+                $Type: 'UI.DataField',
+                Value: intresetRateResetDate,
+                Label: 'Interest Rate Reset Date',
             },
         ],
     },
-    UI.FieldGroup #Contract : {
-        $Type : 'UI.FieldGroupType',
+    UI.FieldGroup #_1                 : {
+        $Type: 'UI.FieldGroupType',
         Data : [
             {
-                $Type : 'UI.DataField',
-                Value : contractOn,
-                Label : 'Contract On',
+                $Type: 'UI.DataField',
+                Value: loanType,
             },
             {
-                $Type : 'UI.DataField',
-                Value : amtzDate,
-                Label : 'Amortization Date',
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : maturityDate,
-                Label : 'Maturity Date',
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : datePaidOff,
-                Label : 'Date Paid Off',
+                $Type: 'UI.DataField',
+                Value: productType,
+                Label: 'Agency',
             },
         ],
     },
-    UI.FieldGroup #Status : {
-        $Type : 'UI.FieldGroupType',
+    UI.FieldGroup #IncomingPayment    : {
+        $Type: 'UI.FieldGroupType',
         Data : [
             {
-                $Type : 'UI.DataField',
-                Value : designation,
-                Label : 'Designation',
+                $Type: 'UI.DataField',
+                Value: contractToPartner.paymentMethod,
+                Label: 'paymentMethod',
             },
             {
-                $Type : 'UI.DataField',
-                Value : pledgedStatus,
-                Label : 'Pledged Status',
+                $Type: 'UI.DataField',
+                Value: arBillingJob,
+                Label: 'arBillingJob',
             },
             {
-                $Type : 'UI.DataField',
-                Value : datePaidOff,
-                Label : 'Date Paid Off',
+                $Type: 'UI.DataField',
+                Value: contractToPartner.payoffLock,
+                Label: 'payoffLock',
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: contractToPartner.dunningIndicator,
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: contractToPartner.relevantIndicator,
+                Label: '1908 Relevant Indicator',
             },
         ],
     },
-    UI.FieldGroup #Notice : {
-        $Type : 'UI.FieldGroupType',
-        Data : [
-            {
-                $Type : 'UI.DataField',
-                Value : intresetRateResetType,
-                Label : 'Interest Rate Reset Type',
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : intresetRateResetDate,
-                Label : 'Interest Rate Reset Date',
-            },
-        ],
+    UI.FieldGroup #_2                 : {
+        $Type: 'UI.FieldGroupType',
+        Data : [{
+            $Type: 'UI.DataField',
+            Value: disbursementOblig,
+            Label: 'Disbursement Oblig.',
+        }, ],
     },
-    UI.FieldGroup #_1 : {
-        $Type : 'UI.FieldGroupType',
+    UI.FieldGroup #IncomingPayment1   : {
+        $Type: 'UI.FieldGroupType',
         Data : [
             {
-                $Type : 'UI.DataField',
-                Value : loanType,
+                $Type: 'UI.DataField',
+                Value: paymentMethod,
             },
             {
-                $Type : 'UI.DataField',
-                Value : productType,
-                Label : 'Agency',
-            },
-        ],
-    },
-    UI.FieldGroup #IncomingPayment : {
-        $Type : 'UI.FieldGroupType',
-        Data : [
-            {
-                $Type : 'UI.DataField',
-                Value : contractToPartner.paymentMethod,
-                Label : 'paymentMethod',
+                $Type: 'UI.DataField',
+                Value: arBillingJob,
             },
             {
-                $Type : 'UI.DataField',
-                Value : arBillingJob,
-                Label : 'arBillingJob',
+                $Type: 'UI.DataField',
+                Value: payoffLock,
             },
             {
-                $Type : 'UI.DataField',
-                Value : contractToPartner.payoffLock,
-                Label : 'payoffLock',
+                $Type: 'UI.DataField',
+                Value: dunningIndicator,
             },
             {
-                $Type : 'UI.DataField',
-                Value : contractToPartner.dunningIndicator,
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : contractToPartner.relevantIndicator,
-                Label : '1908 Relevant Indicator',
-            },
-        ],
-    },
-    UI.FieldGroup #_2 : {
-        $Type : 'UI.FieldGroupType',
-        Data : [
-            {
-                $Type : 'UI.DataField',
-                Value : disbursementOblig,
-                Label : 'Disbursement Oblig.',
-            },
-        ],
-    },
-    UI.FieldGroup #IncomingPayment1 : {
-        $Type : 'UI.FieldGroupType',
-        Data : [
-            {
-                $Type : 'UI.DataField',
-                Value : paymentMethod,
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : arBillingJob,
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : payoffLock,
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : dunningIndicator,
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : relevantIndicator,
+                $Type: 'UI.DataField',
+                Value: relevantIndicator,
             },
         ],
     },
 );
 
-annotate service.ConditionItemsNew with @(
-    UI.LineItem #ConditionItems : [
-        {
-            $Type : 'UI.DataField',
-            Value : conditionTypeText,
-            Label : 'Cond.Type Text',
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : effectiveFrom,
-            Label : 'Eff. From',
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : percentage,
-            Label : 'Percentage',
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : conditionAmt,
-            Label : 'Condition Amnt',
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : paymentFromExactDay,
-            Label : 'Payment From Exact Day',
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : frequencyInMonths,
-            Label : 'Frequency in Months',
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : dueDate,
-            Label : 'Due Date',
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : calculationDate,
-            Label : 'Calculation Date',
-        },
-    ]
-);
+annotate service.ConditionItemsNew with @(UI.LineItem #ConditionItems: [
+    {
+        $Type: 'UI.DataField',
+        Value: conditionTypeText,
+        Label: 'Cond.Type Text',
+    },
+    {
+        $Type: 'UI.DataField',
+        Value: effectiveFrom,
+        Label: 'Eff. From',
+    },
+    {
+        $Type: 'UI.DataField',
+        Value: percentage,
+        Label: 'Percentage',
+    },
+    {
+        $Type: 'UI.DataField',
+        Value: conditionAmt,
+        Label: 'Condition Amnt',
+    },
+    {
+        $Type: 'UI.DataField',
+        Value: paymentFromExactDay,
+        Label: 'Payment From Exact Day',
+    },
+    {
+        $Type: 'UI.DataField',
+        Value: frequencyInMonths,
+        Label: 'Frequency in Months',
+    },
+    {
+        $Type: 'UI.DataField',
+        Value: dueDate,
+        Label: 'Due Date',
+    },
+    {
+        $Type: 'UI.DataField',
+        Value: calculationDate,
+        Label: 'Calculation Date',
+    },
+]);
 
 annotate service.Partners with @(
-    UI.LineItem #Partners : [
+    UI.LineItem #Partners                      : [
         {
-            $Type : 'UI.DataField',
-            Value : bpRole,
-            Label : 'BP Role No.',
+            $Type: 'UI.DataField',
+            Value: bpRole,
+            Label: 'BP Role No.',
         },
         {
-            $Type : 'UI.DataField',
-            Value : title,
-            Label : 'Role Name',
+            $Type: 'UI.DataField',
+            Value: title,
+            Label: 'Role Name',
         },
         {
-            $Type : 'UI.DataField',
-            Value : partner,
-            Label : 'Partner No.',
+            $Type: 'UI.DataField',
+            Value: partner,
+            Label: 'Partner No.',
         },
         {
-            $Type : 'UI.DataField',
-            Value : nameAddress,
-            Label : 'Name',
+            $Type: 'UI.DataField',
+            Value: nameAddress,
+            Label: 'Partner Name',
         },
         {
-            $Type : 'UI.DataField',
-            Value : startRel,
-            Label : 'Start Rel.',
+            $Type: 'UI.DataField',
+            Value: bankDetailsID,
+            Label: 'Bank Details ID',
         },
         {
-            $Type : 'UI.DataField',
-            Value : endRel,
-            Label : 'End Rel.',
+            $Type: 'UI.DataField',
+            Value: startRel,
+            Label: 'Start Rel.',
         },
         {
-            $Type : 'UI.DataField',
-            Value : bankDetailsID,
-            Label : 'Bank Details ID',
+            $Type: 'UI.DataField',
+            Value: endRel,
+            Label: 'End Rel.',
         },
     ],
-    UI.HeaderInfo : {
-        TypeName : '',
-        TypeNamePlural : '',
+    UI.HeaderInfo                              : {
+        TypeName      : '',
+        TypeNamePlural: '',
     },
-    UI.Facets : [
-        {
-            $Type : 'UI.CollectionFacet',
-            Label : 'Associated BP Roles',
-            ID : 'section1',
-            Facets : [
-                {
-                    $Type : 'UI.ReferenceFacet',
-                    Label : 'Attributes for Selected Partner',
-                    ID : 'AttributesforSelectedPartner',
-                    Target : '@UI.FieldGroup#AttributesforSelectedPartner',
-                },
-                
-            ],
+    UI.Facets                                  : [{
+        $Type : 'UI.CollectionFacet',
+        Label : 'Associated BP Roles',
+        ID    : 'section1',
+        Facets: [{
+            $Type : 'UI.ReferenceFacet',
+            Label : 'Attributes for Selected Partner',
+            ID    : 'AttributesforSelectedPartner',
+            Target: '@UI.FieldGroup#AttributesforSelectedPartner',
         },
-    ],
-    UI.FieldGroup #AttributesforSelectedPartner : {
-        $Type : 'UI.FieldGroupType',
+
+        ],
+    }, ],
+    UI.FieldGroup #AttributesforSelectedPartner: {
+        $Type: 'UI.FieldGroupType',
         Data : [
             {
-                $Type : 'UI.DataField',
-                Value : bpRole,
-                Label : 'BP Role No.',
+                $Type: 'UI.DataField',
+                Value: bpRole,
+                Label: 'BP Role No.',
             },
             {
-                $Type : 'UI.DataField',
-                Value : addressType,
-                Label : 'Address',
+                $Type: 'UI.DataField',
+                Value: addressType,
+                Label: 'Address',
             },
             {
-                $Type : 'UI.DataField',
-                Value : title,
-                Label : 'Role Name',
+                $Type: 'UI.DataField',
+                Value: title,
+                Label: 'Role Name',
             },
             {
-                $Type : 'UI.DataField',
-                Value : nameAddress,
-                Label : 'Name',
+                $Type: 'UI.DataField',
+                Value: nameAddress,
+                Label: 'Name',
             },
             {
-                $Type : 'UI.DataField',
-                Value : partner,
-                Label : 'Partner No.',
+                $Type: 'UI.DataField',
+                Value: partner,
+                Label: 'Partner No.',
             },
             {
-                $Type : 'UI.DataField',
-                Value : startRel,
-                Label : 'Start Rel.',
+                $Type: 'UI.DataField',
+                Value: startRel,
+                Label: 'Start Rel.',
             },
             {
-                $Type : 'UI.DataField',
-                Value : customer,
-                Label : 'Customer No.',
+                $Type: 'UI.DataField',
+                Value: customer,
+                Label: 'Customer No.',
             },
             {
-                $Type : 'UI.DataField',
-                Value : dunningLetter,
-                Label : 'Dunning Letter',
+                $Type: 'UI.DataField',
+                Value: dunningLetter,
+                Label: 'Dunning Letter',
             },
             {
-                $Type : 'UI.DataField',
-                Value : endRel,
-                Label : 'End Rel.',
+                $Type: 'UI.DataField',
+                Value: endRel,
+                Label: 'End Rel.',
             },
             {
-                $Type : 'UI.DataField',
-                Value : bankDetailsID,
-                Label : 'Bank Details ID',
+                $Type: 'UI.DataField',
+                Value: bankDetailsID,
+                Label: 'Bank Details ID',
             },
         ],
     },
-    UI.FieldGroup #form2 : {
-        $Type : 'UI.FieldGroupType',
+    UI.FieldGroup #form2                       : {
+        $Type: 'UI.FieldGroupType',
         Data : [
             {
-                $Type : 'UI.DataField',
-                Value : paymentMethod,
-                Label : 'Incoming Payment Method',
+                $Type: 'UI.DataField',
+                Value: paymentMethod,
+                Label: 'Incoming Payment Method',
             },
             {
-                $Type : 'UI.DataField',
-                Value : arBillingJob,
-                Label : 'AR Billing Job',
+                $Type: 'UI.DataField',
+                Value: arBillingJob,
+                Label: 'AR Billing Job',
             },
             {
-                $Type : 'UI.DataField',
-                Value : payoffLock,
-                Label : 'Payoff Lock',
+                $Type: 'UI.DataField',
+                Value: payoffLock,
+                Label: 'Payoff Lock',
             },
         ],
     },
-    UI.FieldGroup #IncomingPayment : {
-        $Type : 'UI.FieldGroupType',
+    UI.FieldGroup #IncomingPayment             : {
+        $Type: 'UI.FieldGroupType',
         Data : [
             {
-                $Type : 'UI.DataField',
-                Value : paymentMethod,
+                $Type: 'UI.DataField',
+                Value: paymentMethod,
             },
             {
-                $Type : 'UI.DataField',
-                Value : arBillingJob,
+                $Type: 'UI.DataField',
+                Value: arBillingJob,
             },
             {
-                $Type : 'UI.DataField',
-                Value : dunningIndicator,
+                $Type: 'UI.DataField',
+                Value: dunningIndicator,
             },
             {
-                $Type : 'UI.DataField',
-                Value : relevantIndicator,
+                $Type: 'UI.DataField',
+                Value: relevantIndicator,
             },
             {
-                $Type : 'UI.DataField',
-                Value : payoffLock,
+                $Type: 'UI.DataField',
+                Value: payoffLock,
             },
         ],
     },
 );
 
 annotate service.Partners with {
-    addressType @UI.MultiLineText : true
+    addressType @UI.MultiLineText: true
 };
 
 annotate service.Partners with {
     arBillingJob @(
-        Common.ValueList : {
-            $Type : 'Common.ValueListType',
-            CollectionPath : 'ARBillingJobSearchHelp',
-            Parameters : [
-                {
-                    $Type : 'Common.ValueListParameterInOut',
-                    LocalDataProperty : arBillingJob,
-                    ValueListProperty : 'value',
-                },
-            ],
-            Label : 'Search Help',
+        Common.ValueList               : {
+            $Type         : 'Common.ValueListType',
+            CollectionPath: 'ARBillingJobSearchHelp',
+            Parameters    : [{
+                $Type            : 'Common.ValueListParameterInOut',
+                LocalDataProperty: arBillingJob,
+                ValueListProperty: 'value',
+            }, ],
+            Label         : 'Search Help',
         },
-        Common.ValueListWithFixedValues : true,
-)};
+        Common.ValueListWithFixedValues: true,
+    )
+};
 
 annotate service.Partners with {
     paymentMethod @(
-        Common.ValueList : {
-            $Type : 'Common.ValueListType',
-            CollectionPath : 'PaymentMethodSearchHelp',
-            Parameters : [
-                {
-                    $Type : 'Common.ValueListParameterInOut',
-                    LocalDataProperty : paymentMethod,
-                    ValueListProperty : 'value',
-                },
-            ],
-            Label : 'Search Help',
+        Common.ValueList               : {
+            $Type         : 'Common.ValueListType',
+            CollectionPath: 'PaymentMethodSearchHelp',
+            Parameters    : [{
+                $Type            : 'Common.ValueListParameterInOut',
+                LocalDataProperty: paymentMethod,
+                ValueListProperty: 'value',
+            }, ],
+            Label         : 'Search Help',
         },
-        Common.ValueListWithFixedValues : true,
-)};
+        Common.ValueListWithFixedValues: true,
+    )
+};
 
 annotate service.Contract with {
     amortizationStatus @(
-        Common.ValueList : {
-            $Type : 'Common.ValueListType',
-            CollectionPath : 'AmortizationStatusSearchHelp',
-            Parameters : [
-                {
-                    $Type : 'Common.ValueListParameterInOut',
-                    LocalDataProperty : amortizationStatus,
-                    ValueListProperty : 'amzt',
-                },
-            ],
-            Label : 'amztvaluehelp',
+        Common.ValueList               : {
+            $Type         : 'Common.ValueListType',
+            CollectionPath: 'AmortizationStatusSearchHelp',
+            Parameters    : [{
+                $Type            : 'Common.ValueListParameterInOut',
+                LocalDataProperty: amortizationStatus,
+                ValueListProperty: 'amzt',
+            }, ],
+            Label         : 'amztvaluehelp',
         },
-        Common.ValueListWithFixedValues : true,
-)};
+        Common.ValueListWithFixedValues: true,
+    )
+};
 
 annotate service.AmortizationStatusSearchHelp with {
-    amzt @Common.Text : shortName
+    amzt @Common.Text: shortName
 };
 
 annotate service.Disbursement with @(
     UI.LineItem #Disbursements : [
         {
-            $Type : 'UI.DataField',
-            Value : text,
+            $Type: 'UI.DataField',
+            Value: text,
         },
         {
             $Type : 'UI.DataField',
-            Value : disberseAmount,
+            Value : disburseAmount,
         },
         {
-            $Type : 'UI.DataField',
-            Value : paymentDate,
+            $Type: 'UI.DataField',
+            Value: paymentDate,
         },
         {
-            $Type : 'UI.DataField',
-            Value : effectiveDate,
+            $Type: 'UI.DataField',
+            Value: effectiveDate,
         },
         {
-            $Type : 'UI.DataField',
-            Value : paymentMethod,
+            $Type: 'UI.DataField',
+            Value: paymentMethod,
         },
         {
-            $Type : 'UI.DataField',
-            Value : bankDetails,
+            $Type: 'UI.DataField',
+            Value: bankDetails,
         },
         {
-            $Type : 'UI.DataField',
-            Value : houseBank,
+            $Type: 'UI.DataField',
+            Value: houseBank,
         },
     ],
-    UI.Facets : [
-        {
-            $Type : 'UI.ReferenceFacet',
-            Label : 'Disbursement',
-            ID : 'Disbursement',
-            Target : '@UI.FieldGroup#Disbursement',
-        },
-    ],
-    UI.FieldGroup #Disbursement : {
-        $Type : 'UI.FieldGroupType',
+    UI.Facets                  : [{
+        $Type : 'UI.ReferenceFacet',
+        Label : 'Disbursement',
+        ID    : 'Disbursement',
+        Target: '@UI.FieldGroup#Disbursement',
+    }, ],
+    UI.FieldGroup #Disbursement: {
+        $Type: 'UI.FieldGroupType',
         Data : [
             {
                 $Type : 'UI.DataField',
-                Value : disberseAmount,
+                Value : disburseAmount,
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: effectiveDate,
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: bankDetails,
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: grossAmount,
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: paymentDate,
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: bp,
             },
             {
                 $Type : 'UI.DataField',
-                Value : effectiveDate,
+                Value : disbursementOblig,
             },
             {
-                $Type : 'UI.DataField',
-                Value : bankDetails,
+                $Type: 'UI.DataField',
+                Value: paymentMethod,
             },
             {
-                $Type : 'UI.DataField',
-                Value : grossAmount,
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : paymentDate,
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : bp,
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : disbursementToContract.disbursementOblig,
-                Label : 'Disbursement Oblig',
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : paymentMethod,
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : houseBank,
+                $Type: 'UI.DataField',
+                Value: houseBank,
             },
         ],
+    },
+    UI.HeaderInfo : {
+        TypeName : '',
+        TypeNamePlural : '',
     },
 );
 
 annotate service.Earmark with @(
-    UI.LineItem #_ : [
+    UI.LineItem #_        : [
         {
-            $Type : 'UI.DataField',
-            Value : loanCategory,
+            $Type: 'UI.DataField',
+            Value: loanCategory,
         },
         {
-            $Type : 'UI.DataField',
-            Value : flowType,
+            $Type: 'UI.DataField',
+            Value: flowType,
         },
         {
-            $Type : 'UI.DataField',
-            Value : orginalAount,
+            $Type: 'UI.DataField',
+            Value: orginalAount,
         },
         {
-            $Type : 'UI.DataField',
-            Value : text,
+            $Type: 'UI.DataField',
+            Value: fund,
         },
         {
-            $Type : 'UI.DataField',
-            Value : fund,
+            $Type: 'UI.DataField',
+            Value: budgetPd,
         },
         {
-            $Type : 'UI.DataField',
-            Value : budgetPd,
+            $Type: 'UI.DataField',
+            Value: glAccount,
         },
         {
-            $Type : 'UI.DataField',
-            Value : glAccount,
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : costCenter,
+            $Type: 'UI.DataField',
+            Value: costCenter,
             @UI.Hidden,
         },
         {
-            $Type : 'UI.DataField',
-            Value : order,
+            $Type: 'UI.DataField',
+            Value: order,
             @UI.Hidden,
         },
         {
-            $Type : 'UI.DataField',
-            Value : wbsElement,
+            $Type: 'UI.DataField',
+            Value: wbsElement,
             @UI.Hidden,
         },
         {
-            $Type : 'UI.DataField',
-            Value : isCompleted,
+            $Type: 'UI.DataField',
+            Value: isCompleted,
         },
     ],
-    UI.Facets : [
-        {
-            $Type : 'UI.ReferenceFacet',
-            Label : 'Earmark',
-            ID : 'Earmark',
-            Target : '@UI.FieldGroup#Earmark',
-        },
-    ],
-    UI.FieldGroup #Earmark : {
-        $Type : 'UI.FieldGroupType',
+    UI.Facets             : [{
+        $Type : 'UI.ReferenceFacet',
+        Label : 'Earmark',
+        ID    : 'Earmark',
+        Target: '@UI.FieldGroup#Earmark',
+    }, ],
+    UI.FieldGroup #Earmark: {
+        $Type: 'UI.FieldGroupType',
         Data : [
             {
-                $Type : 'UI.DataField',
-                Value : documentNumber,
+                $Type: 'UI.DataField',
+                Value: documentNumber,
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: loanCategory,
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: orginalAount,
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: text,
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: fund,
             },
             {
                 $Type : 'UI.DataField',
-                Value : loanCategory,
+                Value : flowType,
             },
             {
-                $Type : 'UI.DataField',
-                Value : orginalAount,
+                $Type: 'UI.DataField',
+                Value: budgetPd,
             },
             {
-                $Type : 'UI.DataField',
-                Value : text,
+                $Type: 'UI.DataField',
+                Value: glAccount,
             },
             {
-                $Type : 'UI.DataField',
-                Value : fund,
+                $Type: 'UI.DataField',
+                Value: commitmetItem,
             },
             {
-                $Type : 'UI.DataField',
-                Value : budgetPd,
+                $Type: 'UI.DataField',
+                Value: fundCenter,
             },
             {
-                $Type : 'UI.DataField',
-                Value : glAccount,
+                $Type: 'UI.DataField',
+                Value: functionalArea,
             },
             {
-                $Type : 'UI.DataField',
-                Value : commitmetItem,
+                $Type: 'UI.DataField',
+                Value: bussinessArea,
             },
             {
-                $Type : 'UI.DataField',
-                Value : fundCenter,
+                $Type: 'UI.DataField',
+                Value: costCenter,
             },
             {
-                $Type : 'UI.DataField',
-                Value : functionalArea,
+                $Type: 'UI.DataField',
+                Value: order,
             },
             {
-                $Type : 'UI.DataField',
-                Value : bussinessArea,
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : costCenter,
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : order,
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : wbsElement,
+                $Type: 'UI.DataField',
+                Value: wbsElement,
             },
         ],
+    },
+    UI.HeaderInfo : {
+        TypeName : '',
+        TypeNamePlural : '',
     },
 );
 
 annotate service.Contract with {
     paymentMethod @(
-        Common.ValueList : {
-            $Type : 'Common.ValueListType',
-            CollectionPath : 'PaymentMethodSearchHelp',
-            Parameters : [
-                {
-                    $Type : 'Common.ValueListParameterInOut',
-                    LocalDataProperty : paymentMethod,
-                    ValueListProperty : 'code',
-                },
-            ],
-            Label : 'payment method',
+        Common.ValueList               : {
+            $Type         : 'Common.ValueListType',
+            CollectionPath: 'PaymentMethodSearchHelp',
+            Parameters    : [{
+                $Type            : 'Common.ValueListParameterInOut',
+                LocalDataProperty: paymentMethod,
+                ValueListProperty: 'code',
+            }, ],
+            Label         : 'payment method',
         },
-        Common.ValueListWithFixedValues : true,
-)};
+        Common.ValueListWithFixedValues: true,
+    )
+};
 
 annotate service.PaymentMethodSearchHelp with {
     code @(
-        Common.Text : name,
-        Common.Text.@UI.TextArrangement : #TextLast,
-)};
+        Common.Text                    : name,
+        Common.Text.@UI.TextArrangement: #TextLast,
+    )
+};
 
 annotate service.Contract with {
     arBillingJob @(
-        Common.ValueList : {
-            $Type : 'Common.ValueListType',
-            CollectionPath : 'ARBillingJobSearchHelp',
-            Parameters : [
-                {
-                    $Type : 'Common.ValueListParameterInOut',
-                    LocalDataProperty : arBillingJob,
-                    ValueListProperty : 'jobCode',
-                },
-            ],
-            Label : 'AR ',
+        Common.ValueList               : {
+            $Type         : 'Common.ValueListType',
+            CollectionPath: 'ARBillingJobSearchHelp',
+            Parameters    : [{
+                $Type            : 'Common.ValueListParameterInOut',
+                LocalDataProperty: arBillingJob,
+                ValueListProperty: 'jobCode',
+            }, ],
+            Label         : 'AR ',
         },
-        Common.ValueListWithFixedValues : true,
-)};
+        Common.ValueListWithFixedValues: true,
+    )
+};
 
 annotate service.ARBillingJobSearchHelp with {
     jobCode @(
-        Common.Text : longName,
-        Common.Text.@UI.TextArrangement : #TextLast,
-)};
+        Common.Text                    : longName,
+        Common.Text.@UI.TextArrangement: #TextLast,
+    )
+};
 
+annotate service.Earmark with {
+    loanCategory @(
+        Common.ValueList               : {
+            $Type         : 'Common.ValueListType',
+            CollectionPath: 'loanCategorySearchHelp',
+            Parameters    : [{
+                $Type            : 'Common.ValueListParameterInOut',
+                LocalDataProperty: loanCategory,
+                ValueListProperty: 'category',
+            }, ],
+            Label         : 'loan category',
+        },
+        Common.ValueListWithFixedValues: true,
+    )
+};
+
+annotate service.Earmark @(Common.SideEffects #categorytoflowtype: {
+
+    SourceProperties: ['loanCategory'], // when this field changes
+    TargetProperties: ['flowType'] // refresh this entity
+
+});

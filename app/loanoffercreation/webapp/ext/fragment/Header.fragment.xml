@@ -14,13 +14,13 @@
     </VBox>
  
     <VBox class="headerItem">
-        <Label text="Loan Partner" design="Bold"/>
-        <Text text="{loanPartner}"/>
+        <Label text="BP Number" design="Bold"/>
+        <Text text="{bpNumber}"/>
     </VBox>
  
     <VBox class="headerItem">
         <Label text="Partner Name" design="Bold"/>
-        <Text text="{loanPartnerName}"/>
+        <Text text="Berks Barber School"/>
     </VBox>
  
     <VBox class="headerItem">

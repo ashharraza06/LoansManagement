@@ -1,36 +1,187 @@
+sap.ui.define([
 
-sap.ui.define(['sap/ui/core/mvc/ControllerExtension'], function (ControllerExtension) {
-	'use strict';
+    "sap/ui/core/mvc/ControllerExtension",
 
-	return ControllerExtension.extend('loanoffercreation.ext.controller.Contractobj', {
-		// this section allows to extend lifecycle hooks or hooks provided by Fiori elements
-		override: {
-			/**
-			 * Called when a controller is instantiated and its View controls (if available) are already created.
-			 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
-			 * @memberOf loanoffercreation.ext.controller.Contractobj
-			 */
-			onInit: function () {
-				// you can access the Fiori elements extensionAPI via this.base.getExtensionAPI
-				var oModel = this.base.getExtensionAPI().getModel();
-				debugger;
+    "sap/ui/core/Control",
 
-			},
-			routing: {
-				onAfterBinding: async function () {
+    "sap/ui/core/format/DateFormat"
 
-					debugger;
-					// sap.ui.core.Element.getElementById("__button8-__clone81").firePress();
+], function (ControllerExtension, Control, DateFormat) {
 
-				},
-				onAfterRendering : function(){
-					debugger;
-					var oTable= sap.ui.core.Element.getElementById("loanoffercreation::ContractObjectPage--fe::table::contractToPartner::LineItem::Partners");
-					if (oTable.getItems().Length>0){
+    "use strict";
+ 
+    return ControllerExtension.extend("loanoffercreation.ext.controller.Contractobj", {
+ 
+        // =====================================================
 
-					}
-				}
-			}
-		}
-	});
+        // FE lifecycle hooks
+
+        // =====================================================
+ 
+        override: {
+ 
+            onInit: function () {
+
+                this._setupDateObserver();
+
+            },
+ 
+            routing: {
+
+                onAfterBinding: function () {
+
+                    this._formatEditDates();
+
+                    this._formatDisplayDates();
+
+                }
+
+            }
+
+        },
+ 
+        // =====================================================
+
+        // EDIT MODE → DatePicker binding fix
+
+        // =====================================================
+ 
+        _formatEditDates: function () {
+ 
+            const oView = this.base.getView();
+
+            if (!oView) return;
+ 
+            this._walkControls(oView, oControl => {
+ 
+                if (oControl.isA && oControl.isA("sap.m.DatePicker")) {
+ 
+                    const oBinding = oControl.getBinding("value");
+
+                    if (oBinding) {
+
+                        const sPath = oBinding.getPath();
+ 
+                        oControl.unbindProperty("value");
+ 
+                        oControl.bindProperty("dateValue", {
+
+                            path: sPath
+
+                        });
+
+                    }
+ 
+                    oControl.setDisplayFormat("MM/dd/yyyy");
+
+                    oControl.setValueFormat("yyyy-MM-dd");
+
+                }
+
+            });
+
+        },
+ 
+        // =====================================================
+
+        // DISPLAY MODE → FE text formatter
+
+        // =====================================================
+ 
+        _formatDisplayDates: function () {
+ 
+            const oFormatter = DateFormat.getDateInstance({
+
+                pattern: "MM/dd/yyyy"
+
+            });
+ 
+            document.querySelectorAll("[id$='Field-display'], .sapMText").forEach(el => {
+ 
+                const sText = el.innerText?.trim();
+
+                if (!sText) return;
+ 
+                // Already formatted → skip
+
+                if (/^\d{2}\/\d{2}\/\d{4}$/.test(sText)) return;
+ 
+                // FE default format: "Jan 5, 2025"
+
+                const m = sText.match(/^([A-Za-z]{3}) (\d{1,2}), (\d{4})$/);
+
+                if (!m) return;
+ 
+                const oDate = new Date(`${m[1]} ${m[2]}, ${m[3]}`);
+
+                if (isNaN(oDate)) return;
+ 
+                el.innerText = oFormatter.format(oDate);
+
+            });
+
+        },
+ 
+        // =====================================================
+
+        // FE dynamic rerender observer
+
+        // =====================================================
+ 
+        _setupDateObserver: function () {
+ 
+            const observer = new MutationObserver(() => {
+
+                this._formatDisplayDates();
+
+            });
+ 
+            observer.observe(document.body, {
+
+                childList: true,
+
+                subtree: true
+
+            });
+
+        },
+ 
+        // =====================================================
+
+        // Recursive FE control walker
+
+        // =====================================================
+ 
+        _walkControls: function (oControl, fnCallback) {
+ 
+            fnCallback(oControl);
+ 
+            if (!oControl.getAggregation) return;
+ 
+            const mAggs = oControl.getMetadata().getAllAggregations();
+ 
+            Object.keys(mAggs).forEach(sAgg => {
+ 
+                const oAgg = oControl.getAggregation(sAgg);
+ 
+                if (Array.isArray(oAgg)) {
+
+                    oAgg.forEach(c => this._walkControls(c, fnCallback));
+
+                }
+
+                else if (oAgg instanceof Control) {
+
+                    this._walkControls(oAgg, fnCallback);
+
+                }
+
+            });
+
+        }
+ 
+    });
+
 });
+
+ 
