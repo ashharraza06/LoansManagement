@@ -13,17 +13,19 @@
 
 
 .headerHBox {
-    gap: 2rem;          /* space between columns */
+    gap: 5rem;
+    /* space between columns */
 }
- 
+
 .headerItem {
-    min-width: 10rem;  /* consistent column width */
-} 
+    min-width: 10rem;
+    /* consistent column width */
+}
 
 #__title1,
 #__title8,
 #__title9,
-#__title8{
+#__title8 {
     display: none;
 }
 
@@ -32,19 +34,25 @@
 }
 
 
-#loanoffercreation\:\:Contract_contractToDisbursementObjectPage--fe\:\:EditableHeaderSection{
-display: none;
+#loanoffercreation\:\:Contract_contractToDisbursementObjectPage--fe\:\:EditableHeaderSection {
+    display: none;
 }
-#loanoffercreation\:\:Contract_contractToDisbursementObjectPage--fe\:\:ObjectPage-anchBar-loanoffercreation\:\:Contract_contractToDisbursementObjectPage--fe\:\:EditableHeaderSection-anchor-text{
-display: none;}
 
-#loanoffercreation\:\:Contract_contractToEarmarkObjectPage--fe\:\:EditableHeaderSubSection{
-display: none;}
-
-#loanoffercreation\:\:Contract_contractToEarmarkObjectPage--fe\:\:ObjectPage-anchBar-loanoffercreation\:\:Contract_contractToEarmarkObjectPage--fe\:\:EditableHeaderSection-anchor
-{
-display: none;
+#loanoffercreation\:\:Contract_contractToDisbursementObjectPage--fe\:\:ObjectPage-anchBar-loanoffercreation\:\:Contract_contractToDisbursementObjectPage--fe\:\:EditableHeaderSection-anchor-text {
+    display: none;
 }
+
+#loanoffercreation\:\:Contract_contractToEarmarkObjectPage--fe\:\:EditableHeaderSubSection,
+#loanoffercreation\:\:Contract_contractToPartnerObjectPage--fe\:\:EditableHeaderSection {
+    display: none;
+}
+
+#loanoffercreation\:\:Contract_contractToEarmarkObjectPage--fe\:\:ObjectPage-anchBar-loanoffercreation\:\:Contract_contractToEarmarkObjectPage--fe\:\:EditableHeaderSection-anchor,
+#loanoffercreation\:\:Contract_contractToPartnerObjectPage--fe\:\:ObjectPage-anchBar-loanoffercreation\:\:Contract_contractToPartnerObjectPage--fe\:\:EditableHeaderSection-anchor {
+    display: none;
+}
+
+
 .loanGrid {
     width: 100%;
 }
@@ -52,12 +60,13 @@ display: none;
 .loanRow {
     width: 100%;
     display: flex;
-    gap: 25rem;            /* space between columns */
-    margin-bottom: 1rem; /* space between rows */
+    gap: 25rem;
+    /* space between columns */
+    margin-bottom: 1rem;
+    /* space between rows */
 }
 
 .loanCell {
-    width: 50%;          /* 🔥 forces 2 columns */
+    width: 50%;
+    /* 🔥 forces 2 columns */
 }
-
-

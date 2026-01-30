@@ -18,7 +18,6 @@ entity Contract : managed {
     key loanType               : String  @mandatory  @Common.Label: 'Loan Type';
     key loanPartner            : String  @mandatory  @Common.Label: 'Loan Partner';
     key loanPartnerName        : String  @mandatory  @Common.Label: 'Loan Partner Name';
-    key bpNumber               : String  @mandatory  @Common.Label: 'BP Number';
 
 
         status                 : String;
@@ -42,7 +41,7 @@ entity Contract : managed {
         /* ---------- Analysis Data ---------- */
         // Information
         loanPurpose            : String;
-        arBillingJob           : String;
+        // arBillingJob           : String;
         amortizationStatus     : String  @Common.Label: 'Amortization Status';
 
         /* ---------- Organization ---------- */
@@ -109,6 +108,13 @@ entity Contract : managed {
         valueDatedCapital      : Decimal;
         effectCapital          : Decimal;
 
+        //Incoming payment
+        paymentMethod          : String  @Common.Label: 'Incoming Payment Method';
+        payoffLock             : Boolean @Common.Label: 'Payoff Lock';
+        arBillingJob           : String  @Common.Label: 'AR Billing Job';
+        dunningIndicator       : Boolean @Common.Label: 'Exclude from Dunning Indicator';
+        relevantIndicator      : Boolean @Common.Label: '1098 Relevant Indicator';
+
         /* ---------- Associations ---------- */
 
         contractToCondition    : Composition of many ConditionItemsNew
@@ -158,20 +164,16 @@ entity Partners : managed {
         endRel            : Date;
 
         addressType       : String;
-        partner           : String  @Common.Label: 'Partner No.';
+        partner           : String @Common.Label: 'Partner No.';
         bpRole            : String;
 
         roleType          : String;
-        customer          : String  @Common.Label: 'Customer No.';
+        customer          : String @Common.Label: 'Customer No.';
         bankDetailsID     : String;
 
         dunningLetter     : String;
         dunnChargesPyr    : Boolean;
-        paymentMethod     : String  @Common.Label: 'Incoming Payment Method';
-        payoffLock        : Boolean @Common.Label: 'Payoff Lock';
-        arBillingJob      : String  @Common.Label: 'AR Billing Job';
-        dunningIndicator  : Boolean @Common.Label: 'Exclude from Dunning Indicator';
-        relevantIndicator : Boolean @Common.Label: '1908 Relevant Indicator';
+
         partnerToContract : Association to Contract;
 }
 
@@ -230,8 +232,9 @@ entity AmortizationStatusSearchHelp {
 entity Earmark {
     key earmarkId         : UUID;
         id                : UUID;
-        documentNumber    : Integer @Common.Label: 'Document Number';
+        documentNumber    : Integer @Common.Label: 'Document Line Number';
         loanCategory      : String  @Common.Label: 'Loan Category';
+        flowType               : String @Common.Label: 'Flow Type';
         orginalAount      : String  @Common.Label: 'Original Amount';
         text              : String  @Common.Label: 'Text';
         fund              : String  @Common.Label: 'Fund';
@@ -249,17 +252,17 @@ entity Earmark {
 }
 
 entity Disbursement {
-    key disbursementId : UUID;
-        id             : UUID;
-        text           : String @Common.Label: 'Line Item';
-        disberseAmount : String @Common.Label: 'New Disberse Amount';
-        flowType       : String @Common.Label: 'Flow Type';
-        grossAmount    : String @Common.Label: 'Gross Amount';
-        paymentDate    : Date   @Common.Label: 'Payment Date';
-        effectiveDate  : Date   @Common.Label: 'Effective Date';
-        bp             : String @Common.Label: 'BP';
-        paymentMethod  : String @Common.Label: 'Payment Method';
-        bankDetails    : String @Common.Label: 'Bank Details';
-        houseBank      : String @Common.Label: 'House Bank';
+    key disbursementId         : UUID;
+        id                     : UUID;
+        text                   : String @Common.Label: 'Line Item';
+        disberseAmount         : String @Common.Label: 'New Disberse Amount';
+        flowType               : String @Common.Label: 'Flow Type';
+        grossAmount            : String @Common.Label: 'Gross Amount';
+        paymentDate            : Date   @Common.Label: 'Payment Date';
+        effectiveDate          : Date   @Common.Label: 'Effective Date';
+        bp                     : String @Common.Label: 'BP';
+        paymentMethod          : String @Common.Label: 'Payment Method';
+        bankDetails            : String @Common.Label: 'Bank Details';
+        houseBank              : String @Common.Label: 'House Bank';
         disbursementToContract : Association to Contract;
 }

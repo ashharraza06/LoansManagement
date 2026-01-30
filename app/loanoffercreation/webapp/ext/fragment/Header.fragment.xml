@@ -1,4 +1,4 @@
- <core:FragmentDefinition
+<core:FragmentDefinition
     xmlns:core="sap.ui.core"
     xmlns="sap.m">
  
@@ -21,11 +21,6 @@
     <VBox class="headerItem">
         <Label text="Partner Name" design="Bold"/>
         <Text text="{loanPartnerName}"/>
-    </VBox>
- 
-    <VBox class="headerItem">
-        <Label text="BP Number" design="Bold"/>
-        <Text text="{bpNumber}"/>
     </VBox>
  
     <VBox class="headerItem">

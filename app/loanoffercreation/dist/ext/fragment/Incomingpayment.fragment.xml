@@ -12,8 +12,8 @@
         <Label text="Bank Details ID"/>
         <Input value="{bankDetailsID}"/>
 
-        <Label text="BP role"/>
-        <Input value="{bpRole}"/>
+        <!-- <Label text="BP role"/>
+        <Input value="{bpRole}"/> -->
 
         <Label text="Incoming Payment Method"/>
         <ComboBox width="100%" selectedKey="{paymentMethod}">

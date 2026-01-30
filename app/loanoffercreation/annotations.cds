@@ -274,10 +274,23 @@ annotate service.Contract with @(
             ID : 'Partners',
             Facets : [
                 {
-                    $Type : 'UI.ReferenceFacet',
+                    $Type : 'UI.CollectionFacet',
                     Label : 'Partners',
-                    ID : 'Partners1',
-                    Target : 'contractToPartner/@UI.LineItem#Partners',
+                    ID : 'Partners2',
+                    Facets : [
+                        {
+                            $Type : 'UI.ReferenceFacet',
+                            Label : 'Partners',
+                            ID : 'Partners1',
+                            Target : 'contractToPartner/@UI.LineItem#Partners',
+                        },
+                    ],
+                },
+                {
+                    $Type : 'UI.ReferenceFacet',
+                    Label : 'Incoming Payment',
+                    ID : 'IncomingPayment',
+                    Target : '@UI.FieldGroup#IncomingPayment1',
                 },
             ],
         },
@@ -614,6 +627,31 @@ annotate service.Contract with @(
             },
         ],
     },
+    UI.FieldGroup #IncomingPayment1 : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : paymentMethod,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : arBillingJob,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : payoffLock,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : dunningIndicator,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : relevantIndicator,
+            },
+        ],
+    },
 );
 
 annotate service.ConditionItemsNew with @(
@@ -693,6 +731,11 @@ annotate service.Partners with @(
             Value : endRel,
             Label : 'End Rel.',
         },
+        {
+            $Type : 'UI.DataField',
+            Value : bankDetailsID,
+            Label : 'Bank Details ID',
+        },
     ],
     UI.HeaderInfo : {
         TypeName : '',
@@ -712,13 +755,6 @@ annotate service.Partners with @(
                 },
                 
             ],
-        },
-        {
-            $Type : 'UI.ReferenceFacet',
-            Label : 'Incoming Payment',
-            ID : 'IncomingPayment',
-            Target : '@UI.FieldGroup#IncomingPayment',
-            @UI.Hidden,
         },
     ],
     UI.FieldGroup #AttributesforSelectedPartner : {
@@ -890,11 +926,11 @@ annotate service.Disbursement with @(
         },
         {
             $Type : 'UI.DataField',
-            Value : paymentDate,
+            Value : disberseAmount,
         },
         {
             $Type : 'UI.DataField',
-            Value : disberseAmount,
+            Value : paymentDate,
         },
         {
             $Type : 'UI.DataField',
@@ -902,7 +938,15 @@ annotate service.Disbursement with @(
         },
         {
             $Type : 'UI.DataField',
-            Value : bp,
+            Value : paymentMethod,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : bankDetails,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : houseBank,
         },
     ],
     UI.Facets : [
@@ -961,11 +1005,11 @@ annotate service.Earmark with @(
     UI.LineItem #_ : [
         {
             $Type : 'UI.DataField',
-            Value : documentNumber,
+            Value : loanCategory,
         },
         {
             $Type : 'UI.DataField',
-            Value : loanCategory,
+            Value : flowType,
         },
         {
             $Type : 'UI.DataField',
@@ -1077,4 +1121,50 @@ annotate service.Earmark with @(
         ],
     },
 );
+
+annotate service.Contract with {
+    paymentMethod @(
+        Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'PaymentMethodSearchHelp',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : paymentMethod,
+                    ValueListProperty : 'code',
+                },
+            ],
+            Label : 'payment method',
+        },
+        Common.ValueListWithFixedValues : true,
+)};
+
+annotate service.PaymentMethodSearchHelp with {
+    code @(
+        Common.Text : name,
+        Common.Text.@UI.TextArrangement : #TextLast,
+)};
+
+annotate service.Contract with {
+    arBillingJob @(
+        Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'ARBillingJobSearchHelp',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : arBillingJob,
+                    ValueListProperty : 'jobCode',
+                },
+            ],
+            Label : 'AR ',
+        },
+        Common.ValueListWithFixedValues : true,
+)};
+
+annotate service.ARBillingJobSearchHelp with {
+    jobCode @(
+        Common.Text : longName,
+        Common.Text.@UI.TextArrangement : #TextLast,
+)};
 

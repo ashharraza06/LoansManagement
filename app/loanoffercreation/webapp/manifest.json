@@ -128,6 +128,11 @@
           "name": "Contract_contractToDisbursementObjectPage",
           "pattern": "Contract({key})/contractToDisbursement({contractToDisbursementKey}):?query:",
           "target": "Contract_contractToDisbursementObjectPage"
+        },
+        {
+          "name": "Contract_contractToPartnerObjectPage",
+          "pattern": "Contract({key})/contractToPartner({contractToPartnerKey}):?query:",
+          "target": "Contract_contractToPartnerObjectPage"
         }
       ],
       "targets": {
@@ -174,6 +179,11 @@
                   "detail": {
                     "route": "Contract_contractToDisbursementObjectPage"
                   }
+                },
+                "contractToPartner": {
+                  "detail": {
+                    "route": "Contract_contractToPartnerObjectPage"
+                  }
                 }
               },
               "sectionLayout": "Tabs",
@@ -211,18 +221,6 @@
                         "anchor": "Attachments"
                       },
                       "title": "Comments"
-                    },
-                    "Partners": {
-                      "subSections": {
-                        "Incomingpayment": {
-                          "template": "loanoffercreation.ext.fragment.Incomingpayment",
-                          "position": {
-                            "placement": "After",
-                            "anchor": "Partners1"
-                          },
-                          "title": "Incoming Payment"
-                        }
-                      }
                     }
                   }
                 },
@@ -273,31 +271,22 @@
                     "DataField::startRel": {
                       "width": "14%"
                     },
-                    "DataField::endRel": {
-                      "width": "14%"
-                    },
                     "DataField::partner": {
                       "width": "14%"
                     },
                     "DataField::bpRole": {
                       "width": "14%"
                     },
-                    "Selection": {
-                      "header": "Action",
-                      "width": "16%",
-                      "position": {
-                        "anchor": "DataField::endRel",
-                        "placement": "After"
-                      },
-                      "template": "loanoffercreation.ext.fragment.Selection"
+                    "DataField::endRel": {
+                      "width": "14%"
+                    },
+                    "DataField::bankDetailsID": {
+                      "width": "15%"
                     }
                   }
                 },
                 "contractToEarmark/@com.sap.vocabularies.UI.v1.LineItem#_": {
                   "columns": {
-                    "DataField::documentNumber": {
-                      "width": "12%"
-                    },
                     "DataField::loanCategory": {
                       "width": "9%"
                     },
@@ -328,24 +317,50 @@
                     "DataField::wbsElement": {
                       "width": "9%"
                     }
+                  },
+                  "actions": {
+                    "Release": {
+                      "press": "loanoffercreation.ext.controller.Release.Release",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Release"
+                    },
+                    "FMdocument": {
+                      "press": "loanoffercreation.ext.controller.FMDocument.FMDocument",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "FM Document",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "Release"
+                      }
+                    }
                   }
                 },
                 "contractToDisbursement/@com.sap.vocabularies.UI.v1.LineItem#Disbursements": {
                   "columns": {
-                    "DataField::bp": {
-                      "width": "20%"
-                    },
                     "DataField::text": {
-                      "width": "20%"
+                      "width": "10%"
                     },
                     "DataField::paymentDate": {
-                      "width": "20%"
+                      "width": "15%"
                     },
                     "DataField::disberseAmount": {
-                      "width": "20%"
+                      "width": "15%"
                     },
                     "DataField::effectiveDate": {
-                      "width": "20%"
+                      "width": "15%"
+                    },
+                    "DataField::paymentMethod": {
+                      "width": "15%"
+                    },
+                    "DataField::bankDetails": {
+                      "width": "15%"
+                    },
+                    "DataField::houseBank": {
+                      "width": "15%"
                     }
                   }
                 }
@@ -372,6 +387,17 @@
             "settings": {
               "navigation": {},
               "contextPath": "/Contract/contractToDisbursement"
+            }
+          }
+        },
+        "Contract_contractToPartnerObjectPage": {
+          "type": "Component",
+          "id": "Contract_contractToPartnerObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/Contract/contractToPartner"
             }
           }
         }
