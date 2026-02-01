@@ -1,0 +1,2 @@
+earmarkId,id,documentNumber,loanCategory,flowType,orginalAount,text,fund,budgetPd,glAccount,commitmetItem,fundCenter,functionalArea,bussinessArea,costCenter,"order",wbsElement,isCompleted
+e3333333-e29b-41d4-a716-446655440001,550e8400-e29b-41d4-a716-446655440002,10,WORKING_CAPITAL,DISB,1500000,Initial Earmark,FUND01,2024,400100,CI100,FC01,FA01,BA01,CC01,ORD01,WBS01,false

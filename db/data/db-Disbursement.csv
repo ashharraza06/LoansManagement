@@ -1,0 +1,2 @@
+disbursementId,id,text,disburseAmount,flowType,grossAmount,disbursementOblig,paymentDate,effectiveDate,bp,paymentMethod,bankDetails,houseBank
+d4444444-e29b-41d4-a716-446655440001,550e8400-e29b-41d4-a716-446655440002,Initial Disbursement,500000,DISB,500000,500000,2024-04-10,2024-04-10,BP10002,NEFT,HDFC01,HB01

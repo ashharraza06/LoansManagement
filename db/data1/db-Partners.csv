@@ -1,3 +1,0 @@
-partnerId,id,title,nameAddress,startRel,endRel,addressType,partner,bpRole,roleType,customer,bankDetailsID,dunningLetter,dunnChargesPyr,paymentMethod,payoffLock,arBillingJob,dunningIndicator,relevantIndicator
-9b2e8c3a-4c5e-4b6b-9f5e-9d2d8f5c1a11,550e8400-e29b-41d4-a716-446655440000,Mr,ABC Bank Ltd,2025-01-01,,OFFICE,BP1001,LENDER,PRIMARY,CUST1001,BANK001,Y,false,TRF,false,JOB01,false,true
-2c1a9b88-9f12-4d3f-bc5e-123456789abc,550e8400-e29b-41d4-a716-446655440000,Ms,XYZ Customer,2025-01-01,,HOME,BP2001,BORROWER,SECONDARY,CUST2001,BANK002,N,false,CASH,false,JOB01,false,true
