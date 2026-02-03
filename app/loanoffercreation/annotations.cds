@@ -933,11 +933,15 @@ annotate service.Disbursement with @(
         Data : [
             {
                 $Type : 'UI.DataField',
-                Value : disburseAmount,
+                Value : text,
             },
             {
                 $Type: 'UI.DataField',
-                Value: effectiveDate,
+                Value: paymentMethod,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : disburseAmount,
             },
             {
                 $Type: 'UI.DataField',
@@ -945,15 +949,20 @@ annotate service.Disbursement with @(
             },
             {
                 $Type: 'UI.DataField',
-                Value: grossAmount,
-            },
-            {
-                $Type: 'UI.DataField',
                 Value: paymentDate,
             },
             {
                 $Type: 'UI.DataField',
-                Value: bp,
+                Value: grossAmount,
+                @UI.Hidden,
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: houseBank,
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: effectiveDate,
             },
             {
                 $Type : 'UI.DataField',
@@ -961,11 +970,8 @@ annotate service.Disbursement with @(
             },
             {
                 $Type: 'UI.DataField',
-                Value: paymentMethod,
-            },
-            {
-                $Type: 'UI.DataField',
-                Value: houseBank,
+                Value: bp,
+                @UI.Hidden,
             },
         ],
     },
@@ -977,6 +983,10 @@ annotate service.Disbursement with @(
 
 annotate service.Earmark with @(
     UI.LineItem #_        : [
+        {
+            $Type : 'UI.DataField',
+            Value : documentNumber,
+        },
         {
             $Type: 'UI.DataField',
             Value: loanCategory,
@@ -1166,3 +1176,7 @@ annotate service.Earmark @(Common.SideEffects #categorytoflowtype: {
     TargetProperties: ['flowType'] // refresh this entity
 
 });
+annotate service.Earmark with {
+    documentNumber @Common.FieldControl : #ReadOnly
+};
+

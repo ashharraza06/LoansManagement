@@ -294,16 +294,16 @@
                       "width": "12%"
                     },
                     "DataField::orginalAount": {
-                      "width": "12%"
+                      "width": "10%"
                     },
                     "DataField::fund": {
-                      "width": "12%"
+                      "width": "10%"
                     },
                     "DataField::budgetPd": {
-                      "width": "12%"
+                      "width": "10%"
                     },
                     "DataField::glAccount": {
-                      "width": "12%"
+                      "width": "10%"
                     },
                     "DataField::costCenter": {
                       "width": "9%"
@@ -315,7 +315,10 @@
                       "width": "9%"
                     },
                     "DataField::flowType": {
-                      "width": "14%"
+                      "width": "12%"
+                    },
+                    "DataField::documentNumber": {
+                      "width": "10%"
                     }
                   },
                   "actions": {
@@ -358,6 +361,15 @@
                     },
                     "DataField::houseBank": {
                       "width": "15%"
+                    }
+                  },
+                  "actions": {
+                    "Releasedisbursement": {
+                      "press": "loanoffercreation.ext.controller.Releasedisbursement.Releasedisbursement",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Release"
                     }
                   }
                 }

@@ -1,2 +1,0 @@
-sap.ui.define(["sap/ui/core/mvc/ControllerExtension"],function(e){"use strict";return e.extend("loanoffercreation.ext.controller.Contractobjpage",{override:{onInit:function(){var e=this.base.getExtensionAPI().getModel();debugger}}})});
-//# sourceMappingURL=Contractobjpage.controller.js.map

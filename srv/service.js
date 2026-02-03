@@ -13,10 +13,11 @@ module.exports = cds.service.impl(async function () {
                     flowType: data[0].flowtype
                 })
                 .where({ earmarkId: req.data.earmarkId });
-            return next();
+
 
 
         }
+        return next();
     }),
         this.after('CREATE', 'Contract.drafts', async (req, data) => {
             debugger
@@ -33,5 +34,11 @@ module.exports = cds.service.impl(async function () {
                 });
             }
 
+        }),
+        this.before('CREATE', 'Earmark.drafts', async (req, next) => {
+            req.data.documentNumber =
+                Math.floor(10 + Math.random() * 990);
+
         })
+
 })
