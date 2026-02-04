@@ -11,6 +11,84 @@ sap.ui.define([
     "use strict";
 
 
+    function setWidth() {
+
+        const mTables = {
+            // partner: {
+            //     id: "loanoffercreation::ContractObjectPage--fe::table::contractToPartner::LineItem::Partners-innerTable",
+            //     widths: ["8rem", "10rem", "8rem", "8rem", "6rem", "8rem", "8rem"]
+            // },
+
+            earmark: {
+                id: "loanoffercreation::ContractObjectPage--fe::table::contractToEarmark::LineItem::_-innerTable",
+                widths: [
+                    "6rem",
+                    "15rem",
+                    "4rem",
+                    "8rem",
+                    "8rem",
+                    "5rem",
+                    "7rem",
+                    "8rem",
+                    "8rem"
+                ],
+                forceFixed: true   // ⭐ grid fix
+            },
+
+            // disbursement: {
+            //     id: "loanoffercreation::ContractObjectPage--fe::table::contractToDisbursement::LineItem::Disbursements-innerTable",
+            //     widths: ["6rem", "10rem", "10rem", "10rem", "10rem", "10rem", "10rem"]
+            // },
+
+            // condition: {
+            //     id: "loanoffercreation::ContractObjectPage--fe::table::contractToCondition::LineItem::ConditionItems-innerTable",
+            //     widths: [
+            //         "12.5rem", "8.2rem", "5.5rem", "7rem",
+            //         "19rem", "9.5rem", "8.2rem", "8.2rem"
+            //     ]
+            // }
+        };
+
+        Object.values(mTables).forEach(cfg => {
+
+            const oTable = sap.ui.getCore().byId(cfg.id);
+            if (!oTable || !oTable.getColumns) return;
+
+            oTable.setWidth("100%");
+
+            // ⭐ REQUIRED for GRID table (earmark)
+            if (cfg.forceFixed) {
+                const dom = oTable.getDomRef();
+                if (dom) dom.style.tableLayout = "fixed";
+            }
+
+            const aBizCols = oTable.getColumns().filter(c =>
+                c.getId().includes("::C::")
+            );
+
+            aBizCols.forEach((c, i) => {
+                if (cfg.widths[i]) {
+                    c.setWidth(cfg.widths[i]); // only this for grid
+                }
+            });
+        });
+    }
+    function sortEarmarkTable() {
+
+        const oTable = sap.ui.getCore().byId(
+            "loanoffercreation::ContractObjectPage--fe::table::contractToEarmark::LineItem::_-innerTable"
+        );
+
+        if (!oTable) return;
+
+        const oBinding = oTable.getBinding("rows");
+        if (!oBinding) return;
+
+        oBinding.sort([
+            new sap.ui.model.Sorter("documentNumber", false) // false = ASC
+        ]);
+    }
+
 
     return ControllerExtension.extend("loanoffercreation.ext.controller.Contractobj", {
 
@@ -64,7 +142,14 @@ sap.ui.define([
 
                     this._formatDisplayDates();
 
+
                     debugger;
+                    setTimeout(setWidth, 500);
+                    setTimeout(() => {
+                        sortEarmarkTable();
+                    }, 300);
+
+
 
 
 
@@ -74,8 +159,8 @@ sap.ui.define([
 
                         "loanoffercreation::ContractObjectPage--fe::table::contractToCondition::LineItem::ConditionItems-innerTable",
 
-                        "loanoffercreation::ContractObjectPage--fe::table::contractToDisbursement::LineItem::Disbursements-innerTable"
-
+                        "loanoffercreation::ContractObjectPage--fe::table::contractToDisbursement::LineItem::Disbursements-innerTable",
+                        // "loanoffercreation::ContractObjectPage--fe::table::contractToEarmark::LineItem::Earmark"
                     ];
 
 
@@ -488,7 +573,14 @@ sap.ui.define([
 
         //     oAnchorBar.addEventListener("click", () => {
 
-        //         // this._formatAllFacetTables();
+        //         setTimeout(() => {
+
+        //             sortTable(
+        //                 "loanoffercreation::ContractObjectPage--fe::table::contractToEarmark::LineItem::_-innerTable",
+        //                 0   // 👈 column index to sort by (change if needed)
+        //             );
+
+        //         }, 600);
 
         //         console.log("Anchor Pressed");
 

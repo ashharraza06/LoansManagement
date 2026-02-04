@@ -232,7 +232,7 @@ entity AmortizationStatusSearchHelp {
 entity Earmark {
     key earmarkId         : UUID;
         id                : UUID;
-        documentNumber    : String @Common.Label: 'Document Line Number';
+        documentNumber    : Integer @Common.Label: 'Document Line Number';
         loanCategory      : String  @Common.Label: 'Loan Category';
         flowType          : String  @Common.Label: 'Flow Type';
         orginalAount      : String  @Common.Label: 'Original Amount';

@@ -998,6 +998,10 @@ annotate service.Earmark with @(
             Value : text,
         },
         {
+            $Type : 'UI.DataField',
+            Value : isCompleted,
+        },
+        {
             $Type: 'UI.DataField',
             Value: fund,
         },
@@ -1008,10 +1012,6 @@ annotate service.Earmark with @(
         {
             $Type: 'UI.DataField',
             Value: glAccount,
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : isCompleted,
         },
     ],
     UI.Facets             : [{
@@ -1089,6 +1089,44 @@ annotate service.Earmark with @(
         TypeName : '',
         TypeNamePlural : '',
     },
+    UI.LineItem #EarmarkFundDocument : [
+        {
+            $Type : 'UI.DataField',
+            Value : documentNumber,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : loanCategory,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : flowType,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : orginalAount,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : text,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : isCompleted,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : fund,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : budgetPd,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : glAccount,
+        },
+    ],
 );
 
 annotate service.Contract with {
@@ -1162,6 +1200,7 @@ annotate service.Earmark @(Common.SideEffects #categorytoflowtype: {
 annotate service.Earmark with {
     documentNumber @Common.FieldControl : #ReadOnly
 };
+
 
 annotate service.ConditionItemsNew with {
     paymentFromExactDay @(

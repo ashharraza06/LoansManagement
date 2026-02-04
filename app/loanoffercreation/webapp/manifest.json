@@ -317,7 +317,7 @@
                       "width": "8%"
                     },
                     "Pretend": {
-                      "header": "Select Account Coding",
+                      "header": "Account Coding",
                       "width": "10%",
                       "position": {
                         "anchor": "DataField::isCompleted",
@@ -326,7 +326,7 @@
                       "template": "loanoffercreation.ext.fragment.Pretend"
                     },
                     "DataField::isCompleted": {
-                      "width": "10%"
+                      "width": "5%"
                     }
                   },
                   "actions": {
@@ -348,6 +348,10 @@
                         "anchor": "Release"
                       }
                     }
+                  },
+                  "tableSettings": {
+                    "widthIncludingColumnHeader": true,
+                    "type": "GridTable"
                   }
                 },
                 "contractToDisbursement/@com.sap.vocabularies.UI.v1.LineItem#Disbursements": {
@@ -379,6 +383,50 @@
                       "requiresSelection": false,
                       "text": "Release"
                     }
+                  }
+                },
+                "contractToEarmark/@com.sap.vocabularies.UI.v1.LineItem#EarmarkFundDocument": {
+                  "columns": {
+                    "Pretend": {
+                      "header": "Select Account Coding ",
+                      "width": "11%",
+                      "position": {
+                        "anchor": "DataField::isCompleted",
+                        "placement": "After"
+                      },
+                      "template": "loanoffercreation.ext.fragment.Pretend"
+                    },
+                    "DataField::documentNumber": {
+                      "width": "7%"
+                    },
+                    "DataField::flowType": {
+                      "width": "7%"
+                    },
+                    "DataField::orginalAount": {
+                      "width": "10%"
+                    },
+                    "DataField::text": {
+                      "width": "8%"
+                    },
+                    "DataField::isCompleted": {
+                      "width": "10%"
+                    },
+                    "DataField::fund": {
+                      "width": "10%"
+                    },
+                    "DataField::budgetPd": {
+                      "width": "9%"
+                    },
+                    "DataField::glAccount": {
+                      "width": "10%"
+                    },
+                    "DataField::loanCategory": {
+                      "width": "18%"
+                    }
+                  },
+                  "tableSettings": {
+                    "condensedTableLayout": false,
+                    "type": "GridTable"
                   }
                 }
               }

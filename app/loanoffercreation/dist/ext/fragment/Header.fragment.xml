@@ -9,7 +9,7 @@
     class="headerHBox">
  
     <VBox class="headerItem">
-        <Label text="Loan" design="Bold"/>
+        <Label text="Loan Number" design="Bold"/>
         <Text text="{loanNumber}"/>
     </VBox>
  
