@@ -19,6 +19,8 @@ service MyService {
     entity ARBillingJobSearchHelp         as projection on db.ARBillingJobSearchHelp;
     entity AmortizationStatusSearchHelp   as projection on db.AmortizationStatusSearchHelp;
     entity loanCategorySearchHelp         as projection on db.loanCategorySearchHelp;
+    entity paymentFromExactDaySearchHelp         as projection on db.paymentFromExactDaySearchHelp;
+
 
 
 }

@@ -126,18 +126,12 @@ annotate service.Contract with @(
             $Type : 'UI.CollectionFacet',
             Label : 'Tracking',
             ID    : 'Tracking',
-            Facets: [
-                {
-                    $Type : 'UI.CollectionFacet',
-                    Label : 'Application/Approval',
-                    ID    : 'BasicData',
-                    Facets: [{
-                        $Type : 'UI.ReferenceFacet',
-                        Label : 'Application/Approval',
-                        ID    : 'ApplicationApproval',
-                        Target: '@UI.FieldGroup#ApplicationApproval',
-                    }, ],
-                },
+            Facets: [{
+                $Type : 'UI.ReferenceFacet',
+                Label : 'Application/Approval',
+                ID    : 'ApplicationApproval',
+                Target: '@UI.FieldGroup#ApplicationApproval',
+            },
                 {
                     $Type : 'UI.CollectionFacet',
                     Label : 'Offer/Accept',
@@ -1000,6 +994,10 @@ annotate service.Earmark with @(
             Value: orginalAount,
         },
         {
+            $Type : 'UI.DataField',
+            Value : text,
+        },
+        {
             $Type: 'UI.DataField',
             Value: fund,
         },
@@ -1012,23 +1010,8 @@ annotate service.Earmark with @(
             Value: glAccount,
         },
         {
-            $Type: 'UI.DataField',
-            Value: costCenter,
-            @UI.Hidden,
-        },
-        {
-            $Type: 'UI.DataField',
-            Value: order,
-            @UI.Hidden,
-        },
-        {
-            $Type: 'UI.DataField',
-            Value: wbsElement,
-            @UI.Hidden,
-        },
-        {
-            $Type: 'UI.DataField',
-            Value: isCompleted,
+            $Type : 'UI.DataField',
+            Value : isCompleted,
         },
     ],
     UI.Facets             : [{
@@ -1046,19 +1029,31 @@ annotate service.Earmark with @(
             },
             {
                 $Type: 'UI.DataField',
-                Value: loanCategory,
-            },
-            {
-                $Type: 'UI.DataField',
-                Value: orginalAount,
-            },
-            {
-                $Type: 'UI.DataField',
                 Value: text,
             },
             {
                 $Type: 'UI.DataField',
+                Value: costCenter,
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: fundCenter,
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: loanCategory,
+            },
+            {
+                $Type: 'UI.DataField',
                 Value: fund,
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: order,
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: functionalArea,
             },
             {
                 $Type : 'UI.DataField',
@@ -1070,19 +1065,7 @@ annotate service.Earmark with @(
             },
             {
                 $Type: 'UI.DataField',
-                Value: glAccount,
-            },
-            {
-                $Type: 'UI.DataField',
-                Value: commitmetItem,
-            },
-            {
-                $Type: 'UI.DataField',
-                Value: fundCenter,
-            },
-            {
-                $Type: 'UI.DataField',
-                Value: functionalArea,
+                Value: wbsElement,
             },
             {
                 $Type: 'UI.DataField',
@@ -1090,15 +1073,15 @@ annotate service.Earmark with @(
             },
             {
                 $Type: 'UI.DataField',
-                Value: costCenter,
+                Value: orginalAount,
             },
             {
                 $Type: 'UI.DataField',
-                Value: order,
+                Value: glAccount,
             },
             {
                 $Type: 'UI.DataField',
-                Value: wbsElement,
+                Value: commitmetItem,
             },
         ],
     },
@@ -1179,4 +1162,21 @@ annotate service.Earmark @(Common.SideEffects #categorytoflowtype: {
 annotate service.Earmark with {
     documentNumber @Common.FieldControl : #ReadOnly
 };
+
+annotate service.ConditionItemsNew with {
+    paymentFromExactDay @(
+        Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'paymentFromExactDaySearchHelp',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : paymentFromExactDay,
+                    ValueListProperty : 'value',
+                },
+            ],
+            Label : 'searchhelp',
+        },
+        Common.ValueListWithFixedValues : true,
+)};
 

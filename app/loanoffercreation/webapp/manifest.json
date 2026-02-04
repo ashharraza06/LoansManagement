@@ -248,6 +248,11 @@
                       "requiresSelection": false,
                       "text": "Rate"
                     }
+                  },
+                  "columns": {
+                    "DataField::paymentFromExactDay": {
+                      "width": "20%"
+                    }
                   }
                 },
                 "@com.sap.vocabularies.UI.v1.FieldGroup#_": {
@@ -288,10 +293,7 @@
                 "contractToEarmark/@com.sap.vocabularies.UI.v1.LineItem#_": {
                   "columns": {
                     "DataField::loanCategory": {
-                      "width": "26%"
-                    },
-                    "DataField::isCompleted": {
-                      "width": "12%"
+                      "width": "15%"
                     },
                     "DataField::orginalAount": {
                       "width": "10%"
@@ -303,21 +305,27 @@
                       "width": "10%"
                     },
                     "DataField::glAccount": {
-                      "width": "10%"
-                    },
-                    "DataField::costCenter": {
-                      "width": "9%"
-                    },
-                    "DataField::order": {
-                      "width": "9%"
-                    },
-                    "DataField::wbsElement": {
-                      "width": "9%"
+                      "width": "6%"
                     },
                     "DataField::flowType": {
-                      "width": "12%"
+                      "width": "7%"
                     },
                     "DataField::documentNumber": {
+                      "width": "7%"
+                    },
+                    "DataField::text": {
+                      "width": "8%"
+                    },
+                    "Pretend": {
+                      "header": "Select Account Coding",
+                      "width": "10%",
+                      "position": {
+                        "anchor": "DataField::isCompleted",
+                        "placement": "After"
+                      },
+                      "template": "loanoffercreation.ext.fragment.Pretend"
+                    },
+                    "DataField::isCompleted": {
                       "width": "10%"
                     }
                   },

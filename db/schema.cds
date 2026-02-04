@@ -16,8 +16,8 @@ entity Contract : managed {
     key loanNumber             : String  @mandatory  @Common.Label: 'Loan Number';
     key productType            : String  @mandatory  @Common.Label: 'Agency';
     key loanType               : String  @mandatory  @Common.Label: 'Loan Type';
-    key bpNumber            : String  @mandatory  @Common.Label: 'BP Number';
-    // key loanPartnerName        : String  @mandatory  @Common.Label: 'Loan Partner Name';
+    key bpNumber               : String  @mandatory  @Common.Label: 'BP Number';
+        // key loanPartnerName        : String  @mandatory  @Common.Label: 'Loan Partner Name';
 
 
         status                 : String;
@@ -138,7 +138,7 @@ entity ConditionItemsNew : managed {
         effectiveFrom       : Date;
         percentage          : String(4);
         conditionAmt        : String(15);
-        paymentFromExactDay : String(20);
+        paymentFromExactDay : String;
         frequencyInMonths   : String(4);
         dueDate             : Date;
         calculationDate     : Date;
@@ -232,7 +232,7 @@ entity AmortizationStatusSearchHelp {
 entity Earmark {
     key earmarkId         : UUID;
         id                : UUID;
-        documentNumber    : Integer @Common.Label: 'Document Line Number';
+        documentNumber    : String @Common.Label: 'Document Line Number';
         loanCategory      : String  @Common.Label: 'Loan Category';
         flowType          : String  @Common.Label: 'Flow Type';
         orginalAount      : String  @Common.Label: 'Original Amount';
@@ -254,23 +254,49 @@ entity Earmark {
 entity Disbursement {
     key disbursementId         : UUID;
         id                     : UUID;
-        text                   : String   @Common.Label: 'Line Item';
-        disburseAmount         : String   @Common.Label: 'New Disburse Amount';
-        flowType               : String   @Common.Label: 'Flow Type';
-        grossAmount            : String   @Common.Label: 'Gross Amount'     default '0000'    @readonly;
-        disbursementOblig      : String  @Common.Label: 'Disbursement Oblig.' default '  '  @readonly;
-        paymentDate            : Date     @Common.Label: 'Payment Date';
-        effectiveDate          : Date     @Common.Label: 'Effective Date';
-        bp                     : String   @Common.Label: 'BP';
-        paymentMethod          : String   @Common.Label: 'Payment Method';
-        bankDetails            : String   @Common.Label: 'Bank Details';
-        houseBank              : String   @Common.Label: 'House Bank';
+        text                   : String  @Common.Label: 'Line Item';
+        disburseAmount         : String  @Common.Label: 'New Disburse Amount';
+        flowType               : String  @Common.Label: 'Flow Type';
+        grossAmount            : String  @Common.Label: 'Gross Amount'  default '0000'       @readonly;
+        disbursementOblig      : String  @Common.Label: 'Disbursement Oblig.'  default '  '  @readonly;
+        paymentDate            : Date    @Common.Label: 'Payment Date';
+        effectiveDate          : Date    @Common.Label: 'Effective Date';
+        bp                     : String  @Common.Label: 'BP';
+        paymentMethod          : String  @Common.Label: 'Payment Method';
+        bankDetails            : String  @Common.Label: 'Bank Details';
+        houseBank              : String  @Common.Label: 'House Bank';
         disbursementToContract : Association to Contract;
 }
+
+// entity WorkflowHistory : managed {
+//         contractID                     : UUID;
+//     key level                          : Int16;
+//     key EmployeeID                     : String;
+//         EmployeeName                   : String;
+//         Status                         : String;
+//         ApprovedBy                     : String;
+//         DaysTaken                      : String;
+//         BeginDateAndTime               : String;
+//         EndDateAndTime                 : String;
+//         //workflow History//
+
+
+//         // Title                  : String;
+//         // NotificationStatus     : String;
+//         // Remarks                : String;
+
+//         NfaWorkflowHistoryToNfaDetails : Association to one NfaDetails
+//                                              on NfaWorkflowHistoryToNfaDetails.NfaNumber = NfaNumber;
+// }
 
 entity loanCategorySearchHelp {
 
     key category : String;
         flowtype : String;
 
+}
+entity paymentFromExactDaySearchHelp{
+    key ID          : UUID;
+        value       : String;
+        description : String;
 }

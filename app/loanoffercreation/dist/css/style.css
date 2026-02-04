@@ -22,10 +22,7 @@
     /* consistent column width */
 }
 
-#__title2,
-#__title8,
-#__title9,
-#__title8 {
+#loanoffercreation\:\:ContractObjectPage--fe\:\:FormContainer\:\:_>.sapUiFormTitleH5{
     display: none;
 }
 

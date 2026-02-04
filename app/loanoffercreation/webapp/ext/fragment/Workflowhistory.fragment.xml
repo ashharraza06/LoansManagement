@@ -4,7 +4,7 @@
 	</VBox>
 </core:FragmentDefinition> -->
 
-<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:macros="sap.fe.macros">
+<!-- <core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:macros="sap.fe.macros">
 	<VBox core:require="{ handler: 'loanoffercreation/ext/fragment/Workflowhistory'}">
 		<Table  id="sampleTable" 
              items="{
@@ -45,4 +45,73 @@
                    </items>
                 </Table>
 	</VBox>
+</core:FragmentDefinition> -->
+
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:macros="sap.fe.macros">
+
+    <VBox>
+
+        <Table id="sampleTable">
+
+            <!-- Columns -->
+            <columns>
+                <Column>
+                    <Text text="Employee Name"/>
+                </Column>
+                <Column>
+                    <Text text="Employee ID"/>
+                </Column>
+                <Column>
+                    <Text text="Status"/>
+                </Column>
+                <Column>
+                    <Text text="Approved By"/>
+                </Column>
+                <Column>
+                    <Text text="Days Taken"/>
+                </Column>
+            </columns>
+
+            <!-- Hardcoded Rows -->
+            <items>
+
+                <ColumnListItem vAlign="Middle">
+                    <cells>
+                        <Text text="Rahul Sharma"/>
+                        <Text text="EMP001"/>
+                        <Text text="Approved"/>
+                        <Text text="Manager A"/>
+                        <Text text="2"/>
+                    </cells>
+                </ColumnListItem>
+
+                <ColumnListItem vAlign="Middle">
+                    <cells>
+                        <Text text="Anita Verma"/>
+                        <Text text="EMP002"/>
+                        <Text text="Pending"/>
+                        <Text text="Manager B"/>
+                        <Text text="4"/>
+                    </cells>
+                </ColumnListItem>
+
+                <ColumnListItem vAlign="Middle">
+                    <cells>
+                        <Text text="Suresh Kumar"/>
+                        <Text text="EMP003"/>
+                        <Text text="Rejected"/>
+                        <Text text="Manager C"/>
+                        <Text text="1"/>
+                    </cells>
+                </ColumnListItem>
+
+            </items>
+
+        </Table>
+
+    </VBox>
+
 </core:FragmentDefinition>

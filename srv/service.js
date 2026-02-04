@@ -1,7 +1,7 @@
 const cds = require('@sap/cds');
 
 module.exports = cds.service.impl(async function () {
-    let { loanCategorySearchHelp, Earmark, Partners } = this.entities
+    let { loanCategorySearchHelp, Earmark, Partners, Contract } = this.entities
     this.on('UPDATE', 'Earmark.drafts', async (req, next) => {
         debugger
         var category = req.data.loanCategory;
@@ -35,10 +35,19 @@ module.exports = cds.service.impl(async function () {
             }
 
         }),
-        this.before('CREATE', 'Earmark.drafts', async (req, next) => {
-            req.data.documentNumber =
-                Math.floor(10 + Math.random() * 990);
+        this.before('CREATE', 'Earmark.drafts', async (req) => {
+            debugger;
+            var Earmarkdetails = await SELECT.from(Earmark.drafts).where({ id: req.data.id });
+            // let maxNumber = 1000;
+            const maxDocNumber = Earmarkdetails.reduce((max, e) => {
+                const num = Number(e.documentNumber); // convert string → number
+                return num > max ? num : max;
+            }, 0); // start from 1000 so first becomes 1001
 
-        })
+            req.data.documentNumber = maxDocNumber + 1;
+
+            // const num = Math.floor(Math.random() * 10000);
+            // req.data.documentNumber = num.toString().padStart(4, "0");
+        });
 
 })
