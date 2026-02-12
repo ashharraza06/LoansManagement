@@ -40,13 +40,13 @@ sap.ui.define([
             //     widths: ["6rem", "10rem", "10rem", "10rem", "10rem", "10rem", "10rem"]
             // },
 
-            // condition: {
-            //     id: "loanoffercreation::ContractObjectPage--fe::table::contractToCondition::LineItem::ConditionItems-innerTable",
-            //     widths: [
-            //         "12.5rem", "8.2rem", "5.5rem", "7rem",
-            //         "19rem", "9.5rem", "8.2rem", "8.2rem"
-            //     ]
-            // }
+            condition: {
+                id: "loanoffercreation::ContractObjectPage--fe::table::contractToCondition::LineItem::ConditionItems-innerTable",
+                widths: [
+                    "7rem", "8rem", "5rem", "7rem",
+                    "14rem", "8rem", "8.2rem", "8.2rem","7rem"
+                ]
+            }
         };
 
         Object.values(mTables).forEach(cfg => {

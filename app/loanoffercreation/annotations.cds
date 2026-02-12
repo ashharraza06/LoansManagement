@@ -139,15 +139,9 @@ annotate service.Contract with @(
                     Facets: [
                         {
                             $Type : 'UI.ReferenceFacet',
-                            Label : 'Offer',
+                            Label : '            ',
                             ID    : 'Offer',
                             Target: '@UI.FieldGroup#Offer',
-                        },
-                        {
-                            $Type : 'UI.ReferenceFacet',
-                            Label : 'Acceptance',
-                            ID    : 'Acceptance',
-                            Target: '@UI.FieldGroup#Acceptance',
                         },
                     ],
                 },
@@ -158,6 +152,7 @@ annotate service.Contract with @(
                     Target: '@UI.FieldGroup#Contract',
                 },
             ],
+            @UI.Hidden,
         },
         {
             $Type : 'UI.CollectionFacet',
@@ -166,9 +161,27 @@ annotate service.Contract with @(
             Facets: [
                 {
                     $Type : 'UI.ReferenceFacet',
-                    Label : 'Basic Data',
+                    Label : 'Loan Data',
                     ID    : '_1',
                     Target: '@UI.FieldGroup#_1',
+                },
+                {
+                    $Type : 'UI.ReferenceFacet',
+                    Label : 'Reference Data',
+                    ID : 'Form',
+                    Target : '@UI.FieldGroup#Form',
+                },
+                {
+                    $Type : 'UI.ReferenceFacet',
+                    Label : 'Application/Approval',
+                    ID : 'ApplicationApproval1',
+                    Target : '@UI.FieldGroup#ApplicationApproval1',
+                },
+                {
+                    $Type : 'UI.ReferenceFacet',
+                    Label : 'Offer/Accept',
+                    ID : 'OfferAccept1',
+                    Target : '@UI.FieldGroup#OfferAccept',
                 },
                 {
                     $Type : 'UI.CollectionFacet',
@@ -180,6 +193,7 @@ annotate service.Contract with @(
                         ID    : 'Information',
                         Target: '@UI.FieldGroup#Information',
                     }, ],
+                    @UI.Hidden,
                 },
                 {
                     $Type : 'UI.CollectionFacet',
@@ -191,25 +205,7 @@ annotate service.Contract with @(
                         ID    : 'AgentData',
                         Target: '@UI.FieldGroup#AgentData',
                     }, ],
-                },
-                {
-                    $Type : 'UI.CollectionFacet',
-                    Label : 'Reference Data',
-                    ID    : 'ReferenceData',
-                    Facets: [
-                        {
-                            $Type : 'UI.ReferenceFacet',
-                            Label : 'Other References',
-                            ID    : 'OtherReferences',
-                            Target: '@UI.FieldGroup#OtherReferences',
-                        },
-                        {
-                            $Type : 'UI.ReferenceFacet',
-                            Label : 'Group Key',
-                            ID    : 'Group',
-                            Target: '@UI.FieldGroup#Group',
-                        },
-                    ],
+                    @UI.Hidden,
                 },
             ],
         },
@@ -220,7 +216,7 @@ annotate service.Contract with @(
             Facets: [
                 {
                     $Type : 'UI.CollectionFacet',
-                    Label : 'Conditions',
+                    Label : 'CAPITAL AMOUNTS',
                     ID    : 'Conditions',
                     Facets: [{
                         $Type : 'UI.ReferenceFacet',
@@ -231,7 +227,7 @@ annotate service.Contract with @(
                 },
                 {
                     $Type : 'UI.ReferenceFacet',
-                    Label : 'Term/Fixed Period',
+                    Label : 'Loan Amortization Information',
                     ID    : 'TermFixedPeriod',
                     Target: '@UI.FieldGroup#TermFixedPeriod',
                 },
@@ -246,6 +242,7 @@ annotate service.Contract with @(
                     Label : 'Notice',
                     ID    : 'Notice',
                     Target: '@UI.FieldGroup#Notice',
+                    @UI.Hidden,
                 },
                 {
                     $Type : 'UI.ReferenceFacet',
@@ -430,8 +427,12 @@ annotate service.Contract with @(
         Data : [{
             $Type: 'UI.DataField',
             Value: commitCapital,
-            Label: 'Commit Capital',
-        }, ],
+            Label: 'Current Commitment Capital',
+        },
+            {
+                $Type : 'UI.DataField',
+                Value : outstandLoanBalance,
+            }, ],
     },
     UI.FieldGroup #TermFixedPeriod    : {
         $Type: 'UI.FieldGroupType',
@@ -439,17 +440,32 @@ annotate service.Contract with @(
             {
                 $Type: 'UI.DataField',
                 Value: fixedFrom,
-                Label: 'Fixed From',
+                Label: 'Amortization Start',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : maturityDate,
+                Label : 'Maturity Date',
             },
             {
                 $Type: 'UI.DataField',
                 Value: fixedUntil,
-                Label: 'Fixed Until',
+                Label: 'Amortization End',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : amortizationStatus,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : amtzDate,
+                Label : 'Amortization Date',
             },
             {
                 $Type: 'UI.DataField',
                 Value: include,
                 Label: 'Inclusive Indicator',
+                @UI.Hidden,
             },
         ],
     },
@@ -459,7 +475,15 @@ annotate service.Contract with @(
             $Type: 'UI.DataField',
             Value: intCalMt,
             Label: 'Int.Cal.Mt',
-        }, ],
+        },
+            {
+                $Type : 'UI.DataField',
+                Value : intresetRateResetType,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : intresetRateResetDate,
+            }, ],
     },
     UI.FieldGroup #Offer              : {
         $Type: 'UI.FieldGroupType',
@@ -470,9 +494,9 @@ annotate service.Contract with @(
                 Label: 'Offer On',
             },
             {
-                $Type: 'UI.DataField',
-                Value: offerUntil,
-                Label: 'Offer Until',
+                $Type : 'UI.DataField',
+                Value : acceptedOn,
+                Label : 'Accepted On',
             },
         ],
     },
@@ -497,17 +521,12 @@ annotate service.Contract with @(
             {
                 $Type: 'UI.DataField',
                 Value: contractOn,
-                Label: 'Contract On',
+                Label: 'Loan Close Date',
             },
             {
                 $Type: 'UI.DataField',
                 Value: amtzDate,
                 Label: 'Amortization Date',
-            },
-            {
-                $Type: 'UI.DataField',
-                Value: maturityDate,
-                Label: 'Maturity Date',
             },
             {
                 $Type: 'UI.DataField',
@@ -559,9 +578,22 @@ annotate service.Contract with @(
                 Value: loanType,
             },
             {
+                $Type : 'UI.DataField',
+                Value : designation,
+                Label : 'Designation',
+            },
+            {
                 $Type: 'UI.DataField',
                 Value: productType,
                 Label: 'Agency',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : pledgedStatus,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : loanPurpose,
             },
         ],
     },
@@ -627,6 +659,77 @@ annotate service.Contract with @(
             },
         ],
     },
+    UI.FieldGroup #Form : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : country,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : legacyNumber,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : orgDistrict,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : projectNumber,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : agentDistrict,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : primaryIndustryCode,
+            },
+        ],
+    },
+    UI.FieldGroup #ApplicationApproval1 : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : applicationCapital,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : applicationDate,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : approvalDate,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : commitmentDate,
+            },
+        ],
+    },
+    UI.FieldGroup #OfferAccept : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : offerOn,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : acceptedOn,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : contractOn,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : datePaidOff,
+            },
+        ],
+    },
 );
 
 annotate service.ConditionItemsNew with @(UI.LineItem #ConditionItems: [
@@ -669,6 +772,11 @@ annotate service.ConditionItemsNew with @(UI.LineItem #ConditionItems: [
         $Type: 'UI.DataField',
         Value: calculationDate,
         Label: 'Calculation Date',
+    },
+    {
+        $Type : 'UI.DataField',
+        Value : endCondition,
+        Label : 'End Condition',
     },
 ]);
 
@@ -1218,4 +1326,11 @@ annotate service.ConditionItemsNew with {
         },
         Common.ValueListWithFixedValues : true,
 )};
+
+annotate service.paymentFromExactDaySearchHelp with {
+    value @(
+        Common.Text : description,
+        Common.Text.@UI.TextArrangement : #TextLast,
+    )
+};
 

@@ -33,65 +33,66 @@ entity Contract : managed {
         // //classification
         // loanTypeBD          : String(3);
         // Application/approval
-        applicationDate        : Date;
-        applicationCapital     : Decimal(15, 2);
-        approvalDate           : Date;
-        commitmentDate         : Date;
+        applicationDate        : Date @Common.Label :'Application Date';
+        applicationCapital     : Decimal(15, 2) @Common.Label :'Application Capital';
+        approvalDate           : Date @Common.Label :'Approval Date';
+        commitmentDate         : Date @Common.Label :'Commitment Date';
 
         /* ---------- Analysis Data ---------- */
         // Information
-        loanPurpose            : String;
+        loanPurpose            : String @Common.Label :'Purpose of Loan';
         // arBillingJob           : String;
         amortizationStatus     : String  @Common.Label: 'Amortization Status';
 
         /* ---------- Organization ---------- */
         // agentdata
-        country                : String;
-        orgDistrict            : String;
-        agentDistrict          : String;
+        country                : String @Common.Label :'County';
+        orgDistrict            : String @Common.Label :'Organiz.District';
+        agentDistrict          : String @Common.Label :'Agent District';
 
         /* ---------- Reference Data ---------- */
         // groupkey
-        primaryIndustryCode    : String;
+        primaryIndustryCode    : String @Common.Label :'Primary Industry';
         // other references
-        legacyNumber           : String;
-        projectNumber          : String;
+        legacyNumber           : String @Common.Label :'Legacy Number';
+        projectNumber          : String @Common.Label :'Project Number';
 
 
         //conditions
-        commitCapital          : String  @mandatory;
+        commitCapital          : String  @mandatory @Common.Label :'Current Commitment Capital';
+        outstandLoanBalance    : String @Common.Label :'Outstanding Loan Balance';
         repaymentType          : String;
 
         //term/fixed Period
-        fixedFrom              : Date    @mandatory;
-        fixedUntil             : Date    @mandatory;
+        fixedFrom              : Date    @mandatory @Common.Label :'Amortization Start';
+        fixedUntil             : Date    @mandatory @Common.Label :'Amortization End';
         include                : Boolean;
 
         //PENNVEST
-        designation            : String;
-        pledgedStatus          : String;
-        datePaidOff            : Date;
+        designation            : String @Common.Label : Designation;
+        pledgedStatus          : String @Common.Label : 'Pledged Status';
+        datePaidOff            : Date @Common.Label : 'Date Paid Off';
 
         //Comments Tab From Data
 
         //Offer
-        offerOn                : Date;
-        offerUntil             : Date;
+        offerOn                : Date @Common.Label : 'Offer On';
+        offerUntil             : Date @Common.Label : 'Offer Until';
         reservedOn             : Date;
         reservedUntil          : Date;
 
         //Acceptance
         acceptance             : Boolean;
-        acceptedOn             : Date;
+        acceptedOn             : Date @Common.Label : 'Accepted On';
         acceptancedType        : Integer;
         reservation            : Integer;
 
         //Contract/Eff.int
 
         contract               : String;
-        contractOn             : Date;
-        amtzDate               : Date;
-        maturityDate           : Date;
+        contractOn             : Date @Common.Label :'Loan Close Date';
+        amtzDate               : Date @Common.Label : 'Amortization Date';
+        maturityDate           : Date @Common.Label :'Maturity Date';
 
 
         //Interest Calculation
@@ -100,8 +101,8 @@ entity Contract : managed {
 
         //notice
 
-        intresetRateResetType  : Integer;
-        intresetRateResetDate  : Date;
+        intresetRateResetType  : Integer @Common.Label : 'Interest Rate Reset Type';
+        intresetRateResetDate  : Date @Common.Label : 'Interest Rate Reset Date';
         //capital amount
         contractCapital        : Decimal;
         disbursementOblig      : Decimal;
@@ -143,6 +144,7 @@ entity ConditionItemsNew : managed {
         dueDate             : Date;
         calculationDate     : Date;
         sequence            : Integer;
+        endCondition        : Boolean;
         conditionToContract : Association to Contract;
 
 
