@@ -438,28 +438,34 @@ annotate service.Contract with @(
         $Type: 'UI.FieldGroupType',
         Data : [
             {
-                $Type: 'UI.DataField',
-                Value: fixedFrom,
-                Label: 'Amortization Start',
-            },
-            {
                 $Type : 'UI.DataField',
-                Value : maturityDate,
-                Label : 'Maturity Date',
+                Value : amtzDate,
+                Label : 'Loan Begin Date',
+                
+
             },
             {
                 $Type: 'UI.DataField',
                 Value: fixedUntil,
                 Label: 'Amortization End',
+                
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : maturityDate,
+                Label : 'Loan Maturity Date',
+                
             },
             {
                 $Type : 'UI.DataField',
                 Value : amortizationStatus,
+               
             },
             {
-                $Type : 'UI.DataField',
-                Value : amtzDate,
-                Label : 'Amortization Date',
+                $Type: 'UI.DataField',
+                Value: fixedFrom,
+                Label: 'Amortization Start',
+                
             },
             {
                 $Type: 'UI.DataField',
@@ -576,24 +582,29 @@ annotate service.Contract with @(
             {
                 $Type: 'UI.DataField',
                 Value: loanType,
+               
             },
             {
                 $Type : 'UI.DataField',
                 Value : designation,
                 Label : 'Designation',
+                
             },
             {
                 $Type: 'UI.DataField',
                 Value: productType,
                 Label: 'Agency',
+               
             },
             {
                 $Type : 'UI.DataField',
                 Value : pledgedStatus,
+                
             },
             {
                 $Type : 'UI.DataField',
                 Value : loanPurpose,
+                
             },
         ],
     },
@@ -664,15 +675,12 @@ annotate service.Contract with @(
         Data : [
             {
                 $Type : 'UI.DataField',
-                Value : country,
-            },
-            {
-                $Type : 'UI.DataField',
                 Value : legacyNumber,
             },
             {
                 $Type : 'UI.DataField',
                 Value : orgDistrict,
+                Label : 'Organiz District',
             },
             {
                 $Type : 'UI.DataField',
@@ -681,6 +689,10 @@ annotate service.Contract with @(
             {
                 $Type : 'UI.DataField',
                 Value : agentDistrict,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : country,
             },
             {
                 $Type : 'UI.DataField',

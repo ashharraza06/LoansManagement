@@ -1,0 +1,118 @@
+<!-- <core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:macros="sap.fe.macros">
+	<VBox core:require="{ handler: 'loanoffercreation/ext/fragment/ReferenceData'}">
+		<Button text="ReferenceData" press="handler.onPress" />
+	</VBox>
+</core:FragmentDefinition> -->
+
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+ 
+    <VBox
+        id="referenceRootVBox"
+        class="sapUiSmallMargin">
+ 
+        <Title
+            level="H3"
+            class="sapUiSmallMarginBottom"/>
+ 
+        <l:Grid
+            id="referenceGrid"
+            defaultSpan="XL4 L4 M4 S12"
+            vSpacing="1"
+            hSpacing="0">
+ 
+ 
+              <!-- Legacy Number -->
+            <VBox>
+                <Label text="Legacy Number:"/>
+ 
+                <Text
+                    text="{= ${legacyNumber} ? ${legacyNumber} : '_' }"
+                    visible="{= ${IsActiveEntity} }"/>
+ 
+                <Input
+                    value="{legacyNumber}"
+                    visible="{= !${IsActiveEntity} }"
+                    width="80%"/>
+            </VBox>
+ 
+             <!-- Project Number -->
+            <VBox>
+                <Label text="Project Number:"/>
+ 
+                <Text
+                    text="{= ${projectNumber} ? ${projectNumber} : '_' }"
+                    visible="{= ${IsActiveEntity} }"/>
+ 
+                <Input
+                    value="{projectNumber}"
+                    visible="{= !${IsActiveEntity} }"
+                    width="80%"/>
+            </VBox>
+ 
+            <!-- County -->
+            <VBox >
+                <Label text="County:"/>
+ 
+                <Text
+                    text="{= ${country} ? ${country} : '_' }"
+                    visible="{= ${IsActiveEntity} }"/>
+ 
+                <Input
+                    value="{country}"
+                    visible="{= !${IsActiveEntity} }"
+                    width="80%"/>
+            </VBox>
+ 
+            <!-- Organiz. District -->
+            <VBox>
+                <Label text="Organiz. District:"/>
+ 
+                <Text
+                    text="{= ${orgDistrict} ? ${orgDistrict} : '_' }"
+                    visible="{= ${IsActiveEntity} }"/>
+ 
+                <Input
+                    value="{orgDistrict}"
+                    visible="{= !${IsActiveEntity} }"
+                    width="80%"/>
+            </VBox>
+ 
+            <!-- Agent District -->
+            <VBox>
+                <Label text="Agent District:"/>
+ 
+                <Text
+                    text="{= ${agentDistrict} ? ${agentDistrict} : '_' }"
+                    visible="{= ${IsActiveEntity} }"/>
+ 
+                <Input
+                    value="{agentDistrict}"
+                    visible="{= !${IsActiveEntity} }"
+                    width="80%"/>
+            </VBox>
+ 
+         
+ 
+           
+ 
+            <!-- Primary Industry -->
+            <VBox>
+                <Label text="Primary Industry:"/>
+ 
+                <Text
+                    text="{= ${primaryIndustryCode} ? ${primaryIndustryCode} : '_' }"
+                    visible="{= ${IsActiveEntity} }"/>
+ 
+                <Input
+                    value="{primaryIndustryCode}"
+                    visible="{= !${IsActiveEntity} }"
+                    width="80%"/>
+            </VBox>
+ 
+        </l:Grid>
+    </VBox>
+ 
+</core:FragmentDefinition>

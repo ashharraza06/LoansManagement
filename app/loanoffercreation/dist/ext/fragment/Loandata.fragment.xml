@@ -1,0 +1,58 @@
+<!-- <core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:macros="sap.fe.macros">
+	<VBox core:require="{ handler: 'loanoffercreation/ext/fragment/Loandata'}">
+		<Button text="Loandata" press="handler.onPress" />
+	</VBox>
+</core:FragmentDefinition> -->
+
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form">
+   
+    <VBox class="sapUiNoContentPadding" core:require="{ handler: 'loanoffercreation/ext/fragment/Loandata'}">
+        <f:SimpleForm
+            editable="true"
+            layout="ResponsiveGridLayout"
+            columnsL="3" columnsM="3"
+            emptySpanL="0" emptySpanM="0"
+            class="sapUiNoMarginTop">
+            <f:content>
+               
+                <core:Title text="" />
+                <VBox>
+                    <Label text="Loan Type:" />
+                    <Text text="{loanType}" class="sapUiTinyMarginBottom" />
+                   
+                    <Label text="Designation:" />
+                    <Text text="{designation}" visible="{IsActiveEntity}" />
+                    <Input value="{designation}"
+                           visible="{= !${IsActiveEntity} }"
+                           width="100%" />
+                </VBox>
+ 
+                <core:Title text="" />
+                <VBox>
+                    <Label text="Agency:" />
+                    <Text text="{productType}" class="sapUiTinyMarginBottom" />
+                   
+                    <Label text="Pledged Status:" />
+                    <Text text="{pledgedStatus}" visible="{IsActiveEntity}" />
+                    <Input value="{pledgedStatus}"
+                           visible="{= !${IsActiveEntity} }"
+                           width="100%" />
+                </VBox>
+ 
+                <core:Title text="" />
+                <VBox>
+                    <Label text="Purpose of Loan:" />
+                    <Text text="{loanPurpose}" visible="{IsActiveEntity}" />
+                    <Input value="{loanPurpose}"
+                           visible="{= !${IsActiveEntity} }"
+                           width="100%" />
+                </VBox>
+               
+            </f:content>
+        </f:SimpleForm>
+    </VBox>
+</core:FragmentDefinition>
+ 

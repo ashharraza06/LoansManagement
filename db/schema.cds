@@ -42,12 +42,13 @@ entity Contract : managed {
         // Information
         loanPurpose            : String @Common.Label :'Purpose of Loan';
         // arBillingJob           : String;
+        /* ---------- Amortization Status ---------- */
         amortizationStatus     : String  @Common.Label: 'Amortization Status';
 
         /* ---------- Organization ---------- */
         // agentdata
         country                : String @Common.Label :'County';
-        orgDistrict            : String @Common.Label :'Organiz.District';
+        orgDistrict            : String @Common.Label :'Organiz District';
         agentDistrict          : String @Common.Label :'Agent District';
 
         /* ---------- Reference Data ---------- */
@@ -91,8 +92,8 @@ entity Contract : managed {
 
         contract               : String;
         contractOn             : Date @Common.Label :'Loan Close Date';
-        amtzDate               : Date @Common.Label : 'Amortization Date';
-        maturityDate           : Date @Common.Label :'Maturity Date';
+        amtzDate               : Date @Common.Label : 'Loan Begin Date';
+        maturityDate           : Date @Common.Label :'Loan Maturity Date';
 
 
         //Interest Calculation

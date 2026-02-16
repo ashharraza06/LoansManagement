@@ -9,7 +9,60 @@ sap.ui.define([
 ], function (ControllerExtension, Control, DateFormat) {
 
     "use strict";
+    function setFixedFormLayout() {
 
+        debugger;
+
+        const aFormIds = [
+
+            "loanoffercreation::ContractObjectPage--fe::Form::Form::Content",
+
+            "loanoffercreation::ContractObjectPage--fe::Form::_1::Content",
+            "loanoffercreation::ContractObjectPage--fe::Form::TermFixedPeriod::Content"
+
+        ];
+
+
+        aFormIds.forEach(function (sFormId) {
+
+            const oForm = sap.ui.getCore().byId(sFormId);
+
+            if (!oForm || !oForm.getLayout) return;
+
+            const oLayout = oForm.getLayout();
+
+            if (!oLayout) return;
+
+
+            /* ⭐ FORCE 3 COLUMNS ALWAYS */
+
+            oLayout.setColumnsXL(3);
+
+            oLayout.setColumnsL(3);
+
+            oLayout.setColumnsM(3);
+
+
+            /* ⭐ VERY IMPORTANT FOR ColumnLayout */
+
+            if (oLayout.setMaxColumns) {
+
+                oLayout.setMaxColumns(3);
+
+            }
+
+
+            /* ⭐ prevent auto adjustment */
+
+            if (oLayout.setAdjustLabelSpan) {
+
+                oLayout.setAdjustLabelSpan(false);
+
+            }
+
+        });
+
+    }
 
     function setWidth() {
 
@@ -44,7 +97,7 @@ sap.ui.define([
                 id: "loanoffercreation::ContractObjectPage--fe::table::contractToCondition::LineItem::ConditionItems-innerTable",
                 widths: [
                     "7rem", "8rem", "5rem", "7rem",
-                    "14rem", "8rem", "8.2rem", "8.2rem","7rem"
+                    "14rem", "8rem", "8.2rem", "8.2rem", "7rem"
                 ]
             }
         };
@@ -144,6 +197,7 @@ sap.ui.define([
 
 
                     debugger;
+                    setTimeout(setFixedFormLayout, 600);
                     setTimeout(setWidth, 500);
                     setTimeout(() => {
                         sortEarmarkTable();
