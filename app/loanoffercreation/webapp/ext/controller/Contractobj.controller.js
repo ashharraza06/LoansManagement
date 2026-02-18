@@ -197,7 +197,7 @@ sap.ui.define([
 
 
                     debugger;
-                    setTimeout(setFixedFormLayout, 600);
+                    // setTimeout(setFixedFormLayout, 600);
                     setTimeout(setWidth, 500);
                     setTimeout(() => {
                         sortEarmarkTable();

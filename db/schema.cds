@@ -92,8 +92,8 @@ entity Contract : managed {
 
         contract               : String;
         contractOn             : Date @Common.Label :'Loan Close Date';
-        amtzDate               : Date @Common.Label : 'Loan Begin Date';
-        maturityDate           : Date @Common.Label :'Loan Maturity Date';
+        amtzDate               : Date @mandatory @Common.Label : 'Loan Begin Date';
+        maturityDate           : Date @mandatory @Common.Label :'Loan Maturity Date';
 
 
         //Interest Calculation

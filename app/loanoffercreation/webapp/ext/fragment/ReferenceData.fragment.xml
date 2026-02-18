@@ -6,113 +6,113 @@
 
 <core:FragmentDefinition
     xmlns="sap.m"
-    xmlns:core="sap.ui.core"
-    xmlns:l="sap.ui.layout">
- 
+    xmlns:core="sap.ui.core">
+
+    <!-- Main Container -->
     <VBox
         id="referenceRootVBox"
-        class="sapUiSmallMargin">
- 
-        <Title
-            level="H3"
-            class="sapUiSmallMarginBottom"/>
- 
-        <l:Grid
-            id="referenceGrid"
-            defaultSpan="XL4 L4 M4 S12"
-            vSpacing="1"
-            hSpacing="0">
- 
- 
-              <!-- Legacy Number -->
-            <VBox>
-                <Label text="Legacy Number:"/>
- 
+        class="referenceContainer sapUiNoContentPadding">
+
+        <!-- Responsive wrapper -->
+        <HBox wrap="Wrap" class="referenceFields">
+
+            <!-- Legacy Number -->
+            <VBox class="referenceField">
+                <Label text="Legacy Number:" class="referenceLabel"/>
+
                 <Text
                     text="{= ${legacyNumber} ? ${legacyNumber} : '_' }"
-                    visible="{= ${IsActiveEntity} }"/>
- 
+                    visible="{IsActiveEntity}"
+                    class="referenceValue"/>
+
                 <Input
                     value="{legacyNumber}"
                     visible="{= !${IsActiveEntity} }"
-                    width="80%"/>
+                    width="100%"/>
             </VBox>
- 
-             <!-- Project Number -->
-            <VBox>
-                <Label text="Project Number:"/>
- 
+
+
+            <!-- Project Number -->
+            <VBox class="referenceField">
+                <Label text="Project Number:" class="referenceLabel"/>
+
                 <Text
                     text="{= ${projectNumber} ? ${projectNumber} : '_' }"
-                    visible="{= ${IsActiveEntity} }"/>
- 
+                    visible="{IsActiveEntity}"
+                    class="referenceValue"/>
+
                 <Input
                     value="{projectNumber}"
                     visible="{= !${IsActiveEntity} }"
-                    width="80%"/>
+                    width="100%"/>
             </VBox>
- 
-            <!-- County -->
-            <VBox >
-                <Label text="County:"/>
- 
-                <Text
-                    text="{= ${country} ? ${country} : '_' }"
-                    visible="{= ${IsActiveEntity} }"/>
- 
-                <Input
-                    value="{country}"
-                    visible="{= !${IsActiveEntity} }"
-                    width="80%"/>
-            </VBox>
- 
-            <!-- Organiz. District -->
-            <VBox>
-                <Label text="Organiz. District:"/>
- 
-                <Text
-                    text="{= ${orgDistrict} ? ${orgDistrict} : '_' }"
-                    visible="{= ${IsActiveEntity} }"/>
- 
-                <Input
-                    value="{orgDistrict}"
-                    visible="{= !${IsActiveEntity} }"
-                    width="80%"/>
-            </VBox>
- 
-            <!-- Agent District -->
-            <VBox>
-                <Label text="Agent District:"/>
- 
-                <Text
-                    text="{= ${agentDistrict} ? ${agentDistrict} : '_' }"
-                    visible="{= ${IsActiveEntity} }"/>
- 
-                <Input
-                    value="{agentDistrict}"
-                    visible="{= !${IsActiveEntity} }"
-                    width="80%"/>
-            </VBox>
- 
-         
- 
-           
- 
-            <!-- Primary Industry -->
-            <VBox>
-                <Label text="Primary Industry:"/>
- 
+
+             <!-- Primary Industry -->
+            <VBox class="referenceField">
+                <Label text="Primary Industry:" class="referenceLabel"/>
+
                 <Text
                     text="{= ${primaryIndustryCode} ? ${primaryIndustryCode} : '_' }"
-                    visible="{= ${IsActiveEntity} }"/>
- 
+                    visible="{IsActiveEntity}"
+                    class="referenceValue"/>
+
                 <Input
                     value="{primaryIndustryCode}"
                     visible="{= !${IsActiveEntity} }"
-                    width="80%"/>
+                    width="100%"/>
             </VBox>
- 
-        </l:Grid>
+            <!-- County -->
+            <VBox class="referenceField">
+                <Label text="County:" class="referenceLabel"/>
+
+                <Text
+                    text="{= ${country} ? ${country} : '_' }"
+                    visible="{IsActiveEntity}"
+                    class="referenceValue"/>
+
+                <Input
+                    value="{country}"
+                    visible="{= !${IsActiveEntity} }"
+                    width="100%"/>
+            </VBox>
+
+
+            <!-- Organiz. District -->
+            <VBox class="referenceField">
+                <Label text="Organiz District:" class="referenceLabel"/>
+
+                <Text
+                    text="{= ${orgDistrict} ? ${orgDistrict} : '_' }"
+                    visible="{IsActiveEntity}"
+                    class="referenceValue"/>
+
+                <Input
+                    value="{orgDistrict}"
+                    visible="{= !${IsActiveEntity} }"
+                    width="100%"/>
+            </VBox>
+
+
+            <!-- Agent District -->
+            <VBox class="referenceField">
+                <Label text="Agent District:" class="referenceLabel"/>
+
+                <Text
+                    text="{= ${agentDistrict} ? ${agentDistrict} : '_' }"
+                    visible="{IsActiveEntity}"
+                    class="referenceValue"/>
+
+                <Input
+                    value="{agentDistrict}"
+                    visible="{= !${IsActiveEntity} }"
+                    width="100%"/>
+            </VBox>
+
+
+           
+
+        </HBox>
+
     </VBox>
- 
+
 </core:FragmentDefinition>

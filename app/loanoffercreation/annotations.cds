@@ -156,7 +156,7 @@ annotate service.Contract with @(
         },
         {
             $Type : 'UI.CollectionFacet',
-            Label : 'Basic data',
+            Label : 'Basic Data',
             ID    : 'Basicdata',
             Facets: [
                 {
@@ -164,12 +164,14 @@ annotate service.Contract with @(
                     Label : 'Loan Data',
                     ID    : '_1',
                     Target: '@UI.FieldGroup#_1',
+                    @UI.Hidden,
                 },
                 {
                     $Type : 'UI.ReferenceFacet',
                     Label : 'Reference Data',
                     ID : 'Form',
                     Target : '@UI.FieldGroup#Form',
+                    @UI.Hidden,
                 },
                 {
                     $Type : 'UI.ReferenceFacet',
@@ -211,7 +213,7 @@ annotate service.Contract with @(
         },
         {
             $Type : 'UI.CollectionFacet',
-            Label : 'Conditons',
+            Label : 'Conditions',
             ID    : 'Conditons',
             Facets: [
                 {
@@ -230,6 +232,7 @@ annotate service.Contract with @(
                     Label : 'Loan Amortization Information',
                     ID    : 'TermFixedPeriod',
                     Target: '@UI.FieldGroup#TermFixedPeriod',
+                    @UI.Hidden,
                 },
                 {
                     $Type : 'UI.ReferenceFacet',
@@ -679,8 +682,7 @@ annotate service.Contract with @(
             },
             {
                 $Type : 'UI.DataField',
-                Value : orgDistrict,
-                Label : 'Organiz District',
+                Value : country,
             },
             {
                 $Type : 'UI.DataField',
@@ -688,15 +690,16 @@ annotate service.Contract with @(
             },
             {
                 $Type : 'UI.DataField',
-                Value : agentDistrict,
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : country,
+                Value : orgDistrict,
+                Label : 'Organiz District',
             },
             {
                 $Type : 'UI.DataField',
                 Value : primaryIndustryCode,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : agentDistrict,
             },
         ],
     },

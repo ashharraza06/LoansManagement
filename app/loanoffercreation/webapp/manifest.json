@@ -221,6 +221,50 @@
                         "anchor": "Attachments"
                       },
                       "title": "Comments"
+                    },
+                    "Basicdata": {
+                      "subSections": {
+                        "Loandata": {
+                          "template": "loanoffercreation.ext.fragment.Loandata",
+                          "position": {
+                            "placement": "After",
+                            "anchor": "_1"
+                          },
+                          "title": "Loan Data"
+                        },
+                        "ReferenceData": {
+                          "template": "loanoffercreation.ext.fragment.ReferenceData",
+                          "position": {
+                            "placement": "After",
+                            "anchor": "Form"
+                          },
+                          "title": "Reference Data"
+                        }
+                      }
+                    },
+                    "Conditons": {
+                      "subSections": {
+                        "Loanamortizationinformation": {
+                          "template": "loanoffercreation.ext.fragment.Loanamortizationinformation",
+                          "position": {
+                            "placement": "After",
+                            "anchor": "TermFixedPeriod"
+                          },
+                          "title": "Loan Amortization Information"
+                        }
+                      }
+                    },
+                    "Partners": {
+                      "subSections": {
+                        "Incomingpay": {
+                          "template": "loanoffercreation.ext.fragment.Incomingpay",
+                          "position": {
+                            "placement": "After",
+                            "anchor": "IncomingPayment"
+                          },
+                          "title": "Incoming Payment1"
+                        }
+                      }
                     }
                   }
                 },
