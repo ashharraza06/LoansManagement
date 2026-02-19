@@ -15,8 +15,7 @@ sap.ui.define([
 
         const aFormIds = [
 
-            "loanoffercreation::ContractObjectPage--fe::Form::Form::Content",
-
+            // "loanoffercreation::ContractObjectPage--fe::Form::Form::Content",
             "loanoffercreation::ContractObjectPage--fe::Form::_1::Content",
             "loanoffercreation::ContractObjectPage--fe::Form::TermFixedPeriod::Content"
 
@@ -96,9 +95,20 @@ sap.ui.define([
             condition: {
                 id: "loanoffercreation::ContractObjectPage--fe::table::contractToCondition::LineItem::ConditionItems-innerTable",
                 widths: [
-                    "7rem", "8rem", "5rem", "7rem",
-                    "14rem", "8rem", "8.2rem", "8.2rem", "7rem"
-                ]
+                    "12rem",  // Cond.Type Text
+                    "9rem",   // Eff. From
+                    "6rem",   // Percent
+                    "8rem",   // Condition Amount
+                    "9rem",  // Payment From Exact Day
+                    "9rem",   // Frequency in Months
+                    "9rem",   // Due Date
+                    "9rem",   // Calculation Date
+                    "8rem",   // End Condition
+                    "12rem",  // BP
+                    "12rem",  // Calculation Base
+                    "12rem"   // Int.Cal.Method
+                ],
+                forceFixed: true   // 👈 important for proper alignment
             }
         };
 
@@ -202,6 +212,11 @@ sap.ui.define([
                     setTimeout(() => {
                         sortEarmarkTable();
                     }, 300);
+
+
+                  
+
+
 
 
 

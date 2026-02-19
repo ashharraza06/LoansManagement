@@ -3,7 +3,7 @@
 		<Button text="Loandata" press="handler.onPress" />
 	</VBox>
 </core:FragmentDefinition> -->
-
+<!-- 
 <core:FragmentDefinition
     xmlns="sap.m"
     xmlns:core="sap.ui.core"
@@ -54,5 +54,73 @@
             </f:content>
         </f:SimpleForm>
     </VBox>
+</core:FragmentDefinition> -->
+
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <!-- Main Container -->
+    <VBox class="loanDataContainer sapUiNoContentPadding"
+          core:require="{ handler: 'loanoffercreation/ext/fragment/Loandata'}">
+
+        <!-- Responsive wrapper -->
+        <HBox wrap="Wrap" class="loanFormFields">
+
+            <!-- Field 1: Loan Type -->
+            <VBox class="loanFormField">
+                <Label text="Loan Type:" class="loanDataLabel"/>
+                <Text text="{= ${loanType} ? ${loanType} : '_' }" class="loanDataValue"/>
+            </VBox>
+
+            <!-- Field 2: Agency -->
+            <VBox class="loanFormField">
+                <Label text="Agency:" class="loanDataLabel"/>
+                <Text text="{= ${productType} ? ${productType} : '_' }" class="loanDataValue"/>
+            </VBox>
+
+            <!-- Field 3: Purpose of Loan -->
+            <VBox class="loanFormField">
+                <Label text="Purpose of Loan:" class="loanDataLabel"/>
+
+                <Text text="{= ${loanPurpose} ? ${loanPurpose} : '_' }"
+                      visible="{IsActiveEntity}"
+                      class="loanDataValue"/>
+
+                <Input value="{loanPurpose}"
+                       visible="{= !${IsActiveEntity} }"
+                       width="100%"/>
+            </VBox>
+
+            <!-- Field 4: Designation -->
+            <VBox class="loanFormField">
+                <Label text="Designation:" class="loanDataLabel"/>
+
+                <Text text="{= ${designation} ? ${designation} : '_' }"
+                      visible="{IsActiveEntity}"
+                      class="loanDataValue"/>
+
+                <Input value="{designation}"
+                       visible="{= !${IsActiveEntity} }"
+                       width="100%"/>
+            </VBox>
+
+            <!-- Field 5: Pledged Status -->
+            <VBox class="loanFormField">
+                <Label text="Pledged Status:" class="loanDataLabel"/>
+
+                <Text text="{= ${pledgedStatus} ? ${pledgedStatus} : '_' }"
+                      visible="{IsActiveEntity}"
+                      class="loanDataValue"/>
+
+                <Input value="{pledgedStatus}"
+                       visible="{= !${IsActiveEntity} }"
+                       width="100%"/>
+            </VBox>
+
+        </HBox>
+
+    </VBox>
+
 </core:FragmentDefinition>
- 
+

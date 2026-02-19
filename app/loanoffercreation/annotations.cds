@@ -164,14 +164,12 @@ annotate service.Contract with @(
                     Label : 'Loan Data',
                     ID    : '_1',
                     Target: '@UI.FieldGroup#_1',
-                    @UI.Hidden,
                 },
                 {
                     $Type : 'UI.ReferenceFacet',
                     Label : 'Reference Data',
                     ID : 'Form',
                     Target : '@UI.FieldGroup#Form',
-                    @UI.Hidden,
                 },
                 {
                     $Type : 'UI.ReferenceFacet',
@@ -232,7 +230,6 @@ annotate service.Contract with @(
                     Label : 'Loan Amortization Information',
                     ID    : 'TermFixedPeriod',
                     Target: '@UI.FieldGroup#TermFixedPeriod',
-                    @UI.Hidden,
                 },
                 {
                     $Type : 'UI.ReferenceFacet',
@@ -286,9 +283,9 @@ annotate service.Contract with @(
             Facets: [
                 {
                     $Type : 'UI.ReferenceFacet',
-                    Label : 'Capital',
                     ID    : '_2',
                     Target: '@UI.FieldGroup#_2',
+                    Label : '      ',
                 },
                 {
                     $Type : 'UI.CollectionFacet',
@@ -475,6 +472,10 @@ annotate service.Contract with @(
                 Value: include,
                 Label: 'Inclusive Indicator',
                 @UI.Hidden,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : contractCompleteDate,
             },
         ],
     },
@@ -682,16 +683,11 @@ annotate service.Contract with @(
             },
             {
                 $Type : 'UI.DataField',
-                Value : country,
-            },
-            {
-                $Type : 'UI.DataField',
                 Value : projectNumber,
             },
             {
                 $Type : 'UI.DataField',
-                Value : orgDistrict,
-                Label : 'Organiz District',
+                Value : country,
             },
             {
                 $Type : 'UI.DataField',
@@ -699,7 +695,14 @@ annotate service.Contract with @(
             },
             {
                 $Type : 'UI.DataField',
+                Value : orgDistrict,
+                Label : 'Organiz District',
+                @UI.Hidden,
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : agentDistrict,
+                @UI.Hidden,
             },
         ],
     },
@@ -771,7 +774,7 @@ annotate service.ConditionItemsNew with @(UI.LineItem #ConditionItems: [
     {
         $Type: 'UI.DataField',
         Value: paymentFromExactDay,
-        Label: 'Payment From Exact Day',
+        Label: 'Frequency',
     },
     {
         $Type: 'UI.DataField',
@@ -791,7 +794,22 @@ annotate service.ConditionItemsNew with @(UI.LineItem #ConditionItems: [
     {
         $Type : 'UI.DataField',
         Value : endCondition,
-        Label : 'End Condition',
+        Label : 'Condition Form',
+    },
+    {
+        $Type : 'UI.DataField',
+        Value : businessPartner,
+        Label : 'BP',
+    },
+    {
+        $Type : 'UI.DataField',
+        Value : calculationBase,
+        Label : 'Calculation Base',
+    },
+    {
+        $Type : 'UI.DataField',
+        Value : intCalMt,
+        Label : 'Int.Cal.Method',
     },
 ]);
 
@@ -1054,7 +1072,7 @@ annotate service.Disbursement with @(
             },
             {
                 $Type: 'UI.DataField',
-                Value: paymentMethod,
+                Value: bp,
             },
             {
                 $Type : 'UI.DataField',
@@ -1062,7 +1080,7 @@ annotate service.Disbursement with @(
             },
             {
                 $Type: 'UI.DataField',
-                Value: bankDetails,
+                Value: paymentMethod,
             },
             {
                 $Type: 'UI.DataField',
@@ -1070,8 +1088,11 @@ annotate service.Disbursement with @(
             },
             {
                 $Type: 'UI.DataField',
-                Value: grossAmount,
-                @UI.Hidden,
+                Value: bankDetails,
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: effectiveDate,
             },
             {
                 $Type: 'UI.DataField',
@@ -1079,15 +1100,12 @@ annotate service.Disbursement with @(
             },
             {
                 $Type: 'UI.DataField',
-                Value: effectiveDate,
+                Value: grossAmount,
+                @UI.Hidden,
             },
             {
                 $Type : 'UI.DataField',
                 Value : disbursementOblig,
-            },
-            {
-                $Type: 'UI.DataField',
-                Value: bp,
                 @UI.Hidden,
             },
         ],
@@ -1348,4 +1366,21 @@ annotate service.paymentFromExactDaySearchHelp with {
         Common.Text.@UI.TextArrangement : #TextLast,
     )
 };
+
+annotate service.Contract with {
+    intCalMt @(
+        Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'intCalMtSearchHelp',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : intCalMt,
+                    ValueListProperty : 'value',
+                },
+            ],
+            Label : 'calmethod',
+        },
+        Common.ValueListWithFixedValues : true,
+)};
 

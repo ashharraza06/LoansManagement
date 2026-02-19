@@ -15,8 +15,7 @@ sap.ui.define([
 
         const aFormIds = [
 
-            "loanoffercreation::ContractObjectPage--fe::Form::Form::Content",
-
+            // "loanoffercreation::ContractObjectPage--fe::Form::Form::Content",
             "loanoffercreation::ContractObjectPage--fe::Form::_1::Content",
             "loanoffercreation::ContractObjectPage--fe::Form::TermFixedPeriod::Content"
 
@@ -96,9 +95,20 @@ sap.ui.define([
             condition: {
                 id: "loanoffercreation::ContractObjectPage--fe::table::contractToCondition::LineItem::ConditionItems-innerTable",
                 widths: [
-                    "7rem", "8rem", "5rem", "7rem",
-                    "14rem", "8rem", "8.2rem", "8.2rem", "7rem"
-                ]
+                    "12rem",  // Cond.Type Text
+                    "9rem",   // Eff. From
+                    "6rem",   // Percent
+                    "8rem",   // Condition Amount
+                    "9rem",  // Payment From Exact Day
+                    "9rem",   // Frequency in Months
+                    "9rem",   // Due Date
+                    "9rem",   // Calculation Date
+                    "8rem",   // End Condition
+                    "12rem",  // BP
+                    "12rem",  // Calculation Base
+                    "12rem"   // Int.Cal.Method
+                ],
+                forceFixed: true   // 👈 important for proper alignment
             }
         };
 
@@ -197,15 +207,11 @@ sap.ui.define([
 
 
                     debugger;
-                    // setTimeout(setFixedFormLayout, 600);
+                    setTimeout(setFixedFormLayout, 600);
                     setTimeout(setWidth, 500);
                     setTimeout(() => {
                         sortEarmarkTable();
                     }, 300);
-
-
-
-
 
                     const aTableIds = [
 
@@ -253,14 +259,16 @@ sap.ui.define([
 
                             if (!oInnerTable._dateFormattingAttached) {
 
-                                oInnerTable.attachUpdateFinished(function () {
+                                // For Grid Table (sap.ui.table.Table)
+                                if (oInnerTable.attachRowsUpdated) {
 
-                                    updateRows(oInnerTable);
+                                    oInnerTable.attachRowsUpdated(function () {
+                                        updateRows(oInnerTable);
+                                    });
 
-                                });
+                                }
 
                                 oInnerTable._dateFormattingAttached = true;
-
                             }
 
 
@@ -275,65 +283,49 @@ sap.ui.define([
 
                     function updateRows(oInnerTable) {
 
-                        debugger;
+                        if (!oInnerTable) return;
 
+                        // ⭐ For sap.ui.table.Table (Grid Table)
+                        if (oInnerTable.getRows) {
 
+                            const aRows = oInnerTable.getRows();
+                            if (!aRows || aRows.length === 0) return;
 
-                        const aItems = oInnerTable.getItems();
+                            const sTableId = oInnerTable.getId();
 
-                        if (!aItems || aItems.length === 0) return;
+                            aRows.forEach(function (oRow) {
 
+                                const aCells = oRow.getCells();
+                                if (!aCells) return;
 
+                                /* ========= Partner Table ========= */
+                                if (sTableId.includes("contractToPartner")) {
 
-                        const sTableId = oInnerTable.getId();
+                                    formatDateCell(aCells[5], "startRel");
+                                    formatDateCell(aCells[6], "endRel");
+                                }
 
+                                /* ========= Condition Table ========= */
+                                if (sTableId.includes("contractToCondition")) {
 
+                                    formatDateCell(aCells[1], "effectiveFrom");
+                                    formatDateCell(aCells[6], "dueDate");
+                                    formatDateCell(aCells[7], "calculationDate");
+                                }
 
-                        aItems.forEach(function (oItem) {
+                                /* ========= Disbursement Table ========= */
+                                if (sTableId.includes("contractToDisbursement")) {
 
-                            const aCells = oItem.getCells();
+                                    formatDateCell(aCells[2], "paymentDate");
+                                    formatDateCell(aCells[3], "effectiveDate");
+                                }
 
+                            });
 
-
-                            /* ========= Partner Table ========= */
-
-                            if (sTableId.includes("contractToPartner")) {
-
-                                formatDateCell(aCells[5], "startRel");
-
-                                formatDateCell(aCells[6], "endRel");
-
-                            }
-
-
-
-                            /* ========= Condition Table ========= */
-
-                            if (sTableId.includes("contractToCondition")) {
-
-                                formatDateCell(aCells[1], "effectiveFrom");
-
-                                formatDateCell(aCells[6], "dueDate");
-
-                                formatDateCell(aCells[7], "calculationDate");
-
-                            }
-
-
-
-                            /* ========= Disbursement Table ========= */
-
-                            if (sTableId.includes("contractToDisbursement")) {
-
-                                formatDateCell(aCells[2], "paymentDate");
-
-                                formatDateCell(aCells[3], "effectiveDate");
-
-                            }
-
-                        });
+                        }
 
                     }
+
 
 
 

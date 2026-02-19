@@ -4,103 +4,120 @@
 	</VBox>
 </core:FragmentDefinition> -->
 
-<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:macros="sap.fe.macros" xmlns:l="sap.ui.layout">
-    <VBox core:require="{handler: 'loanoffercreation/ext/fragment/Loanamortizationinformation'}"  id="auditRootVBox"
-        class="sapUiSmallMargin">
- 
-        <l:Grid
-    id="loanAmortizationGrid"
-    defaultSpan="XL4 L4 M4 S12"
-    vSpacing="1"
-    hSpacing="0">
-	 <!-- Amortization Date -->
-    <VBox>
-        <Label text="Loan Begin Date:"/>
-        <Text
-            text="{amtzDate}"
-            visible="{= ${IsActiveEntity} }"/>
-        <DatePicker
-            value="{amtzDate}"
-            displayFormat="MM/dd/yyyy"
-            valueFormat="yyyy-MM-dd"
-            placeholder="e.g. 12/31/2026"
-            width="80%"
-            visible="{= !${IsActiveEntity} }"/>
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <!-- Main Container -->
+    <VBox class="loanAmortContainer sapUiNoContentPadding"
+          core:require="{handler: 'loanoffercreation/ext/fragment/Loanamortizationinformation'}">
+
+        <!-- Responsive wrapper -->
+        <HBox wrap="Wrap" class="loanAmortFields">
+
+            <!-- Loan Begin Date -->
+            <VBox class="loanAmortField">
+                <Label text="Loan Begin Date:" required="{= !${IsActiveEntity} }" class="loanAmortLabel"/>
+
+                <Text
+                    text="{= ${amtzDate} ? ${amtzDate} : '_' }"
+                    visible="{IsActiveEntity}"
+                    class="loanAmortValue"/>
+
+                <DatePicker
+                    value="{amtzDate}"
+                    displayFormat="MM/dd/yyyy"
+                    valueFormat="yyyy-MM-dd"
+                    placeholder="e.g. 12/31/2026"
+                    width="100%"
+                    visible="{= !${IsActiveEntity} }"/>
+            </VBox>
+
+
+            <!-- Loan Maturity Date -->
+            <VBox class="loanAmortField">
+                <Label text="Loan Maturity Date:" required="{= !${IsActiveEntity} }" class="loanAmortLabel"/>
+
+                <Text
+                    text="{= ${maturityDate} ? ${maturityDate} : '_' }"
+                    visible="{IsActiveEntity}"
+                    class="loanAmortValue"/>
+
+                <DatePicker
+                    value="{maturityDate}"
+                    displayFormat="MM/dd/yyyy"
+                    valueFormat="yyyy-MM-dd"
+                    placeholder="e.g. 12/31/2026"
+                    width="100%"
+                    visible="{= !${IsActiveEntity} }"/>
+            </VBox>
+
+
+            <!-- Amortization Start -->
+            <VBox class="loanAmortField">
+                <Label text="Amortization Start:" required="{= !${IsActiveEntity} }" class="loanAmortLabel"/>
+
+                <Text
+                    text="{= ${fixedFrom} ? ${fixedFrom} : '_' }"
+                    visible="{IsActiveEntity}"
+                    class="loanAmortValue"/>
+
+                <DatePicker
+                    value="{fixedFrom}"
+                    displayFormat="MM/dd/yyyy"
+                    valueFormat="yyyy-MM-dd"
+                    placeholder="e.g. 12/31/2026"
+                    width="100%"
+                    visible="{= !${IsActiveEntity} }"/>
+            </VBox>
+
+
+            <!-- Amortization End -->
+            <VBox class="loanAmortField">
+                <Label text="Amortization End:" required="{= !${IsActiveEntity} }" class="loanAmortLabel"/>
+
+                <Text
+                    text="{= ${fixedUntil} ? ${fixedUntil} : '_' }"
+                    visible="{IsActiveEntity}"
+                    class="loanAmortValue"/>
+
+                <DatePicker
+                    value="{fixedUntil}"
+                    displayFormat="MM/dd/yyyy"
+                    valueFormat="yyyy-MM-dd"
+                    placeholder="e.g. 12/31/2026"
+                    width="100%"
+                    visible="{= !${IsActiveEntity} }"/>
+            </VBox>
+
+
+            <!-- Amortization Status -->
+            <VBox class="loanAmortField">
+                <Label text="Amortization Status:" class="loanAmortLabel"/>
+
+                <Text
+                    text="{= ${amortizationStatus} ? ${amortizationStatus} : '_' }"
+                    visible="{IsActiveEntity}"
+                    class="loanAmortValue"/>
+
+                <ComboBox
+                    selectedKey="{path:'amortizationStatus', targetType:'any'}"
+                    width="100%"
+                    visible="{= !${IsActiveEntity} }"
+                    items="{path: '/AmortizationStatusSearchHelp'}">
+
+                    <core:Item
+                        key="{amzt}"
+                        text="{shortName} ({amzt})"/>
+
+                </ComboBox>
+
+            </VBox>
+
+        </HBox>
+
     </VBox>
-	
-    <!-- Maturity Date -->
-    <VBox>
-        <Label text="Loan Maturity Date:"/>
-        <Text
-            text="{maturityDate}"
-            visible="{= ${IsActiveEntity} }"/>
-        <DatePicker
-            value="{maturityDate}"
-            displayFormat="MM/dd/yyyy"
-            valueFormat="yyyy-MM-dd"
-            placeholder="e.g. 12/31/2026"
-            width="80%"
-            visible="{= !${IsActiveEntity} }"/>
-    </VBox>
- 
-    <!-- Amortization Start -->
-    <VBox>
-        <Label text="Amortization Start:" />
-        <Text
-            text="{fixedFrom}"
-            visible="{= ${IsActiveEntity} }"/>
-        <DatePicker
-            value="{fixedFrom}"
-            displayFormat="MM/dd/yyyy"
-            valueFormat="yyyy-MM-dd"
-            placeholder="e.g. 12/31/2026"
-            width="80%"
-            visible="{= !${IsActiveEntity} }"/>
-    </VBox>
- 
-    <!-- Amortization End -->
-    <VBox>
-        <Label text="Amortization End:" />
-        <Text
-            text="{fixedUntil}"
-            visible="{= ${IsActiveEntity} }"/>
-        <DatePicker
-            value="{fixedUntil}"
-            displayFormat="MM/dd/yyyy"
-            valueFormat="yyyy-MM-dd"
-            placeholder="e.g. 12/31/2026"
-            width="80%"
-            visible="{= !${IsActiveEntity} }"/>
-    </VBox>
- 
-   
- 
- 
-    <!-- Amortization Status -->
-    <VBox>
-        <Label text="Amortization Status:"/>
-        <Text
-            text="{amortizationStatus}"
-            visible="{= ${IsActiveEntity} }"/>
-        <ComboBox
-            selectedKey="{path:'amortizationStatus',
-			targetType:'any'}"
-            width="80%"
-            visible="{= !${IsActiveEntity} }"
-            items="{
-            path: '/AmortizationStatusSearchHelp'
-        }">
- 
-        <core:Item
-            key="{amzt}"
-            text="{shortName}({amzt})" />
-       
-        </ComboBox>
-    </VBox>
- 
-</l:Grid>
- 
- 
-    </VBox>
+
 </core:FragmentDefinition>
+
  

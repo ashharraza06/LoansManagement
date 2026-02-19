@@ -22,7 +22,7 @@
     /* consistent column width */
 }
 
-#loanoffercreation\:\:ContractObjectPage--fe\:\:FormContainer\:\:_>.sapUiFormTitleH5{
+#loanoffercreation\:\:ContractObjectPage--fe\:\:FormContainer\:\:_>.sapUiFormTitleH5 {
     display: none;
 }
 
@@ -68,6 +68,11 @@
     /* 🔥 forces 2 columns */
 }
 
+/* hiding capital dropdow in anchor for disbursement */
+/* #loanoffercreation\:\:ContractObjectPage--fe\:\:ObjectPage-anchBar-loanoffercreation\:\:ContractObjectPage--fe\:\:FacetSubSection\:\:_2-anchor-__clone178{
+    display: none;
+} */
+
 /* custom section alignment */
 
 /* #loanoffercreation\:\:ContractObjectPage--fe\:\:CustomSubSection\:\:Loanamortizationinformation--innerGrid{
@@ -82,4 +87,289 @@ loanoffercreation\:\:ContractObjectPage--fe\:\:CustomSubSection\:\:Loandata-inne
 }
  #loanoffercreation\:\:ContractObjectPage--fe\:\:CustomSubSection\:\:Referencedata-innerGrid{
     width: 80%;
+} */
+
+/* ===== LOAN DATA SECTION - CUSTOM FRAGMENT STYLES ===== */
+/* Main container
+.loanDataContainer {
+    width: 100%;
+    padding: 1rem 0.75rem;
+}
+
+.loanFormFields.sapMHBox {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 1rem 2.5rem !important;
+    width: 100%;
+}
+
+.loanFormField.sapMVBox {
+    flex: 1 1 180px;
+    min-width: 150px;
+    max-width: 300px;
+}
+
+.loanDataLabel.sapMLabel {
+    color: #556b82;
+    font-size: 0.875rem;
+}
+
+.loanDataValue.sapMText {
+    font-size: 0.875rem;
+    color: #32363a;
+} */
+
+
+/* XL screens → 5 columns */
+/* @media (min-width: 1400px) {
+    .loanFormField.sapMVBox {
+        flex: 0 0 calc(20% - 2rem);
+        max-width: calc(20% - 2rem);
+    }
+} */
+
+/* Large → 4 columns */
+/* @media (min-width: 1000px) and (max-width: 1399px) {
+    .loanFormField.sapMVBox {
+        flex: 0 0 calc(25% - 2rem);
+        max-width: calc(25% - 2rem);
+    }
+} */
+
+/* Medium → 3 columns */
+/* @media (min-width: 768px) and (max-width: 999px) {
+    .loanFormField.sapMVBox {
+        flex: 0 0 calc(33.33% - 2rem);
+        max-width: calc(33.33% - 2rem);
+    }
+} */
+
+/* Small → 2 columns */
+/* @media (min-width: 500px) and (max-width: 767px) {
+    .loanFormField.sapMVBox {
+        flex: 0 0 calc(50% - 1.5rem);
+        max-width: calc(50% - 1.5rem);
+    }
+} */
+
+/* Mobile → 1 column */
+/* @media (max-width: 499px) {
+    .loanFormField.sapMVBox {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+} */
+
+
+/* ===== LOAN AMORTIZATION SECTION ===== */
+
+/* .loanAmortContainer {
+    width: 100%;
+    padding: 1rem 0.75rem;
+}
+
+.loanAmortFields.sapMHBox {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 1rem 2.5rem !important;
+    width: 100%;
+}
+
+.loanAmortField.sapMVBox {
+    flex: 1 1 180px;
+    min-width: 150px;
+    max-width: 300px;
+}
+
+.loanAmortLabel.sapMLabel {
+    color: #556b82;
+    font-size: 0.875rem;
+}
+
+.loanAmortValue.sapMText {
+    font-size: 0.875rem;
+    color: #32363a;
+} */
+
+
+/* XL screens → 5 columns */
+/* @media (min-width: 1400px) {
+    .loanAmortField.sapMVBox {
+        flex: 0 0 calc(20% - 2rem);
+        max-width: calc(20% - 2rem);
+    }
+} */
+
+/* Large → 4 columns */
+/* @media (min-width: 1000px) and (max-width: 1399px) {
+    .loanAmortField.sapMVBox {
+        flex: 0 0 calc(25% - 2rem);
+        max-width: calc(25% - 2rem);
+    }
+} */
+
+/* Medium → 3 columns */
+/* @media (min-width: 768px) and (max-width: 999px) {
+    .loanAmortField.sapMVBox {
+        flex: 0 0 calc(33.33% - 2rem);
+        max-width: calc(33.33% - 2rem);
+    }
+} */
+
+/* Small → 2 columns */
+/* @media (min-width: 500px) and (max-width: 767px) {
+    .loanAmortField.sapMVBox {
+        flex: 0 0 calc(50% - 1.5rem);
+        max-width: calc(50% - 1.5rem);
+    }
+} */
+
+/* Mobile → 1 column */
+/* @media (max-width: 499px) {
+    .loanAmortField.sapMVBox {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+} */
+
+
+/* ===== REFERENCE DATA SECTION ===== */
+/* 
+.referenceContainer {
+    width: 100%;
+    padding: 1rem 0.75rem;
+}
+
+.referenceFields.sapMHBox {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 1rem 2.5rem !important;
+    width: 100%;
+}
+
+.referenceField.sapMVBox {
+    flex: 1 1 180px;
+    min-width: 150px;
+    max-width: 300px;
+}
+
+.referenceLabel.sapMLabel {
+    color: #556b82;
+    font-size: 0.875rem;
+}
+
+.referenceValue.sapMText {
+    font-size: 0.875rem;
+    color: #32363a;
+} */
+
+
+/* XL screens → 6 columns */
+/* @media (min-width: 1600px) {
+    .referenceField.sapMVBox {
+        flex: 0 0 calc(16.66% - 2rem);
+        max-width: calc(16.66% - 2rem);
+    }
+} */
+
+/* Large → 4 columns */
+/* @media (min-width: 1200px) and (max-width: 1599px) {
+    .referenceField.sapMVBox {
+        flex: 0 0 calc(25% - 2rem);
+        max-width: calc(25% - 2rem);
+    }
+} */
+
+/* Medium → 3 columns */
+/* @media (min-width: 768px) and (max-width: 1199px) {
+    .referenceField.sapMVBox {
+        flex: 0 0 calc(33.33% - 2rem);
+        max-width: calc(33.33% - 2rem);
+    }
+} */
+
+/* Small → 2 columns */
+/* @media (min-width: 500px) and (max-width: 767px) {
+    .referenceField.sapMVBox {
+        flex: 0 0 calc(50% - 1.5rem);
+        max-width: calc(50% - 1.5rem);
+    }
+} */
+
+/* Mobile → 1 column */
+/* @media (max-width: 499px) {
+    .referenceField.sapMVBox {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+} */
+/* ===== INCOMING PAYMENT SECTION ===== */
+
+/* .incomingPayContainer {
+    width: 100%;
+    padding: 1rem 0.75rem;
+}
+
+.incomingPayFields.sapMHBox {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 1rem 2.5rem !important;
+    width: 100%;
+}
+
+.incomingPayField.sapMVBox {
+    flex: 1 1 180px;
+    min-width: 150px;
+    max-width: 300px;
+}
+
+.incomingPayLabel.sapMLabel {
+    color: #556b82;
+    font-size: 0.875rem;
+}
+
+.incomingPayValue.sapMText {
+    font-size: 0.875rem;
+    color: #32363a;
+} */
+
+
+/* XL screens → 5 columns */
+/* @media (min-width: 1400px) {
+    .incomingPayField.sapMVBox {
+        flex: 0 0 calc(20% - 2rem);
+        max-width: calc(20% - 2rem);
+    }
+} */
+
+/* Large → 4 columns */
+/* @media (min-width: 1000px) and (max-width: 1399px) {
+    .incomingPayField.sapMVBox {
+        flex: 0 0 calc(25% - 2rem);
+        max-width: calc(25% - 2rem);
+    }
+} */
+
+/* Medium → 3 columns */
+/* @media (min-width: 768px) and (max-width: 999px) {
+    .incomingPayField.sapMVBox {
+        flex: 0 0 calc(33.33% - 2rem);
+        max-width: calc(33.33% - 2rem);
+    }
+} */
+
+/* Small → 2 columns */
+/* @media (min-width: 500px) and (max-width: 767px) {
+    .incomingPayField.sapMVBox {
+        flex: 0 0 calc(50% - 1.5rem);
+        max-width: calc(50% - 1.5rem);
+    }
+} */
+
+/* Mobile → 1 column */
+/* @media (max-width: 499px) {
+    .incomingPayField.sapMVBox {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
 } */

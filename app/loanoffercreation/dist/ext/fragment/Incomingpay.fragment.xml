@@ -1,0 +1,113 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <!-- Main Container -->
+    <VBox class="incomingPayContainer sapUiNoContentPadding"
+          core:require="{handler: 'loanoffercreation/ext/fragment/Incomingpay'}">
+
+        <!-- Responsive wrapper -->
+        <HBox wrap="Wrap" class="incomingPayFields">
+
+            <!-- Incoming Payment Method -->
+            <VBox class="incomingPayField">
+                <Label text="Incoming Payment Method:"
+                       required="{= !${IsActiveEntity} }"
+                       class="incomingPayLabel"/>
+
+                <Text
+                    text="{= ${paymentMethod} ? ${paymentMethod} : '_' }"
+                    visible="{IsActiveEntity}"
+                    class="incomingPayValue"/>
+
+                <ComboBox
+                    selectedKey="{path :'paymentMethod', targetType:'any'}"
+                    width="100%"
+                    visible="{= !${IsActiveEntity} }"
+                     items="{path: '/PaymentMethodSearchHelp'}">
+
+                     <core:Item
+                        key="{code}"
+                        text="{code} ({name})"
+                        
+                        />
+
+                </ComboBox>
+            </VBox>
+
+
+            <!-- AR Billing Job -->
+            <VBox class="incomingPayField">
+                <Label text="AR Billing Job:"
+                       class="incomingPayLabel"/>
+
+                <Text
+                    text="{= ${arBillingJob} ? ${arBillingJob} : '_' }"
+                    visible="{IsActiveEntity}"
+                    class="incomingPayValue"/>
+
+                <ComboBox
+                    selectedKey="{arBillingJob}"
+                    width="100%"
+                    visible="{= !${IsActiveEntity} }"
+                    items = "{path : '/ARBillingJobSearchHelp'}">
+                    <core:Item
+                        key="{jobCode}"
+                        text="{jobCode} ({longName})"/>
+
+                </ComboBox>
+            </VBox>
+
+
+            <!-- Payoff Lock -->
+            <VBox class="incomingPayField">
+                <Label text="Payoff Lock:"
+                       class="incomingPayLabel"/>
+
+                <Text
+                    text="{= ${payoffLock} === true ? 'Yes' : ${payoffLock} === false ? 'No' : '-' }"
+                    visible="{IsActiveEntity}"
+                    class="incomingPayValue"/>
+
+                <CheckBox
+                    selected="{payoffLock}"
+                    visible="{= !${IsActiveEntity} }"/>
+            </VBox>
+
+
+            <!-- Exclude from Dunning Indicator -->
+            <VBox class="incomingPayField">
+                <Label text="Exclude from Dunning Indicator:"
+                       class="incomingPayLabel"/>
+
+                <Text
+                    text="{= ${dunningIndicator} ? 'Yes' : 'No' }"
+                    visible="{IsActiveEntity}"
+                    class="incomingPayValue"/>
+
+                <CheckBox
+                    selected="{dunningIndicator}"
+                    visible="{= !${IsActiveEntity} }"/>
+            </VBox>
+
+
+            <!-- 1098 Relevant Indicator -->
+            <VBox class="incomingPayField">
+                <Label text="1098 Relevant Indicator:"
+                       class="incomingPayLabel"/>
+
+                <Text
+                    text="{= ${relevantIndicator} ? 'Yes' : 'No' }"
+                    visible="{IsActiveEntity}"
+                    class="incomingPayValue"/>
+
+                <CheckBox
+                    selected="{relevantIndicator}"
+                    visible="{= !${IsActiveEntity} }"/>
+            </VBox>
+
+        </HBox>
+
+    </VBox>
+
+</core:FragmentDefinition>

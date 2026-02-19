@@ -68,6 +68,11 @@
     /* 🔥 forces 2 columns */
 }
 
+/* hiding capital dropdow in anchor for disbursement */
+/* #loanoffercreation\:\:ContractObjectPage--fe\:\:ObjectPage-anchBar-loanoffercreation\:\:ContractObjectPage--fe\:\:FacetSubSection\:\:_2-anchor-__clone178{
+    display: none;
+} */
+
 /* custom section alignment */
 
 /* #loanoffercreation\:\:ContractObjectPage--fe\:\:CustomSubSection\:\:Loanamortizationinformation--innerGrid{
@@ -85,7 +90,7 @@ loanoffercreation\:\:ContractObjectPage--fe\:\:CustomSubSection\:\:Loandata-inne
 } */
 
 /* ===== LOAN DATA SECTION - CUSTOM FRAGMENT STYLES ===== */
-/* Main container */
+/* Main container
 .loanDataContainer {
     width: 100%;
     padding: 1rem 0.75rem;
@@ -112,53 +117,53 @@ loanoffercreation\:\:ContractObjectPage--fe\:\:CustomSubSection\:\:Loandata-inne
 .loanDataValue.sapMText {
     font-size: 0.875rem;
     color: #32363a;
-}
+} */
 
 
 /* XL screens → 5 columns */
-@media (min-width: 1400px) {
+/* @media (min-width: 1400px) {
     .loanFormField.sapMVBox {
         flex: 0 0 calc(20% - 2rem);
         max-width: calc(20% - 2rem);
     }
-}
+} */
 
 /* Large → 4 columns */
-@media (min-width: 1000px) and (max-width: 1399px) {
+/* @media (min-width: 1000px) and (max-width: 1399px) {
     .loanFormField.sapMVBox {
         flex: 0 0 calc(25% - 2rem);
         max-width: calc(25% - 2rem);
     }
-}
+} */
 
 /* Medium → 3 columns */
-@media (min-width: 768px) and (max-width: 999px) {
+/* @media (min-width: 768px) and (max-width: 999px) {
     .loanFormField.sapMVBox {
         flex: 0 0 calc(33.33% - 2rem);
         max-width: calc(33.33% - 2rem);
     }
-}
+} */
 
 /* Small → 2 columns */
-@media (min-width: 500px) and (max-width: 767px) {
+/* @media (min-width: 500px) and (max-width: 767px) {
     .loanFormField.sapMVBox {
         flex: 0 0 calc(50% - 1.5rem);
         max-width: calc(50% - 1.5rem);
     }
-}
+} */
 
 /* Mobile → 1 column */
-@media (max-width: 499px) {
+/* @media (max-width: 499px) {
     .loanFormField.sapMVBox {
         flex: 0 0 100%;
         max-width: 100%;
     }
-}
+} */
 
 
 /* ===== LOAN AMORTIZATION SECTION ===== */
 
-.loanAmortContainer {
+/* .loanAmortContainer {
     width: 100%;
     padding: 1rem 0.75rem;
 }
@@ -184,52 +189,52 @@ loanoffercreation\:\:ContractObjectPage--fe\:\:CustomSubSection\:\:Loandata-inne
 .loanAmortValue.sapMText {
     font-size: 0.875rem;
     color: #32363a;
-}
+} */
 
 
 /* XL screens → 5 columns */
-@media (min-width: 1400px) {
+/* @media (min-width: 1400px) {
     .loanAmortField.sapMVBox {
         flex: 0 0 calc(20% - 2rem);
         max-width: calc(20% - 2rem);
     }
-}
+} */
 
 /* Large → 4 columns */
-@media (min-width: 1000px) and (max-width: 1399px) {
+/* @media (min-width: 1000px) and (max-width: 1399px) {
     .loanAmortField.sapMVBox {
         flex: 0 0 calc(25% - 2rem);
         max-width: calc(25% - 2rem);
     }
-}
+} */
 
 /* Medium → 3 columns */
-@media (min-width: 768px) and (max-width: 999px) {
+/* @media (min-width: 768px) and (max-width: 999px) {
     .loanAmortField.sapMVBox {
         flex: 0 0 calc(33.33% - 2rem);
         max-width: calc(33.33% - 2rem);
     }
-}
+} */
 
 /* Small → 2 columns */
-@media (min-width: 500px) and (max-width: 767px) {
+/* @media (min-width: 500px) and (max-width: 767px) {
     .loanAmortField.sapMVBox {
         flex: 0 0 calc(50% - 1.5rem);
         max-width: calc(50% - 1.5rem);
     }
-}
+} */
 
 /* Mobile → 1 column */
-@media (max-width: 499px) {
+/* @media (max-width: 499px) {
     .loanAmortField.sapMVBox {
         flex: 0 0 100%;
         max-width: 100%;
     }
-}
+} */
 
 
 /* ===== REFERENCE DATA SECTION ===== */
-
+/* 
 .referenceContainer {
     width: 100%;
     padding: 1rem 0.75rem;
@@ -256,51 +261,51 @@ loanoffercreation\:\:ContractObjectPage--fe\:\:CustomSubSection\:\:Loandata-inne
 .referenceValue.sapMText {
     font-size: 0.875rem;
     color: #32363a;
-}
+} */
 
 
 /* XL screens → 6 columns */
-@media (min-width: 1600px) {
+/* @media (min-width: 1600px) {
     .referenceField.sapMVBox {
         flex: 0 0 calc(16.66% - 2rem);
         max-width: calc(16.66% - 2rem);
     }
-}
+} */
 
 /* Large → 4 columns */
-@media (min-width: 1200px) and (max-width: 1599px) {
+/* @media (min-width: 1200px) and (max-width: 1599px) {
     .referenceField.sapMVBox {
         flex: 0 0 calc(25% - 2rem);
         max-width: calc(25% - 2rem);
     }
-}
+} */
 
 /* Medium → 3 columns */
-@media (min-width: 768px) and (max-width: 1199px) {
+/* @media (min-width: 768px) and (max-width: 1199px) {
     .referenceField.sapMVBox {
         flex: 0 0 calc(33.33% - 2rem);
         max-width: calc(33.33% - 2rem);
     }
-}
+} */
 
 /* Small → 2 columns */
-@media (min-width: 500px) and (max-width: 767px) {
+/* @media (min-width: 500px) and (max-width: 767px) {
     .referenceField.sapMVBox {
         flex: 0 0 calc(50% - 1.5rem);
         max-width: calc(50% - 1.5rem);
     }
-}
+} */
 
 /* Mobile → 1 column */
-@media (max-width: 499px) {
+/* @media (max-width: 499px) {
     .referenceField.sapMVBox {
         flex: 0 0 100%;
         max-width: 100%;
     }
-}
+} */
 /* ===== INCOMING PAYMENT SECTION ===== */
 
-.incomingPayContainer {
+/* .incomingPayContainer {
     width: 100%;
     padding: 1rem 0.75rem;
 }
@@ -326,45 +331,45 @@ loanoffercreation\:\:ContractObjectPage--fe\:\:CustomSubSection\:\:Loandata-inne
 .incomingPayValue.sapMText {
     font-size: 0.875rem;
     color: #32363a;
-}
+} */
 
 
 /* XL screens → 5 columns */
-@media (min-width: 1400px) {
+/* @media (min-width: 1400px) {
     .incomingPayField.sapMVBox {
         flex: 0 0 calc(20% - 2rem);
         max-width: calc(20% - 2rem);
     }
-}
+} */
 
 /* Large → 4 columns */
-@media (min-width: 1000px) and (max-width: 1399px) {
+/* @media (min-width: 1000px) and (max-width: 1399px) {
     .incomingPayField.sapMVBox {
         flex: 0 0 calc(25% - 2rem);
         max-width: calc(25% - 2rem);
     }
-}
+} */
 
 /* Medium → 3 columns */
-@media (min-width: 768px) and (max-width: 999px) {
+/* @media (min-width: 768px) and (max-width: 999px) {
     .incomingPayField.sapMVBox {
         flex: 0 0 calc(33.33% - 2rem);
         max-width: calc(33.33% - 2rem);
     }
-}
+} */
 
 /* Small → 2 columns */
-@media (min-width: 500px) and (max-width: 767px) {
+/* @media (min-width: 500px) and (max-width: 767px) {
     .incomingPayField.sapMVBox {
         flex: 0 0 calc(50% - 1.5rem);
         max-width: calc(50% - 1.5rem);
     }
-}
+} */
 
 /* Mobile → 1 column */
-@media (max-width: 499px) {
+/* @media (max-width: 499px) {
     .incomingPayField.sapMVBox {
         flex: 0 0 100%;
         max-width: 100%;
     }
-}
+} */

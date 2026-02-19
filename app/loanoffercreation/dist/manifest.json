@@ -266,6 +266,9 @@
 										"DataField::paymentFromExactDay": {
 											"width": "20%"
 										}
+									},
+									"tableSettings": {
+										"type": "GridTable"
 									}
 								},
 								"@com.sap.vocabularies.UI.v1.FieldGroup#_": {
@@ -301,6 +304,9 @@
 										"DataField::bankDetailsID": {
 											"width": "10%"
 										}
+									},
+									"tableSettings": {
+										"type": "GridTable"
 									}
 								},
 								"contractToEarmark/@com.sap.vocabularies.UI.v1.LineItem#_": {
@@ -396,6 +402,9 @@
 											"requiresSelection": false,
 											"text": "Release"
 										}
+									},
+									"tableSettings": {
+										"type": "GridTable"
 									}
 								},
 								"contractToEarmark/@com.sap.vocabularies.UI.v1.LineItem#EarmarkFundDocument": {
