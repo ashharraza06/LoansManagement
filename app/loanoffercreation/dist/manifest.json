@@ -167,7 +167,10 @@
 							"controlConfiguration": {
 								"@com.sap.vocabularies.UI.v1.LineItem": {
 									"tableSettings": {
-										"type": "GridTable"
+										"type": "GridTable",
+										"header": "",
+										"headerVisible": true,
+										"showRowCount": true
 									}
 								}
 							}
@@ -268,7 +271,10 @@
 										}
 									},
 									"tableSettings": {
-										"type": "GridTable"
+										"type": "GridTable",
+										"header": "Condition Items",
+										"headerVisible": true,
+										"showRowCount": true
 									}
 								},
 								"@com.sap.vocabularies.UI.v1.FieldGroup#_": {
@@ -306,7 +312,10 @@
 										}
 									},
 									"tableSettings": {
-										"type": "GridTable"
+										"type": "GridTable",
+										"header": "Partners",
+										"headerVisible": true,
+										"showRowCount": true
 									}
 								},
 								"contractToEarmark/@com.sap.vocabularies.UI.v1.LineItem#_": {
@@ -370,7 +379,10 @@
 									},
 									"tableSettings": {
 										"widthIncludingColumnHeader": true,
-										"type": "GridTable"
+										"type": "GridTable",
+										"header": "Earmark Fund Document",
+										"headerVisible": true,
+										"showRowCount": true
 									}
 								},
 								"contractToDisbursement/@com.sap.vocabularies.UI.v1.LineItem#Disbursements": {
@@ -404,7 +416,10 @@
 										}
 									},
 									"tableSettings": {
-										"type": "GridTable"
+										"type": "GridTable",
+										"header": "Disbursements",
+										"headerVisible": true,
+										"showRowCount": true
 									}
 								},
 								"contractToEarmark/@com.sap.vocabularies.UI.v1.LineItem#EarmarkFundDocument": {

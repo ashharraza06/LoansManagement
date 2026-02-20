@@ -92,7 +92,7 @@ entity Contract : managed {
 
         contract               : String;
         contractOn             : Date           @Common.Label: 'Loan Close Date';
-        contractCompleteDate   : Date           @Common.Label: 'Contract Complete Date';
+        contractCompleteDate   : Date           @Common.Label: 'Contract Completed Date';
         amtzDate               : Date           @mandatory  @Common.Label: 'Loan Begin Date';
         maturityDate           : Date           @mandatory  @Common.Label: 'Loan Maturity Date';
 

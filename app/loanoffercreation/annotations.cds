@@ -1384,3 +1384,20 @@ annotate service.Contract with {
         Common.ValueListWithFixedValues : true,
 )};
 
+annotate service.ConditionItemsNew with {
+    intCalMt @(
+        Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'intCalMtSearchHelp',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : intCalMt,
+                    ValueListProperty : 'value',
+                },
+            ],
+            Label : 'intmethod',
+        },
+        Common.ValueListWithFixedValues : true,
+)};
+
