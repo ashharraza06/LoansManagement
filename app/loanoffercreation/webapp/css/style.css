@@ -13,7 +13,7 @@
 
 
 .headerHBox {
-    gap: 5rem;
+    gap: 1.5rem;
     /* space between columns */
 }
 
@@ -21,6 +21,10 @@
     min-width: 10rem;
     /* consistent column width */
 }
+.partnerRow {
+    align-items: flex-start;
+}
+
 
 #loanoffercreation\:\:ContractObjectPage--fe\:\:FormContainer\:\:_>.sapUiFormTitleH5 {
     display: none;

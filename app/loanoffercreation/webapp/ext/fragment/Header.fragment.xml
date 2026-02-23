@@ -1,39 +1,45 @@
-<core:FragmentDefinition
-    xmlns:core="sap.ui.core"
-    xmlns="sap.m">
- 
-    <HBox
-    width="100%"
-    wrap="NoWrap"
-    alignItems="Start"
-    class="headerHBox">
- 
-    <VBox class="headerItem">
-        <Label text="Loan Number" design="Bold"/>
-        <Text text="{loanNumber}"/>
-    </VBox>
- 
-    <VBox class="headerItem">
-        <Label text="BP Number" design="Bold"/>
-        <Text text="{bpNumber}"/>
-    </VBox>
- 
-    <VBox class="headerItem">
-        <Label text="Partner Name" design="Bold"/>
-        <Text text="Berks Barber School"/>
-    </VBox>
- 
-    <VBox class="headerItem">
-        <Label text="Status" design="Bold"/>
-        <Text text="{status}"/>
-    </VBox>
- 
-    <VBox class="headerItem">
-        <Label text="Disb. Status" design="Bold"/>
-        <Text text="{disbursementStatus}"/>
-    </VBox>
- 
-</HBox>
- 
- 
+<?xml version="1.0" encoding="UTF-8"?>
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+   <HBox width="100%" wrap="NoWrap" alignItems="Start" class="headerHBox">
+      <!-- Loan Number -->
+      <VBox class="headerItem">
+         <Label text="Loan Number" design="Bold" />
+         <Text text="{loanNumber}" />
+      </VBox>
+      <!-- Status -->
+      <VBox class="headerItem">
+         <Label text="Status" design="Bold" />
+         <Text text="{= ${status} ? ${status} : 'Pre-Contract' }" />
+      </VBox>
+      <!-- Disbursement Status -->
+      <VBox class="headerItem">
+         <Label text="Disb. Status" design="Bold" />
+         <Text text="{= ${disbursementStatus} ? ${disbursementStatus} : 'Not Disbursed' }" />
+      </VBox>
+      <!-- Loan Partners Section -->
+      <VBox class="headerItem" width="50%">
+         <!-- Column Headings -->
+         <HBox class="partnerRow">
+            <Label text="BP Number" width="120px" design="Bold" />
+            <Label text="Role Name" width="180px" design="Bold" />
+            <Label text="Partner Name" design="Bold" />
+         </HBox>
+         <!-- Dynamic Rows -->
+         <VBox id="partnersVBox" items="{       
+           path: 'contractToPartner',
+           filters: [{
+           filters:[ 
+           { path: 'title', operator: 'EQ', value1: 'Main Loan Partner' },
+           { path: 'title', operator: 'EQ', value1: 'Loan Partner' }
+           ],
+          and: false},
+          {path: 'endRel',operator: 'EQ',value1: null }]}">
+            <HBox>
+               <Text text="{partner}" width="120px" />
+               <Text text="{title}" width="180px" />
+               <Text text="{nameAddress}" />
+            </HBox>
+         </VBox>
+      </VBox>
+   </HBox>
 </core:FragmentDefinition>
