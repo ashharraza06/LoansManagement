@@ -20,8 +20,8 @@
       <VBox class="headerItem" width="50%">
          <!-- Column Headings -->
          <HBox class="partnerRow">
-            <Label text="BP Number" width="120px" design="Bold" />
-            <Label text="Role Name" width="180px" design="Bold" />
+            <Label text="BP Number" width="130px" design="Bold" />
+            <Label text="Role Name" width="170px" design="Bold" />
             <Label text="Partner Name" design="Bold" />
          </HBox>
          <!-- Dynamic Rows -->
@@ -35,8 +35,8 @@
           and: false},
           {path: 'endRel',operator: 'EQ',value1: null }]}">
             <HBox>
-               <Text text="{partner}" width="120px" />
-               <Text text="{title}" width="180px" />
+               <Text text="{partner}" width="130px" />
+               <Text text="{title}" width="170px" />
                <Text text="{nameAddress}" />
             </HBox>
          </VBox>

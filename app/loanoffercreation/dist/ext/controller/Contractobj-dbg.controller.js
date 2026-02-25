@@ -151,6 +151,28 @@ sap.ui.define([
             new sap.ui.model.Sorter("documentNumber", false) // false = ASC
         ]);
     }
+    function sortPartner(oVBox) {
+
+        if (!oVBox) return;
+
+        var oBinding = oVBox.getBinding("items");
+        if (!oBinding) return;
+
+        var oSorter = new sap.ui.model.Sorter(
+            "title",
+            true, // ⭐ descending because 01 < 02
+            function (oContext) {
+
+                var sTitle = oContext.getProperty("title");
+
+                if (sTitle === "Main Loan Partner") return "1";
+                if (sTitle === "Loan Partner") return "2";
+                return "3";
+            }
+        );
+
+        oBinding.sort(oSorter);
+    }
 
 
     return ControllerExtension.extend("loanoffercreation.ext.controller.Contractobj", {
@@ -212,6 +234,10 @@ sap.ui.define([
                     setTimeout(() => {
                         sortEarmarkTable();
                     }, 300);
+
+                    setTimeout(() => {
+                        sortPartner(this.base.getView().byId("loanoffercreation::ContractObjectPage--fe::HeaderFacetCustomContainer::Header--partnersVBox"));
+                    }, 400);
 
                     const aTableIds = [
 

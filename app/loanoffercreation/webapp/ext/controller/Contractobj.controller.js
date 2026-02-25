@@ -151,6 +151,28 @@ sap.ui.define([
             new sap.ui.model.Sorter("documentNumber", false) // false = ASC
         ]);
     }
+    function sortPartner(oVBox) {
+
+        if (!oVBox) return;
+
+        var oBinding = oVBox.getBinding("items");
+        if (!oBinding) return;
+
+        var oSorter = new sap.ui.model.Sorter(
+            "title",
+            true, // ⭐ descending because 01 < 02
+            function (oContext) {
+
+                var sTitle = oContext.getProperty("title");
+
+                if (sTitle === "Main Loan Partner") return "1";
+                if (sTitle === "Loan Partner") return "2";
+                return "3";
+            }
+        );
+
+        oBinding.sort(oSorter);
+    }
 
 
     return ControllerExtension.extend("loanoffercreation.ext.controller.Contractobj", {
@@ -177,229 +199,239 @@ sap.ui.define([
 
 
 
-        onAfterRendering: function () {
+            onAfterRendering: function () {
 
-            // this._attachAnchorBarClick();
+                // this._attachAnchorBarClick();
 
-            // this._formatDisplayDates();
+                // this._formatDisplayDates();
 
-        },
-
-
-
-        routing: {
-
-            // onAfterBinding: function () {
-
-            //     this._formatEditDates();
-
-            //     this._formatDisplayDates();
-
-            // }
+            },
 
 
 
-            onAfterBinding: function () {
+            routing: {
 
-                this._formatEditDates();
+                // onAfterBinding: function () {
 
-                this._formatDisplayDates();
+                //     this._formatEditDates();
 
+                //     this._formatDisplayDates();
 
-                debugger;
-                setTimeout(setFixedFormLayout, 600);
-                setTimeout(setWidth, 500);
-                setTimeout(() => {
-                    sortEarmarkTable();
-                }, 300);
-
-                const aTableIds = [
-
-                    "loanoffercreation::ContractObjectPage--fe::table::contractToPartner::LineItem::Partners-innerTable",
-
-                    "loanoffercreation::ContractObjectPage--fe::table::contractToCondition::LineItem::ConditionItems-innerTable",
-
-                    "loanoffercreation::ContractObjectPage--fe::table::contractToDisbursement::LineItem::Disbursements-innerTable",
-                    // "loanoffercreation::ContractObjectPage--fe::table::contractToEarmark::LineItem::Earmark"
-                ];
+                // }
 
 
 
-                function formatDateColumn() {
+                onAfterBinding: function () {
+
+                    this._formatEditDates();
+
+                    this._formatDisplayDates();
+
+
+                    debugger;
+                    setTimeout(setFixedFormLayout, 600);
+                    setTimeout(setWidth, 500);
+                    setTimeout(() => {
+                        sortEarmarkTable();
+                    }, 300);
+
+                    setTimeout(() => {
+                        sortPartner(this.base.getView().byId("loanoffercreation::ContractObjectPage--fe::HeaderFacetCustomContainer::Header--partnersVBox"));
+                    }, 400);
+
+                    const aTableIds = [
+
+                        "loanoffercreation::ContractObjectPage--fe::table::contractToPartner::LineItem::Partners-innerTable",
+
+                        "loanoffercreation::ContractObjectPage--fe::table::contractToCondition::LineItem::ConditionItems-innerTable",
+
+                        "loanoffercreation::ContractObjectPage--fe::table::contractToDisbursement::LineItem::Disbursements-innerTable",
+                        // "loanoffercreation::ContractObjectPage--fe::table::contractToEarmark::LineItem::Earmark"
+                    ];
 
 
 
-                    aTableIds.forEach(function (sTableId) {
+                    function formatDateColumn() {
 
 
 
-                        const oInnerTable = sap.ui.core.Element.getElementById(sTableId);
+                        aTableIds.forEach(function (sTableId) {
 
 
 
-                        console.log(
-
-                            sTableId,
-
-                            oInnerTable ? oInnerTable.getMetadata().getName() : "Table not found"
-
-                        );
+                            const oInnerTable = sap.ui.core.Element.getElementById(sTableId);
 
 
 
-                        if (!oInnerTable) {
+                            console.log(
 
-                            setTimeout(formatDateColumn, 500);
+                                sTableId,
 
-                            return;
+                                oInnerTable ? oInnerTable.getMetadata().getName() : "Table not found"
 
-                        }
+                            );
 
 
 
-                        if (!oInnerTable._dateFormattingAttached) {
+                            if (!oInnerTable) {
 
-                            // For Grid Table (sap.ui.table.Table)
-                            if (oInnerTable.attachRowsUpdated) {
+                                setTimeout(formatDateColumn, 500);
 
-                                oInnerTable.attachRowsUpdated(function () {
-                                    updateRows(oInnerTable);
-                                });
+                                return;
 
                             }
 
-                            oInnerTable._dateFormattingAttached = true;
-                        }
 
 
+                            if (!oInnerTable._dateFormattingAttached) {
 
-                        updateRows(oInnerTable);
+                                // For Grid Table (sap.ui.table.Table)
+                                if (oInnerTable.attachRowsUpdated) {
 
-                    });
+                                    oInnerTable.attachRowsUpdated(function () {
+                                        updateRows(oInnerTable);
+                                    });
 
-                }
+                                }
 
-
-
-                function updateRows(oInnerTable) {
-
-                    if (!oInnerTable) return;
-
-                    // ⭐ For sap.ui.table.Table (Grid Table)
-                    if (oInnerTable.getRows) {
-
-                        const aRows = oInnerTable.getRows();
-                        if (!aRows || aRows.length === 0) return;
-
-                        const sTableId = oInnerTable.getId();
-
-                        aRows.forEach(function (oRow) {
-
-                            const aCells = oRow.getCells();
-                            if (!aCells) return;
-
-                            /* ========= Partner Table ========= */
-                            if (sTableId.includes("contractToPartner")) {
-
-                                formatDateCell(aCells[5], "startRel");
-                                formatDateCell(aCells[6], "endRel");
+                                oInnerTable._dateFormattingAttached = true;
                             }
 
-                            /* ========= Condition Table ========= */
-                            if (sTableId.includes("contractToCondition")) {
 
-                                formatDateCell(aCells[1], "effectiveFrom");
-                                formatDateCell(aCells[6], "dueDate");
-                                formatDateCell(aCells[7], "calculationDate");
-                            }
 
-                            /* ========= Disbursement Table ========= */
-                            if (sTableId.includes("contractToDisbursement")) {
-
-                                formatDateCell(aCells[2], "paymentDate");
-                                formatDateCell(aCells[3], "effectiveDate");
-                            }
+                            updateRows(oInnerTable);
 
                         });
 
                     }
 
-                }
 
 
+                    function updateRows(oInnerTable) {
 
+                        if (!oInnerTable) return;
 
+                        // ⭐ For sap.ui.table.Table (Grid Table)
+                        if (oInnerTable.getRows) {
 
+                            const aRows = oInnerTable.getRows();
+                            if (!aRows || aRows.length === 0) return;
 
-                function formatDateCell(oCell, sPath) {
+                            const sTableId = oInnerTable.getId();
 
-                    if (!oCell) return;
+                            aRows.forEach(function (oRow) {
 
+                                const aCells = oRow.getCells();
+                                if (!aCells) return;
 
+                                /* ========= Partner Table ========= */
+                                if (sTableId.includes("contractToPartner")) {
 
-                    // Edit mode (DatePicker)
+                                    formatDateCell(aCells[5], "startRel");
+                                    formatDateCell(aCells[6], "endRel");
+                                }
 
-                    const oDatePicker =
+                                /* ========= Condition Table ========= */
+                                if (sTableId.includes("contractToCondition")) {
 
-                        oCell?.mAggregations?.content?.mAggregations?.contentEdit?.[0];
+                                    formatDateCell(aCells[1], "effectiveFrom");
+                                    formatDateCell(aCells[6], "dueDate");
+                                    formatDateCell(aCells[7], "calculationDate");
+                                }
 
+                                /* ========= Disbursement Table ========= */
+                                if (sTableId.includes("contractToDisbursement")) {
 
+                                    formatDateCell(aCells[2], "paymentDate");
+                                    formatDateCell(aCells[3], "effectiveDate");
+                                }
 
-                    if (oDatePicker && oDatePicker.setDisplayFormat) {
+                            });
 
-                        oDatePicker.unbindProperty("value");
-
-                        oDatePicker.bindProperty("dateValue", { path: sPath });
-
-                        oDatePicker.setDisplayFormat("MM/dd/yyyy");
-
-                        oDatePicker.setValueFormat("yyyy/MM/dd");
+                        }
 
                     }
 
 
 
-                    // Display mode (Text)
-
-                    const oTextDisplay =
-
-                        oCell?.mAggregations?.content?.mAggregations?.contentDisplay;
 
 
 
-                    if (oTextDisplay && oTextDisplay.setText) {
+                    function formatDateCell(oCell, sPath) {
 
-                        let sDate = oTextDisplay.getText();
+                        if (!oCell) return;
 
 
 
-                        if (!sDate) {
+                        // Edit mode (DatePicker)
 
-                            const oBinding = oTextDisplay.getBinding("text");
+                        const oDatePicker =
 
-                            if (oBinding) {
+                            oCell?.mAggregations?.content?.mAggregations?.contentEdit?.[0];
 
-                                sDate = oBinding.getValue();
 
-                            }
+
+                        if (oDatePicker && oDatePicker.setDisplayFormat) {
+
+                            oDatePicker.unbindProperty("value");
+
+                            oDatePicker.bindProperty("dateValue", { path: sPath });
+
+                            oDatePicker.setDisplayFormat("MM/dd/yyyy");
+
+                            oDatePicker.setValueFormat("yyyy/MM/dd");
 
                         }
 
 
 
-                        if (sDate) {
+                        // Display mode (Text)
 
-                            const oDate = new Date(sDate);
+                        const oTextDisplay =
 
-                            if (!isNaN(oDate.getTime())) {
+                            oCell?.mAggregations?.content?.mAggregations?.contentDisplay;
 
-                                const dd = String(oDate.getDate()).padStart(2, "0");
 
-                                const mm = String(oDate.getMonth() + 1).padStart(2, "0");
 
-                                const yyyy = oDate.getFullYear();
+                        if (oTextDisplay && oTextDisplay.setText) {
 
-                                oTextDisplay.setText(`${mm}/${dd}/${yyyy}`);
+                            let sDate = oTextDisplay.getText();
+
+
+
+                            if (!sDate) {
+
+                                const oBinding = oTextDisplay.getBinding("text");
+
+                                if (oBinding) {
+
+                                    sDate = oBinding.getValue();
+
+                                }
+
+                            }
+
+
+
+                            if (sDate) {
+
+                                const oDate = new Date(sDate);
+
+                                if (!isNaN(oDate.getTime())) {
+
+                                    const dd = String(oDate.getDate()).padStart(2, "0");
+
+                                    const mm = String(oDate.getMonth() + 1).padStart(2, "0");
+
+                                    const yyyy = oDate.getFullYear();
+
+                                    oTextDisplay.setText(`${mm}/${dd}/${yyyy}`);
+
+                                } else {
+
+                                    oTextDisplay.setText("");
+
+                                }
 
                             } else {
 
@@ -407,29 +439,23 @@ sap.ui.define([
 
                             }
 
-                        } else {
-
-                            oTextDisplay.setText("");
-
                         }
 
                     }
+
+
+
+                    // 🔥 Start formatting
+
+                    formatDateColumn();
 
                 }
 
 
 
-                // 🔥 Start formatting
-
-                formatDateColumn();
-
             }
 
-
-
-        }
-
-    },
+        },
 
 
 

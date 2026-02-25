@@ -7,7 +7,8 @@
     "@sap/cds": "^9",
     "@sap/xsenv": "^6.0.0",
     "@sap/xssec": "^4.12.2",
-    "express": "^4",
+    "cors": "^2.8.6",
+    "express": "^4.22.1",
     "passport": "^0.7.0"
   },
   "devDependencies": {
@@ -34,8 +35,8 @@
   ],
   "cds": {
     "requires": {
-      "db" : "hana",
-      "auth" : "dummy"
+      "db": "hana",
+      "auth": "dummy"
     }
   }
 }
