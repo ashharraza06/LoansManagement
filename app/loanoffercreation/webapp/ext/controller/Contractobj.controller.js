@@ -62,6 +62,104 @@ sap.ui.define([
         });
 
     }
+    function setExcludeFromDunningLayout() {
+        debugger;
+
+        const sFormContainerId = "loanoffercreation::ContractObjectPage--fe::FormContainer::ExcludeFromDunning";
+
+        const oFormContainer = sap.ui.getCore().byId(sFormContainerId);
+
+        if (!oFormContainer) {
+            console.warn("❌ FormContainer not found");
+            return;
+        }
+
+        // Get parent Form
+        const oParentForm = oFormContainer.getParent();
+
+        if (!oParentForm) {
+            console.warn("❌ Parent Form not found");
+            return;
+        }
+
+        const oLayout = oParentForm.getLayout();
+
+        if (!oLayout) {
+            console.warn("❌ Layout not found");
+            return;
+        }
+
+        console.log("✅ Layout type:", oLayout.getMetadata().getName());
+
+        // ⭐ Set layout data on the FormContainer itself to take only half width
+        oFormContainer.setLayoutData(
+            new sap.ui.layout.form.ColumnContainerData({
+                columnsXL: 1,
+                columnsL: 1,
+                columnsM: 1
+            })
+        );
+        const oForm = oFormContainer.getParent(); // sap.ui.layout.form.Form
+
+        if (!oForm) {
+            console.warn("❌ Parent Form not found");
+            return;
+        }
+
+        // Get all FormContainers in parent
+        const aFormContainers = oForm.getFormContainers();
+        const iCount = aFormContainers.length;
+
+        console.log("🔍 Current FormContainer count:", iCount);
+
+        // 👉 Rule:
+        // 2 = two real forms (no spacer yet)
+        // 3 = spacer already added
+        if (iCount === 2) {
+
+            const oSpacerContainer = new sap.ui.layout.form.FormContainer({
+                formElements: [
+                    new sap.ui.layout.form.FormElement({
+                        fields: [new sap.m.Text({ text: "" })]
+                    })
+                ]
+            });
+
+            oSpacerContainer.setLayoutData(
+                new sap.ui.layout.form.ColumnContainerData({
+                    columnsXL: 1,
+                    columnsL: 1,
+                    columnsM: 1,
+                    linebreak: true
+                })
+            );
+
+            // Insert spacer BETWEEN the two forms
+            oForm.insertFormContainer(oSpacerContainer, 1);
+
+            console.log("✅ Spacer added (now total = 3)");
+        } else {
+            console.log("ℹ️ Spacer already present or not required");
+        }
+
+        // ⭐ Set each field element to full width within its container
+        const aFormElements = oFormContainer.getFormElements();
+
+        console.log("✅ Total elements:", aFormElements.length);
+
+        aFormElements.forEach(function (oElement, index) {
+            oElement.setLayoutData(
+                new sap.ui.layout.form.ColumnElementData({
+                    cellsLarge: 12,
+                    cellsSmall: 12
+                })
+            );
+            console.log("✅ Element", index, "set to full width");
+        });
+
+
+        console.log("✅ Done - 3 fields should now stack vertically");
+    }
 
     function setWidth() {
 
@@ -71,21 +169,21 @@ sap.ui.define([
             //     widths: ["8rem", "10rem", "8rem", "8rem", "6rem", "8rem", "8rem"]
             // },
 
-            earmark: {
-                id: "loanoffercreation::ContractObjectPage--fe::table::contractToEarmark::LineItem::_-innerTable",
-                widths: [
-                    "6rem",
-                    "15rem",
-                    "4rem",
-                    "8rem",
-                    "8rem",
-                    "5rem",
-                    "7rem",
-                    "8rem",
-                    "8rem"
-                ],
-                forceFixed: true   // ⭐ grid fix
-            },
+            // earmark: {
+            //     id: "loanoffercreation::ContractObjectPage--fe::table::contractToEarmark::LineItem::_-innerTable",
+            //     widths: [
+            //         "9rem",
+            //         "15rem",
+            //         "4rem",
+            //         "8rem",
+            //         "8rem",
+            //         "7rem",
+            //         "9rem",
+            //         "8rem",
+            //         "8rem"
+            //     ],
+            //     forceFixed: true   // ⭐ grid fix
+            // },
 
             // disbursement: {
             //     id: "loanoffercreation::ContractObjectPage--fe::table::contractToDisbursement::LineItem::Disbursements-innerTable",
@@ -230,6 +328,7 @@ sap.ui.define([
 
                     debugger;
                     setTimeout(setFixedFormLayout, 600);
+                    setTimeout(setExcludeFromDunningLayout, 500);
                     setTimeout(setWidth, 500);
                     setTimeout(() => {
                         sortEarmarkTable();

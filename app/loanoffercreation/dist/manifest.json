@@ -342,7 +342,7 @@
 											"width": "7%"
 										},
 										"DataField::text": {
-											"width": "8%"
+											"width": "15%"
 										},
 										"Pretend": {
 											"header": "Account Coding",
@@ -380,7 +380,7 @@
 									"tableSettings": {
 										"widthIncludingColumnHeader": true,
 										"type": "GridTable",
-										"header": "Earmark Fund Document",
+										"header": "Funding Source",
 										"headerVisible": true,
 										"showRowCount": true
 									}

@@ -21,6 +21,7 @@ service MyService {
     entity loanCategorySearchHelp         as projection on db.loanCategorySearchHelp;
     entity paymentFromExactDaySearchHelp         as projection on db.paymentFromExactDaySearchHelp;
     entity intCalMtSearchHelp as projection on db.intCalMtSearchHelp;
+    entity  reasonSearchHelp as projection on db. reasonSearchHelp;
 
 
 

@@ -29,7 +29,15 @@
 #loanoffercreation\:\:ContractObjectPage--fe\:\:FormContainer\:\:_>.sapUiFormTitleH5 {
     display: none;
 }
-
+#loanoffercreation\:\:ContractObjectPage--fe\:\:FormContainer\:\:ExcludeFromDunning>.sapUiFormTitleH5{
+display: none;
+}
+#loanoffercreation\:\:ContractObjectPage--fe\:\:FormContainer\:\:f>.sapUiFormTitleH5{
+display: none;
+}
+.sapMTextAreaInner {
+    min-height: 150px !important;
+}
 #loanoffercreation\:\:ContractObjectPage--fe\:\:CustomSubSection\:\:CalculateCashflow-_headerToolbar {
     display: none;
 }

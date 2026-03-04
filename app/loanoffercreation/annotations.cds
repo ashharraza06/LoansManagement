@@ -274,6 +274,25 @@ annotate service.Contract with @(
                     ID    : 'IncomingPayment',
                     Target: '@UI.FieldGroup#IncomingPayment1',
                 },
+                {
+                    $Type : 'UI.CollectionFacet',
+                    Label : 'Exclude From Dunning',
+                    ID : 'ExcludeFromDunning1',
+                    Facets : [
+                        {
+                            $Type : 'UI.ReferenceFacet',
+                            Label : 'Exclude From Dunning',
+                            ID : 'ExcludeFromDunning',
+                            Target : '@UI.FieldGroup#ExcludeFromDunning',
+                        },
+                        {
+                            $Type : 'UI.ReferenceFacet',
+                            Label : 'f',
+                            ID : 'f',
+                            Target : '@UI.FieldGroup#f',
+                        },
+                    ],
+                },
             ],
         },
         {
@@ -289,11 +308,11 @@ annotate service.Contract with @(
                 },
                 {
                     $Type : 'UI.CollectionFacet',
-                    Label : 'Earmark Fund Document',
+                    Label : 'Funding Source',
                     ID    : 'EarmarkFundDocument',
                     Facets: [{
                         $Type : 'UI.ReferenceFacet',
-                        Label : 'Earmark Fund Document',
+                        Label : 'Funding Source',
                         ID    : '_3',
                         Target: 'contractToEarmark/@UI.LineItem#_',
                     }, ],
@@ -667,6 +686,7 @@ annotate service.Contract with @(
             {
                 $Type: 'UI.DataField',
                 Value: dunningIndicator,
+                @UI.Hidden,
             },
             {
                 $Type: 'UI.DataField',
@@ -724,6 +744,7 @@ annotate service.Contract with @(
             {
                 $Type : 'UI.DataField',
                 Value : commitmentDate,
+                @UI.Hidden,
             },
         ],
     },
@@ -733,6 +754,7 @@ annotate service.Contract with @(
             {
                 $Type : 'UI.DataField',
                 Value : offerOn,
+                Label : 'Approved On',
             },
             {
                 $Type : 'UI.DataField',
@@ -745,6 +767,49 @@ annotate service.Contract with @(
             {
                 $Type : 'UI.DataField',
                 Value : datePaidOff,
+                @UI.Hidden,
+            },
+        ],
+    },
+    UI.FieldGroup #ExcludeFromDunning : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : dunningIndicator,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : reason,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : dateofBankruptcy,
+                Label : 'Date of Bankruptcy',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : comments,
+                @UI.Hidden,
+            },
+        ],
+    },
+    UI.FieldGroup #f : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : comments,
+            },
+        ],
+    },
+    UI.FieldGroup #_3 : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : acceptancedType,
+                Label : 'acceptancedType',
             },
         ],
     },
@@ -1145,6 +1210,7 @@ annotate service.Earmark with @(
         {
             $Type: 'UI.DataField',
             Value: fund,
+            @UI.Hidden,
         },
         {
             $Type: 'UI.DataField',
@@ -1157,7 +1223,7 @@ annotate service.Earmark with @(
     ],
     UI.Facets             : [{
         $Type : 'UI.ReferenceFacet',
-        Label : 'Earmark',
+        Label : 'Funding Source',
         ID    : 'Earmark',
         Target: '@UI.FieldGroup#Earmark',
     }, ],
@@ -1179,6 +1245,7 @@ annotate service.Earmark with @(
             {
                 $Type: 'UI.DataField',
                 Value: fundCenter,
+                @UI.Hidden,
             },
             {
                 $Type: 'UI.DataField',
@@ -1187,6 +1254,7 @@ annotate service.Earmark with @(
             {
                 $Type: 'UI.DataField',
                 Value: fund,
+                @UI.Hidden,
             },
             {
                 $Type: 'UI.DataField',
@@ -1211,6 +1279,7 @@ annotate service.Earmark with @(
             {
                 $Type: 'UI.DataField',
                 Value: bussinessArea,
+                @UI.Hidden,
             },
             {
                 $Type: 'UI.DataField',
@@ -1223,6 +1292,7 @@ annotate service.Earmark with @(
             {
                 $Type: 'UI.DataField',
                 Value: commitmetItem,
+                @UI.Hidden,
             },
         ],
     },
@@ -1397,6 +1467,27 @@ annotate service.ConditionItemsNew with {
                 },
             ],
             Label : 'intmethod',
+        },
+        Common.ValueListWithFixedValues : true,
+)};
+
+annotate service.Contract with {
+    comments @UI.MultiLineText : true
+};
+
+annotate service.Contract with {
+    reason @(
+        Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'reasonSearchHelp',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : reason,
+                    ValueListProperty : 'value',
+                },
+            ],
+            Label : 'reasonsearchhelp',
         },
         Common.ValueListWithFixedValues : true,
 )};

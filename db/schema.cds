@@ -12,11 +12,11 @@ using {
 entity Contract : managed {
         /* ---------- Step 1 : Initial Screen ---------- */
     key ID                     : UUID;
-        companyCode            : String         @Common.Label: 'Company Code';
-    key loanNumber             : String         @mandatory  @Common.Label: 'Loan Number';
-    key productType            : String         @mandatory  @Common.Label: 'Agency';
-    key loanType               : String         @mandatory  @Common.Label: 'Loan Program';
-    key bpNumber               : String         @mandatory  @Common.Label: 'BP Number';
+        companyCode            : String       @Common.Label: 'Company Code';
+    key loanNumber             : String       @mandatory  @Common.Label: 'Loan Number';
+    key productType            : String       @mandatory  @Common.Label: 'Agency';
+    key loanType               : String       @mandatory  @Common.Label: 'Loan Program';
+    key bpNumber               : String       @mandatory  @Common.Label: 'BP Number';
         // key loanPartnerName        : String  @mandatory  @Common.Label: 'Loan Partner Name';
 
 
@@ -33,90 +33,94 @@ entity Contract : managed {
         // //classification
         // loanTypeBD          : String(3);
         // Application/approval
-        applicationDate        : Date           @Common.Label: 'Application Date';
-        applicationCapital     : Decimal(15, 2) @Common.Label: 'Application Capital';
-        approvalDate           : Date           @Common.Label: 'Approval Date';
-        commitmentDate         : Date           @Common.Label: 'Commitment Date';
+        applicationDate        : Date         @Common.Label: 'Application Date';
+        applicationCapital     : Decimal      @Common.Label: 'Application Capital';
+        approvalDate           : Date         @Common.Label: 'Approval Date';
+        commitmentDate         : Date         @Common.Label: 'Commitment Date';
 
         /* ---------- Analysis Data ---------- */
         // Information
-        loanPurpose            : String         @Common.Label: 'Purpose of Loan';
+        loanPurpose            : String       @Common.Label: 'Funding Category';
         // arBillingJob           : String;
         /* ---------- Amortization Status ---------- */
-        amortizationStatus     : String         @Common.Label: 'Amortization Status';
+        amortizationStatus     : String       @Common.Label: 'Amortization Status';
 
         /* ---------- Organization ---------- */
         // agentdata
-        country                : String         @Common.Label: 'County';
-        orgDistrict            : String         @Common.Label: 'Organiz District';
-        agentDistrict          : String         @Common.Label: 'Agent District';
+        country                : String       @Common.Label: 'County';
+        orgDistrict            : String       @Common.Label: 'Organiz District';
+        agentDistrict          : String       @Common.Label: 'Agent District';
 
         /* ---------- Reference Data ---------- */
         // groupkey
-        primaryIndustryCode    : String         @Common.Label: 'Primary Industry';
+        primaryIndustryCode    : String       @Common.Label: 'Primary Industry';
         // other references
-        legacyNumber           : String         @Common.Label: 'Legacy Number';
-        projectNumber          : String         @Common.Label: 'Project Number';
+        legacyNumber           : String       @Common.Label: 'Legacy Number';
+        projectNumber          : String       @Common.Label: 'Project Number';
 
 
         //conditions
-        commitCapital          : String         @mandatory  @Common.Label: 'Current Commitment Capital';
-        outstandLoanBalance    : String         @Common.Label: 'Outstanding Loan Balance';
+        commitCapital          : Decimal      @mandatory  @Common.Label: 'Current Commitment Capital';
+        outstandLoanBalance    : Decimal      @Common.Label: 'Outstanding Loan Balance';
         repaymentType          : String;
 
         //term/fixed Period
-        fixedFrom              : Date           @mandatory  @Common.Label: 'Amortization Start';
-        fixedUntil             : Date           @mandatory  @Common.Label: 'Amortization End';
+        fixedFrom              : Date         @mandatory  @Common.Label: 'Amortization Start';
+        fixedUntil             : Date         @mandatory  @Common.Label: 'Amortization End';
         include                : Boolean;
 
         //PENNVEST
-        designation            : String         @Common.Label: Designation;
-        pledgedStatus          : String         @Common.Label: 'Pledged Status';
-        datePaidOff            : Date           @Common.Label: 'Date Paid Off';
+        designation            : String       @Common.Label: Designation;
+        pledgedStatus          : String       @Common.Label: 'Pledged Status';
+        datePaidOff            : Date         @Common.Label: 'Date Paid Off';
 
         //Comments Tab From Data
 
         //Offer
-        offerOn                : Date           @Common.Label: 'Offer On';
-        offerUntil             : Date           @Common.Label: 'Offer Until';
+        offerOn                : Date         @Common.Label: 'Approved On';
+        offerUntil             : Date         @Common.Label: 'Offer Until';
         reservedOn             : Date;
         reservedUntil          : Date;
 
         //Acceptance
         acceptance             : Boolean;
-        acceptedOn             : Date           @Common.Label: 'Accepted On';
+        acceptedOn             : Date         @Common.Label: 'Accepted On';
         acceptancedType        : Integer;
         reservation            : Integer;
 
         //Contract/Eff.int
 
         contract               : String;
-        contractOn             : Date           @Common.Label: 'Loan Close Date';
-        contractCompleteDate   : Date           @Common.Label: 'Contract Completed Date';
-        amtzDate               : Date           @mandatory  @Common.Label: 'Loan Begin Date';
-        maturityDate           : Date           @mandatory  @Common.Label: 'Loan Maturity Date';
+        contractOn             : Date         @Common.Label: 'Loan Close Date';
+        contractCompleteDate   : Date         @Common.Label: 'Contract Completed Date';
+        amtzDate               : Date         @mandatory  @Common.Label: 'Loan Begin Date';
+        maturityDate           : Date         @mandatory  @Common.Label: 'Loan Maturity Date';
 
 
         //Interest Calculation
-        intCalMt               : String         @mandatory;
+        intCalMt               : String       @mandatory;
         postAdjustmentFlag     : Boolean;
 
         //notice
 
-        intresetRateResetType  : Integer        @Common.Label: 'Interest Rate Reset Type';
-        intresetRateResetDate  : Date           @Common.Label: 'Interest Rate Reset Date';
+        intresetRateResetType  : Integer      @Common.Label: 'Interest Rate Reset Type';
+        intresetRateResetDate  : Date         @Common.Label: 'Interest Rate Reset Date';
         //capital amount
         contractCapital        : Decimal;
-        disbursementOblig      : Decimal;
+        disbursementOblig      : String;
         valueDatedCapital      : Decimal;
         effectCapital          : Decimal;
 
         //Incoming payment
-        paymentMethod          : String         @Common.Label: 'Incoming Payment Method';
-        payoffLock             : Boolean        @Common.Label: 'Payoff Lock';
-        arBillingJob           : String         @Common.Label: 'AR Billing Job';
-        dunningIndicator       : Boolean        @Common.Label: 'Exclude from Dunning Indicator';
-        relevantIndicator      : Boolean        @Common.Label: '1098 Relevant Indicator';
+        paymentMethod          : String       @Common.Label: 'Incoming Payment Method';
+        payoffLock             : Boolean      @Common.Label: 'Payoff Lock';
+        arBillingJob           : String       @Common.Label: 'AR Billing Job';
+        relevantIndicator      : Boolean      @Common.Label: '1098 Relevant Indicator';
+        //Exclude from dunning
+        dunningIndicator       : Boolean      @Common.Label: 'Exclude from Dunning Indicator';
+        reason                 : String       @Common.Label: 'Reason';
+        dateofBankruptcy       : Date         @COmmon.Label: 'Date of Bankruptcy';
+        comments               : String(1000) @Common.Label: 'Comments';
 
         /* ---------- Associations ---------- */
 
@@ -140,7 +144,7 @@ entity ConditionItemsNew : managed {
         conditionTypeText   : String(20);
         effectiveFrom       : Date;
         percentage          : String(4);
-        conditionAmt        : String(15);
+        conditionAmt        : Decimal;
         paymentFromExactDay : String;
         frequencyInMonths   : String(4);
         dueDate             : Date;
@@ -242,9 +246,9 @@ entity Earmark {
         documentNumber    : Integer @Common.Label: 'Document Line Number';
         loanCategory      : String  @Common.Label: 'Loan Category';
         flowType          : String  @Common.Label: 'Flow Type';
-        orginalAount      : String  @Common.Label: 'Original Amount';
+        orginalAount      : Decimal @Common.Label: 'Original Amount';
         text              : String  @Common.Label: 'Text';
-        fund              : String  @Common.Label: 'Fund';
+        fund              : Decimal  @Common.Label: 'Fund';
         budgetPd          : String  @Common.Label: 'Budget Pd';
         glAccount         : String  @Common.Label: 'GL Account';
         commitmetItem     : String  @Common.Label: 'Commitment Item';
@@ -261,17 +265,17 @@ entity Earmark {
 entity Disbursement {
     key disbursementId         : UUID;
         id                     : UUID;
-        text                   : String  @Common.Label: 'Line Item';
+        text                   : String          @Common.Label: 'Line Item';
         disburseAmount         : String  @Common.Label: 'New Disburse Amount';
-        flowType               : String  @Common.Label: 'Flow Type';
-        grossAmount            : String  @Common.Label: 'Gross Amount'  default '0000'       @readonly;
-        disbursementOblig      : String  @Common.Label: 'Disbursement Oblig.'  default '  '  @readonly;
-        paymentDate            : Date    @Common.Label: 'Payment Date';
-        effectiveDate          : Date    @Common.Label: 'Effective Date';
-        bp                     : String  @Common.Label: 'Business Partner';
-        paymentMethod          : String  @Common.Label: 'Payment Method';
-        bankDetails            : String  @Common.Label: 'Bank Details';
-        houseBank              : String  @Common.Label: 'House Bank';
+        flowType               : String          @Common.Label: 'Flow Type';
+        grossAmount            : String @Common.Label: 'Gross Amount'  default '0000'       @readonly;
+        disbursementOblig      : String          @Common.Label: 'Disbursement Oblig.'  default '  '  @readonly;
+        paymentDate            : Date            @Common.Label: 'Payment Date';
+        effectiveDate          : Date            @Common.Label: 'Effective Date';
+        bp                     : String          @Common.Label: 'Business Partner';
+        paymentMethod          : String          @Common.Label: 'Payment Method';
+        bankDetails            : String          @Common.Label: 'Bank Details';
+        houseBank              : String          @Common.Label: 'House Bank';
         disbursementToContract : Association to Contract;
 }
 
@@ -313,3 +317,8 @@ entity intCalMtSearchHelp {
     key ID    : UUID;
         value : String;
 }
+entity reasonSearchHelp{
+    key ID : UUID;
+    value  : String;
+}
+

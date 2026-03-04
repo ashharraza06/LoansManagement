@@ -47,7 +47,7 @@ sap.ui.define([
             // }
             var srvUrl = this._view.getModel().sServiceUrl
             const oCtx = oEvent.getSource().getBindingContext().getPath();
-            const sUrl = srvUrl + oCtx.slice(1)  
+            const sUrl = srvUrl + oCtx.slice(1) + '/Content'  
             // const oAttachment = oEvent.getSource().getBindingContext();
             // const oModel = oEvent.getSource().getBindingContext().getModel();
             // oModel.setProperty(oCtx + "/Url", sUrl);
