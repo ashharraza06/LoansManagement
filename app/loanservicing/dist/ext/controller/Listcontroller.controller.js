@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/mvc/ControllerExtension"],function(e){"use strict";return e.extend("loanservicing.loanservicing.ext.controller.Listcontroller",{override:{onInit:function(){var e=this.base.getExtensionAPI().getModel();debugger},routing:{onAfterBinding:function(){debugger;var e=sap.ui.getCore().getElementById("loanservicing.loanservicing::postingInvoicesList--fe::table::postingInvoices::LineItem::StandardAction::Create").firePress();console.log("createpress",e)}}}})});
+//# sourceMappingURL=Listcontroller.controller.js.map

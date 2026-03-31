@@ -1,0 +1,221 @@
+{
+	"_version": "1.82.0",
+	"sap.app": {
+		"id": "loanservicing.loanservicing",
+		"type": "application",
+		"i18n": {
+			"bundleUrl": "i18n/i18n.properties",
+			"supportedLocales": [
+				""
+			]
+		},
+		"applicationVersion": {
+			"version": "0.0.1"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"resources": "resources.json",
+		"sourceTemplate": {
+			"id": "@sap/generator-fiori:lrop",
+			"version": "1.20.4",
+			"toolsId": "7b40914d-25b3-433a-b253-c0da9e45a017"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "/odata/v4/loan-servicing/",
+				"type": "OData",
+				"settings": {
+					"annotations": [],
+					"odataVersion": "4.0"
+				}
+			}
+		},
+		"crossNavigation": {
+			"inbounds": {
+				"Loan_Servicing-Display": {
+					"semanticObject": "Loan_Servicing",
+					"action": "Display",
+					"title": "{{Loan_Servicing-Display.flpTitle}}",
+					"signature": {
+						"parameters": {},
+						"additionalParameters": "allowed"
+					}
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": true,
+		"dependencies": {
+			"minUI5Version": "1.145.0",
+			"libs": {
+				"sap.m": {},
+				"sap.ui.core": {},
+				"sap.fe.templates": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "loanservicing.loanservicing.i18n.i18n",
+					"supportedLocales": [
+						""
+					]
+				}
+			},
+			"": {
+				"dataSource": "mainService",
+				"preload": true,
+				"settings": {
+					"operationMode": "Server",
+					"autoExpandSelect": true,
+					"earlyRequests": true
+				}
+			},
+			"@i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties",
+				"settings": {
+					"supportedLocales": [
+						""
+					]
+				}
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {},
+			"routes": [
+				{
+					"pattern": ":?query:",
+					"name": "postingInvoicesList",
+					"target": "postingInvoicesList"
+				},
+				{
+					"pattern": "postingInvoices({key}):?query:",
+					"name": "postingInvoicesObjectPage",
+					"target": "postingInvoicesObjectPage"
+				}
+			],
+			"targets": {
+				"postingInvoicesList": {
+					"type": "Component",
+					"id": "postingInvoicesList",
+					"name": "sap.fe.templates.ListReport",
+					"options": {
+						"settings": {
+							"contextPath": "/postingInvoices",
+							"variantManagement": "Page",
+							"navigation": {
+								"postingInvoices": {
+									"detail": {
+										"route": "postingInvoicesObjectPage"
+									}
+								}
+							},
+							"controlConfiguration": {
+								"@com.sap.vocabularies.UI.v1.LineItem": {
+									"tableSettings": {
+										"type": "GridTable"
+									}
+								}
+							}
+						}
+					}
+				},
+				"postingInvoicesObjectPage": {
+					"type": "Component",
+					"id": "postingInvoicesObjectPage",
+					"name": "sap.fe.templates.ObjectPage",
+					"options": {
+						"settings": {
+							"editableHeaderContent": false,
+							"contextPath": "/postingInvoices",
+							"sectionLayout": "Tabs",
+							"controlConfiguration": {
+								"postingInvoicesToContractIncomingPayments/@com.sap.vocabularies.UI.v1.LineItem#table": {
+									"tableSettings": {
+										"type": "GridTable"
+									}
+								},
+								"@com.sap.vocabularies.UI.v1.FieldGroup#ProcessingIncomingPayments": {
+									"actions": {
+										"processingpayments": {
+											"press": "loanservicing.loanservicing.ext.controller.Processingpayments.Processingpayments",
+											"visible": true,
+											"enabled": true,
+											"text": "Processing"
+										},
+										"save": {
+											"press": "loanservicing.loanservicing.ext.controller.Save.save",
+											"visible": true,
+											"enabled": true,
+											"text": "Save",
+											"position": {
+												"placement": "After",
+												"anchor": "processingpayments"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"extends": {
+			"extensions": {
+				"sap.ui.controllerExtensions": {
+					"sap.fe.templates.ObjectPage.ObjectPageController": {
+						"controllerName": "loanservicing.loanservicing.ext.controller.Objpage"
+					},
+					"sap.fe.templates.ListReport.ListReportController": {
+						"controllerName": "loanservicing.loanservicing.ext.controller.Listcontroller"
+					}
+				}
+			}
+		},
+		"flexBundle": false
+	},
+	"sap.fiori": {
+		"registrationIds": [],
+		"archeType": "transactional"
+	},
+	"sap.fe": {
+		"app": {
+			"enableLazyLoading": true
+		}
+	},
+	"sap.cloud": {
+		"public": true,
+		"service": "management"
+	}
+}

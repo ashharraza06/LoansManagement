@@ -1,0 +1,1 @@
+{"version":3,"file":"Screenvariant.js","names":["sap","ui","define","MessageToast","Screenvariant","oContext","aSelectedContexts","show"],"sources":["Screenvariant-dbg.js"],"mappings":"AAAAA,IAAIC,GAAGC,OAAO,CACV,sBACD,SAASC,GACR,aAEA,MAAO,CAOHC,cAAe,SAASC,EAAUC,GAC9BH,EAAaI,KAAK,IACtB,EAER","ignoreList":[]}

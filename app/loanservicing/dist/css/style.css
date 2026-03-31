@@ -1,0 +1,26 @@
+#CreateDialog\:\:postingInvoices-title-inner {
+    visibility: hidden;
+}
+
+#CreateDialog\:\:postingInvoices-title-inner::after {
+    content: "Loan Service";
+    visibility: visible;
+}
+
+#loanservicing\.loanservicing\:\:postingInvoicesObjectPage--fe\:\:FormContainer\:\:Control>.sapUiFormTitleH5 {
+    display: none;
+}
+
+#loanservicing\.loanservicing\:\:postingInvoicesObjectPage--fe\:\:table\:\:postingInvoicesToContractIncomingPayments\:\:LineItem\:\:table-title {
+    display: none !important;
+}
+#loanservicing\.loanservicing\:\:postingInvoicesObjectPage--fe\:\:FacetSubSection\:\:ProcessingIncomingPayments-headerTitle-inner{
+    display: none;
+}
+#loanservicing\.loanservicing\:\:postingInvoicesObjectPage--fe\:\:ObjectPage-anchBar-loanservicing\.loanservicing\:\:postingInvoicesObjectPage--fe\:\:FacetSubSection\:\:table-anchor-{
+    display: none;
+}
+#loanservicing\.loanservicing\:\:postingInvoicesObjectPage--fe\:\:ObjectPage-footerWrapper
+{
+    display: none;
+}

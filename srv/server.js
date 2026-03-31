@@ -12,13 +12,13 @@ cds.on('bootstrap', (app) => {
     };
 
     expressApp.use((req, res, next) => {
-        console.log("Inside CORS middleware");
+        // console.log("Inside CORS middleware");
         next();
     });
     expressApp.use(cors(corsOptions));
 
     app.use((req, res, next) => {
-        console.log("Inside main app middleware");
+        // console.log("Inside main app middleware");
         next();
     });
     app.use(expressApp);

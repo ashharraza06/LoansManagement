@@ -1,0 +1,2 @@
+sap.ui.define(["sap/m/MessageToast"],function(e){"use strict";return{Save:function(e,o){var n=sap.ui.getCore().byId("loanservice::postingInvoicesObjectPage--fe::FooterBar::StandardAction::Save");if(n){n.firePress()}else{console.log("Save button not found")}}}});
+//# sourceMappingURL=Save.js.map

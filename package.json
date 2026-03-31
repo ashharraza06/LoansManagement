@@ -24,14 +24,18 @@
     "build": "rimraf resources mta_archives && mbt build --mtar archive",
     "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
     "watch-loanoffercreation": "cds watch --open loanoffercreation/index.html?sap-ui-xx-viewCache=false --livereload false",
-    "watch-loanmanagement": "cds watch --open loanmanagement/index.html?sap-ui-xx-viewCache=false --livereload false"
+    "watch-loanmanagement": "cds watch --open loanmanagement/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-loanservicing": "cds watch --open loanservicing.loanservicing/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-loanservice": "cds watch --open loanservice/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "private": true,
   "workspaces": [
     "app/*"
   ],
   "sapux": [
-    "app/loanoffercreation"
+    "app/loanoffercreation",
+    "app/loanservicing",
+    "app/loanservice"
   ],
   "cds": {
     "requires": {

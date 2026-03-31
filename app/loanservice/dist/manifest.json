@@ -1,0 +1,214 @@
+{
+	"_version": "1.82.0",
+	"sap.app": {
+		"id": "loanservice",
+		"type": "application",
+		"i18n": {
+			"bundleUrl": "i18n/i18n.properties",
+			"supportedLocales": [
+				""
+			]
+		},
+		"applicationVersion": {
+			"version": "0.0.1"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"resources": "resources.json",
+		"sourceTemplate": {
+			"id": "@sap/generator-fiori:feop",
+			"version": "1.20.4",
+			"toolsId": "478b20f2-7b8b-44de-ab4c-c487c5299e52"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "/odata/v4/loan-servicing1/",
+				"type": "OData",
+				"settings": {
+					"annotations": [],
+					"odataVersion": "4.0"
+				}
+			}
+		},
+		"crossNavigation": {
+			"inbounds": {
+				"loansemservice-Display": {
+					"semanticObject": "loansemservice",
+					"action": "Display",
+					"title": "{{loansemservice-Display.flpTitle}}",
+					"signature": {
+						"parameters": {},
+						"additionalParameters": "allowed"
+					}
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": true,
+		"dependencies": {
+			"minUI5Version": "1.145.0",
+			"libs": {
+				"sap.m": {},
+				"sap.ui.core": {},
+				"sap.fe.templates": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "loanservice.i18n.i18n",
+					"supportedLocales": [
+						""
+					]
+				}
+			},
+			"": {
+				"dataSource": "mainService",
+				"preload": true,
+				"settings": {
+					"operationMode": "Server",
+					"autoExpandSelect": true,
+					"earlyRequests": true
+				}
+			},
+			"@i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties",
+				"settings": {
+					"supportedLocales": [
+						""
+					]
+				}
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {},
+			"routes": [
+				{
+					"pattern": "postingInvoices({key}):?query:",
+					"name": "postingInvoicesObjectPage",
+					"target": "postingInvoicesObjectPage"
+				}
+			],
+			"targets": {
+				"postingInvoicesObjectPage": {
+					"type": "Component",
+					"id": "postingInvoicesObjectPage",
+					"name": "sap.fe.templates.ObjectPage",
+					"options": {
+						"settings": {
+							"editableHeaderContent": false,
+							"contextPath": "/postingInvoices",
+							"content": {
+								"header": {
+									"visible": false,
+									"anchorBarVisible": true
+								}
+							},
+							"sectionLayout": "Tabs",
+							"controlConfiguration": {
+								"@com.sap.vocabularies.UI.v1.FieldGroup#PostInvoice": {
+									"actions": {
+										"processingpostinvoice": {
+											"press": "loanservice.ext.controller.Processingpostinvoice.processingpostinvoice",
+											"visible": true,
+											"enabled": true,
+											"text": "Processing"
+										},
+										"screenvariant": {
+											"press": "loanservice.ext.controller.Screenvariant.screenvariant",
+											"visible": true,
+											"enabled": true,
+											"text": "Screen Variant",
+											"position": {
+												"placement": "After",
+												"anchor": "processingpostinvoice"
+											}
+										}
+									}
+								},
+								"@com.sap.vocabularies.UI.v1.FieldGroup#ProcessingIncomingPayments": {
+									"actions": {
+										"Processingincompymnt": {
+											"press": "loanservice.ext.controller.Processingincompymnt.Processingincompymnt",
+											"visible": true,
+											"enabled": true,
+											"text": "Processing"
+										},
+										"save": {
+											"press": "loanservice.ext.controller.Save.Save",
+											"visible": true,
+											"enabled": true,
+											"text": "Save",
+											"position": {
+												"placement": "After",
+												"anchor": "Processingincompymnt"
+											}
+										}
+									}
+								},
+								"postingInvoicesToContractIncomingPayments/@com.sap.vocabularies.UI.v1.LineItem#_": {
+									"tableSettings": {
+										"type": "GridTable"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"extends": {
+			"extensions": {
+				"sap.ui.controllerExtensions": {
+					"sap.fe.templates.ObjectPage.ObjectPageController#loanservice::postingInvoicesObjectPage": {
+						"controllerName": "loanservice.ext.controller.PostObj"
+					}
+				}
+			}
+		},
+		"flexBundle": false
+	},
+	"sap.fiori": {
+		"registrationIds": [],
+		"archeType": "transactional"
+	},
+	"sap.fe": {
+		"app": {
+			"enableLazyLoading": true
+		}
+	},
+	"sap.cloud": {
+		"public": true,
+		"service": "management"
+	}
+}

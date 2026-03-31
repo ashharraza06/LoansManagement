@@ -1,0 +1,2 @@
+sap.ui.define(["sap/m/MessageToast"],function(e){"use strict";return{save:function(o,n){e.show("Custom handler invoked");var s=sap.ui.getCore().byId("loanservicing.loanservicing::postingInvoicesObjectPage--fe::FooterBar::StandardAction::Save");debugger;if(s){console.log(s)}else{console.log("Save button not found")}}}});
+//# sourceMappingURL=Save.js.map

@@ -107,7 +107,7 @@ entity Contract : managed {
         intresetRateResetDate  : Date         @Common.Label: 'Interest Rate Reset Date';
         //capital amount
         contractCapital        : Decimal;
-        disbursementOblig      : String;
+        disbursementOblig      : Decimal;
         valueDatedCapital      : Decimal;
         effectCapital          : Decimal;
 
@@ -248,7 +248,7 @@ entity Earmark {
         flowType          : String  @Common.Label: 'Flow Type';
         orginalAount      : Decimal @Common.Label: 'Original Amount';
         text              : String  @Common.Label: 'Text';
-        fund              : Decimal  @Common.Label: 'Fund';
+        fund              : Decimal @Common.Label: 'Fund';
         budgetPd          : String  @Common.Label: 'Budget Pd';
         glAccount         : String  @Common.Label: 'GL Account';
         commitmetItem     : String  @Common.Label: 'Commitment Item';
@@ -265,17 +265,17 @@ entity Earmark {
 entity Disbursement {
     key disbursementId         : UUID;
         id                     : UUID;
-        text                   : String          @Common.Label: 'Line Item';
-        disburseAmount         : String  @Common.Label: 'New Disburse Amount';
-        flowType               : String          @Common.Label: 'Flow Type';
-        grossAmount            : String @Common.Label: 'Gross Amount'  default '0000'       @readonly;
-        disbursementOblig      : String          @Common.Label: 'Disbursement Oblig.'  default '  '  @readonly;
-        paymentDate            : Date            @Common.Label: 'Payment Date';
-        effectiveDate          : Date            @Common.Label: 'Effective Date';
-        bp                     : String          @Common.Label: 'Business Partner';
-        paymentMethod          : String          @Common.Label: 'Payment Method';
-        bankDetails            : String          @Common.Label: 'Bank Details';
-        houseBank              : String          @Common.Label: 'House Bank';
+        text                   : String  @Common.Label: 'Line Item';
+        disburseAmount         : Decimal @Common.Label: 'New Disburse Amount';
+        flowType               : String  @Common.Label: 'Flow Type';
+        grossAmount            : String  @Common.Label: 'Gross Amount'  default '0000'       @readonly;
+        disbursementOblig      : String  @Common.Label: 'Disbursement Oblig.'  default '  '  @readonly;
+        paymentDate            : Date    @Common.Label: 'Payment Date';
+        effectiveDate          : Date    @Common.Label: 'Effective Date';
+        bp                     : String  @Common.Label: 'Business Partner';
+        paymentMethod          : String  @Common.Label: 'Payment Method';
+        bankDetails            : String  @Common.Label: 'Bank Details';
+        houseBank              : String  @Common.Label: 'House Bank';
         disbursementToContract : Association to Contract;
 }
 
@@ -317,8 +317,195 @@ entity intCalMtSearchHelp {
     key ID    : UUID;
         value : String;
 }
-entity reasonSearchHelp{
-    key ID : UUID;
-    value  : String;
+
+entity reasonSearchHelp {
+    key ID    : UUID;
+        value : String;
 }
 
+entity postingInvoices {
+    key id                                        : UUID;
+        contractNo                                : String  @Common.Label: 'Contract Number';
+        productType                               : String  @Common.Label: 'Agency';
+        loanType                                  : String  @Common.Label: 'Loan Program';
+        flowType                                  : String  @Common.Label: 'Flow Type';
+        pledgedStatus                             : String  @Common.Label: 'Pledged Status';
+        paymentMethod                             : String  @Common.Label: 'Payment Method';
+        includingPmntDate                         : Date    @Common.Label: 'Up To And Including pmnt Date';
+        postingDate                               : Date    @Common.Label: 'Posting Date';
+        documentDate                              : Date    @Common.Label: 'Document Date';
+        documentText                              : String  @Common.Label: 'Document Text';
+        testRun                                   : Boolean @Common.Label: 'Test Run';
+        log                                       : Boolean @Common.Label: 'Log';
+        outputInOneLog                            : Boolean @Common.Label: 'Output in One Log(Background Only)';
+        postingInspiteOfErrors                    : Boolean @Common.Label: 'Posting In Spite of Errors in Individual Contracts';
+        outputOfUnpostedContracts                 : Boolean @Common.Label: 'Output of Unposted Contracts';
+        // IncomingPayments
+        bankRoutingNumber                         : String  @Common.Label: 'Bank Routing Number';
+        bankAccount                               : String  @Common.Label: 'Bank Account';
+        group                                     : String  @Common.Label: 'Group';
+        userName                                  : String  @Common.Label: 'User Name';
+        entryDate                                 : Date    @Common.Label: 'Entry Date';
+        Transaction                               : String  @Common.Label: 'Transaction';
+        postingDate2                              : Date    @Common.Label: 'Posting Date';
+        valueDate                                 : Date    @Common.Label: 'Value Date';
+        postingInvoicesToContractIncomingPayments : Composition of many contractIncomingPayments
+                                                        on postingInvoicesToContractIncomingPayments.postingId = id;
+        postingInvoicesToProductType              : Composition of many productType
+                                                        on postingInvoicesToProductType.prodid = id;
+        postingInvoicesToloanType                 : Composition of many loanType
+                                                        on postingInvoicesToloanType.contid = id;
+        postingInvoicesToflowType                 : Composition of many flowType
+                                                        on postingInvoicesToflowType.contid = id;
+        postingInvoicesTocontractNo               : Composition of many contractNo
+                                                        on postingInvoicesTocontractNo.contid = id;
+        postingInvoicesTopaymentMethod1           : Composition of many paymentMethod1
+                                                        on postingInvoicesTopaymentMethod1.contid = id;
+        postingInvoicesTopledgedStatus            : Composition of many pledgedStatus
+                                                        on postingInvoicesTopledgedStatus.contid = id;
+// postingInvoicesTotransaction            : Composition of many transaction
+//                                                 on postingInvoicesTotransaction.contid = id;
+
+}
+// entity postingInvoices {
+
+//     key id                                        : UUID;
+
+//         /* Contract Selection */
+
+//         contractNoLow                             : String  @Common.Label: 'Contract Number From';
+//         contractNoHigh                            : String  @Common.Label: 'Contract Number To';
+
+//         productTypeLow                            : String  @Common.Label: 'Agency From';
+//         productTypeHigh                           : String  @Common.Label: 'Agency To';
+
+//         loanTypeLow                               : String  @Common.Label: 'Loan Program From';
+//         loanTypeHigh                              : String  @Common.Label: 'Loan Program To';
+
+//         flowTypeLow                               : String  @Common.Label: 'Flow Type From';
+//         flowTypeHigh                              : String  @Common.Label: 'Flow Type To';
+
+//         paymentMethodLow                          : String  @Common.Label: 'Payment Method From';
+//         paymentMethodHigh                         : String  @Common.Label: 'Payment Method To';
+
+//         includingPmntDate                         : Date    @Common.Label: 'Up To And Including pmnt Date';
+
+//         postingDateLow                            : Date    @Common.Label: 'Posting Date From';
+//         postingDateHigh                           : Date    @Common.Label: 'Posting Date To';
+
+//         documentDateLow                           : Date    @Common.Label: 'Document Date From';
+//         documentDateHigh                          : Date    @Common.Label: 'Document Date To';
+
+//         documentText                              : String  @Common.Label: 'Document Text';
+
+//         /* Flags */
+
+//         testRun                                   : Boolean @Common.Label: 'Test Run';
+//         log                                       : Boolean @Common.Label: 'Log';
+//         outputInOneLog                            : Boolean @Common.Label: 'Output in One Log (Background Only)';
+//         postingInspiteOfErrors                    : Boolean @Common.Label: 'Posting In Spite of Errors in Individual Contracts';
+//         outputOfUnpostedContracts                 : Boolean @Common.Label: 'Output of Unposted Contracts';
+
+//         /* Incoming Payments */
+
+//         bankRoutingNumber                         : String  @Common.Label: 'Bank Routing Number';
+//         bankAccount                               : String  @Common.Label: 'Bank Account';
+//         group                                     : String  @Common.Label: 'Group';
+//         userName                                  : String  @Common.Label: 'User Name';
+//         entryDate                                 : Date    @Common.Label: 'Entry Date';
+//         Transaction                               : String  @Common.Label: 'Transaction';
+
+//         postingDate2                              : Date    @Common.Label: 'Posting Date';
+//         valueDate                                 : Date    @Common.Label: 'Value Date';
+
+//         postingInvoicesToContractIncomingPayments : Composition of many contractIncomingPayments
+//                                                         on postingInvoicesToContractIncomingPayments.postingId = id;
+// }
+
+
+entity contractIncomingPayments {
+    key incomingId                                : UUID;
+        postingId                                 : UUID;
+        contractNumber                            : String  @Common.Label: 'Contract Number';
+        segment                                   : String  @Common.Label: 'Segment';
+        checkNo                                   : String  @Common.Label: 'Check No.';
+        amount                                    : Decimal @Common.Label: 'Amount';
+        contractIncomingPaymentsToPostingInvoices : Association to Contract;
+}
+
+entity productType : cuid {
+    prodid                      : UUID;
+    productType                 : String;
+    productTypeToPostingInvoice : Association to Contract;
+}
+
+entity productTypeSearchHelp {
+    key ID    : UUID;
+        value : String @Common.Label: 'Agency';
+}
+
+entity loanType : cuid {
+    contid                   : UUID;
+    loanType                 : String;
+    loanTypeToPostingInvoice : Association to Contract;
+}
+
+entity loanTypeSearchHelp {
+    key ID    : UUID;
+        value : String @Common.Label: 'Loan Program';
+}
+
+entity flowType : cuid {
+    contid                   : UUID;
+    flowType                 : String;
+    flowTypeToPostingInvoice : Association to Contract;
+}
+
+entity flowTypeSearchHelp {
+    key ID    : UUID;
+        value : String @Common.Label: 'Flow Type';
+}
+
+entity contractNo : cuid {
+    contid                     : UUID;
+    contractNo                 : String;
+    contractNoToPostingInvoice : Association to Contract;
+}
+
+entity contractNoSearchHelp : cuid {
+
+    value : String @Common.Label: 'Contract Number';
+}
+
+entity paymentMethod1 : cuid {
+    contid                        : UUID;
+    paymentMethod                 : String;
+    paymentMethodToPostingInvoice : Association to Contract;
+}
+
+entity paymentMethodSearchHelp1 {
+    key code : String @Common.Label: 'Payment Method';
+        name : String @Common.Label: 'Description';
+}
+
+entity pledgedStatus : cuid {
+    contid                        : UUID;
+    pledgedStatus                 : String @Common.Label : 'Pledged Status';
+    pledgedStatusToPostingInvoice : Association to Contract;
+}
+
+entity pledgedStatusSearchHelp {
+    key code        : String @Common.Label: 'Pledged Status';
+        description : String @Common.Label: 'Description';
+}
+
+// entity transaction : cuid {
+//     contid                      : UUID;
+//     transaction                 : String;
+//     transactionToPostingInvoice : Association to Contract;
+// }
+
+entity transactionSearchHelp {
+    key code        : String @Common.Label: 'Transaction';
+        description : String @Common.Label: 'Description';
+}
